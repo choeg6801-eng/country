@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>로컬 꿀팁 커뮤니티 · ATLAS HUB</title>
+<meta name="description" content="지구본에서 나라를 고르면 비자·항공권·예산·명소·축제·에티켓·경제·뉴스까지 한 번에. 98개국 여행·문화·무역 정보 허브.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="로컬 꿀팁 커뮤니티 · ATLAS HUB">
+<meta property="og:description" content="지구본에서 나라를 고르면 비자·항공권·예산·명소·축제·에티켓·경제·뉴스까지 한 번에. 98개국 여행·문화·무역 정보 허브.">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta name="theme-color" content="#070B1A">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#070B1A}
+a{color:#7FE3FF}a:hover{color:#C8F3FF}
+.nl{color:#B4C0E4;text-decoration:none;padding:10px 4px;border-bottom:2px solid transparent}
+.nl:hover{color:#FFFFFF;border-bottom-color:#2A3A6E}
+.post{transition:border-color .2s}
+.post:hover{border-color:#3D5AA8}
+.rank:hover{background:#13224A}
+button:focus-visible,a:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #FFC857;outline-offset:2px}
+textarea::placeholder{color:#7F8DBB}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.rise{animation:rise .35s ease both}
+.app{container-type:inline-size}
+.mbtn,.tabbar{display:none}
+.tabbar a{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:56px;padding:6px 4px;border-radius:10px;text-decoration:none;color:#9AA8D4;font-size:12px}
+.tabbar a:hover{color:#FFFFFF}
+.mlink{display:block;padding:14px 12px;border-radius:10px;color:#E8EEFF;text-decoration:none;font-size:17px}
+.mlink:hover{background:#13224A}
+@container (max-width: 760px){
+.dnav,.dextra,.hide-m{display:none!important}
+.mbtn{display:inline-flex!important}
+.tabbar{display:flex!important}
+.wrap{padding-left:16px!important;padding-right:16px!important}
+.h1x{font-size:40px!important}
+.h1s{font-size:32px!important}
+.h2x{font-size:27px!important}
+.cpad{padding:24px!important}
+.tray{bottom:86px!important}
+.ctable{min-width:0!important}
+.pcredit{top:10px!important;left:10px!important;right:auto!important;max-width:calc(100% - 20px)!important;font-size:11px!important;padding:5px 10px!important;opacity:.85}
+.ctable thead th:first-child{display:none}
+.ctable tr{display:grid;grid-template-columns:1fr 1fr}
+.ctable tbody tr>th{grid-column:1/-1;padding-bottom:0!important;color:#7FE3FF!important}
+.ctable th,.ctable td{padding:10px 14px!important}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/x-template" id="tpl">
+<div class="app" style="font-family: 'IBM Plex Sans KR', sans-serif; color: #E8EEFF; background: #070B1A; min-height: 100vh">
+  <header style="position: sticky; top: 0; z-index: 30; border-bottom: 1px solid #141E3E; background: rgba(7,11,26,.95)">
+    <div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 14px 32px; display: flex; gap: 20px; align-items: center; justify-content: space-between">
+      <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #E8EEFF">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7FE3FF" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><ellipse cx="12" cy="12" rx="4.2" ry="9.5"></ellipse><path d="M2.5 12h19M4 7h16M4 17h16"></path></svg>
+        <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: .06em">ATLAS HUB</span>
+      </a>
+      <nav class="dnav" aria-label="주 메뉴" style="display: flex; flex-wrap: wrap; gap: 22px; font-size: 15px"><a class="nl" href="index.html">홈</a><a class="nl" href="continent.html">대륙 허브</a><a class="nl" href="countries.html">국가 백과</a><a class="nl" href="country.html">국가 상세</a><a class="nl" href="compare.html">국가 비교</a><a class="nl" href="community.html" aria-current="page" style="color: #FFFFFF; border-bottom-color: #7FE3FF">로컬 꿀팁</a></nav>
+      <div class="dextra" style="display: flex; gap: 10px; align-items: center">
+        
+      </div>
+      <button class="mbtn" onClick="{{toggleMenu}}" aria-expanded="{{menuAria}}" aria-label="메뉴 열기" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid #2A3A6E; background: transparent; color: #E8EEFF; align-items: center; justify-content: center; cursor: pointer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      </button>
+    </div>
+    <template data-if="{{menuOpen}}">
+      <nav aria-label="모바일 메뉴" class="wrap" style="padding: 4px 32px 16px; display: flex; flex-direction: column; gap: 2px; border-top: 1px solid #141E3E"><a class="mlink" href="index.html">홈</a><a class="mlink" href="continent.html">대륙 허브</a><a class="mlink" href="countries.html">국가 백과</a><a class="mlink" href="country.html">국가 상세</a><a class="mlink" href="compare.html">국가 비교</a><a class="mlink" href="community.html" aria-current="page" style="background: #13224A; color: #7FE3FF; font-weight: 600">로컬 꿀팁</a>
+      </nav>
+    </template>
+  </header>
+
+  <main class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 28px 32px 96px; display: flex; flex-direction: column; gap: 24px">
+    <nav aria-label="현재 위치" style="font-size: 14px; color: #8C9BC7"><a href="index.html" style="color: #B4C0E4; text-decoration: none">홈</a> &#160;/&#160; 로컬 꿀팁</nav>
+
+    <section style="position: relative; border-radius: 26px; overflow: hidden; border: 1px solid #1E2A52; background: #0A0F22">
+      <img loading="lazy" decoding="async" src="assets/798341bd3c77f6130a427bfb06dd520e.gif" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .45">
+      <div style="position: relative; padding: 40px 36px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end; background: linear-gradient(90deg, rgba(10,15,34,.96), rgba(10,15,34,.55))">
+        <div style="max-width: 560px">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #FFC857; letter-spacing: .12em; margin-bottom: 10px">STEP 3 · COMMUNITY</div>
+          <h1 class="h1s" style="margin: 0; font-size: 44px; font-weight: 700; letter-spacing: -.02em">로컬 꿀팁</h1>
+          <p style="margin: 12px 0 0; font-size: 17px; line-height: 1.7; color: #C9D3F2">현지에 살거나 다녀온 사람들이 남기는 생생한 정보. 교통·결제·음식·안전·비즈니스 팁을 나라별로 모아 봐요.</p>
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap">
+          <div style="padding: 16px 20px; border-radius: 16px; background: rgba(14,21,48,.9); border: 1px solid #2A3A6E"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700">{{total}}</div><div style="font-size: 13px; color: #9AA8D4">전체 꿀팁</div></div>
+          <div style="padding: 16px 20px; border-radius: 16px; background: rgba(14,21,48,.9); border: 1px solid #2A3A6E"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700">{{countryCount}}</div><div style="font-size: 13px; color: #9AA8D4">나라</div></div>
+        </div>
+      </div>
+    </section>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+      <!-- FEED -->
+      <section style="flex: 999 1 600px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between">
+          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap">
+            <label for="fc" style="font-size: 14px; color: #9AA8D4">나라</label>
+            <select id="fc" value="{{country}}" onChange="{{onCountry}}" style="height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0E1530; color: #E8EEFF; font: inherit; font-size: 15px">
+              <template data-for="{{countryOpts}}" data-as="o"><option value="{{o.code}}">{{o.label}}</option></template>
+            </select>
+          </div>
+          <div role="group" aria-label="정렬" style="display: flex; gap: 4px; padding: 4px; border-radius: 12px; background: #0B1228; border: 1px solid #1E2A52">
+            <template data-for="{{sorts}}" data-as="o"><button onClick="{{o.pick}}" aria-pressed="{{o.on}}" style="{{o.style}}">{{o.label}}</button></template>
+          </div>
+        </div>
+        <div role="group" aria-label="카테고리" style="display: flex; flex-wrap: wrap; gap: 6px">
+          <template data-for="{{catChips}}" data-as="k"><button onClick="{{k.pick}}" aria-pressed="{{k.on}}" style="{{k.style}}">{{k.label}}</button></template>
+        </div>
+        <div style="font-size: 14px; color: #9AA8D4"><b style="color: #FFFFFF; font-family: 'JetBrains Mono', monospace">{{shown}}</b>개의 꿀팁</div>
+
+        <template data-for="{{posts}}" data-as="p">
+          <article class="post rise" style="padding: 20px; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52; display: flex; gap: 16px">
+            <img loading="lazy" decoding="async" src="{{p.photo}}" alt="" class="hide-m" style="width: 112px; height: 84px; flex: none; border-radius: 12px; object-fit: cover">
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px">
+                <img loading="lazy" decoding="async" src="{{p.flag}}" alt="" style="width: 24px; height: 16px; border-radius: 3px; object-fit: cover">
+                <a href="country.html" onClick="{{p.open}}" style="color: #E8EEFF; font-weight: 700; text-decoration: none; font-size: 15px">{{p.name}}</a>
+                <span style="padding: 4px 10px; border-radius: 999px; background: #13224A; color: #7FE3FF; font-weight: 600">{{p.cat}}</span>
+                <span style="{{p.whoStyle}}">{{p.who}}</span>
+              </div>
+              <p style="margin: 0; font-size: 15px; line-height: 1.75">{{p.text}}</p>
+              <div style="display: flex; gap: 8px; align-items: center">
+                <button onClick="{{p.like}}" aria-pressed="{{p.likedAria}}" style="{{p.likeStyle}}">도움돼요 {{p.count}}</button>
+                <button style="height: 38px; padding: 0 12px; border-radius: 999px; border: 0; background: transparent; color: #8C9BC7; font: inherit; font-size: 13px">신고</button>
+              </div>
+            </div>
+          </article>
+        </template>
+        <template data-if="{{more}}">
+          <button onClick="{{showMore}}" style="align-self: center; height: 48px; padding: 0 24px; border-radius: 12px; border: 1px solid #2A3A6E; background: #0E1530; color: #E8EEFF; font: inherit; font-weight: 600; cursor: pointer">{{moreLabel}}</button>
+        </template>
+        <template data-if="{{empty}}">
+          <div style="padding: 48px; border-radius: 18px; border: 1px dashed #2A3A6E; text-align: center; color: #B4C0E4; display: flex; flex-direction: column; gap: 10px; align-items: center">
+            <b style="font-size: 18px; color: #E8EEFF">아직 이 조건의 꿀팁이 없어요</b>
+            <span>오른쪽에서 첫 번째 꿀팁을 남겨 주세요.</span>
+          </div>
+        </template>
+      </section>
+
+      <!-- SIDE -->
+      <aside style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+        <form onSubmit="{{submit}}" style="padding: 22px; border-radius: 18px; background: #0E1530; border: 1px solid #2A3A6E; display: flex; flex-direction: column; gap: 12px">
+          <b style="font-size: 18px">꿀팁 남기기</b>
+          <label for="wc" style="font-size: 13px; color: #9AA8D4">어느 나라 이야기인가요?</label>
+          <select id="wc" value="{{dCountry}}" onChange="{{onDCountry}}" style="height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px">
+            <template data-for="{{writeOpts}}" data-as="o"><option value="{{o.code}}">{{o.label}}</option></template>
+          </select>
+          <span style="font-size: 13px; color: #9AA8D4">카테고리</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px">
+            <template data-for="{{dCats}}" data-as="k"><button type="button" onClick="{{k.pick}}" aria-pressed="{{k.on}}" style="{{k.style}}">{{k.label}}</button></template>
+          </div>
+          <label for="wt" style="font-size: 13px; color: #9AA8D4">내용</label>
+          <textarea id="wt" value="{{draft}}" onChange="{{onDraft}}" rows="4" placeholder="예: 공항에서 시내까지는 공항철도가 가장 빠르고 저렴해요" style="width: 100%; box-sizing: border-box; padding: 14px; border-radius: 12px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px; resize: vertical"></textarea>
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+            <span style="font-size: 13px; color: #8C9BC7">{{draftCount}}/200</span>
+            <button type="submit" style="{{submitStyle}}">등록하기</button>
+          </div>
+          <template data-if="{{posted}}">
+            <span role="status" style="font-size: 14px; color: #7FF0B0">등록됐어요! 피드 맨 위에서 확인할 수 있어요.</span>
+          </template>
+        </form>
+
+        <section style="padding: 22px; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 6px">
+          <h2 style="margin: 0 0 8px; font-size: 17px">꿀팁이 많은 나라</h2>
+          <template data-for="{{ranking}}" data-as="r">
+            <button class="rank" onClick="{{r.pick}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 6px 10px; border: 0; border-radius: 10px; background: transparent; color: #E8EEFF; font: inherit; cursor: pointer; text-align: left">
+              <span style="width: 20px; font-family: 'JetBrains Mono', monospace; color: #8C9BC7">{{r.n}}</span>
+              <img loading="lazy" decoding="async" src="{{r.flag}}" alt="" style="width: 26px; height: 17px; border-radius: 3px; object-fit: cover">
+              <span style="flex: 1">{{r.name}}</span>
+              <span style="font-family: 'JetBrains Mono', monospace; color: #7FE3FF">{{r.count}}</span>
+            </button>
+          </template>
+        </section>
+
+        <section style="padding: 20px 22px; border-radius: 18px; border: 1px dashed #2A3A6E; display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.6; color: #B4C0E4">
+          <b style="color: #E8EEFF">커뮤니티 가이드</b>
+          <span>· 직접 겪은 사실 위주로 적어 주세요</span>
+          <span>· 전화번호·주소 등 개인정보는 적지 않아요</span>
+          <span>· 광고·홍보 글은 숨김 처리돼요</span>
+          <span style="color: #8C9BC7; font-size: 13px; margin-top: 4px">'예시 제보'는 국가별 대표 꿀팁을 정리한 샘플 글이에요. 새 글은 지금 쓰는 브라우저에만 저장되고, 모두가 보는 공유 게시판은 준비 중이에요.</span>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <footer id="site-footer" style="border-top: 1px solid #141E3E; margin-top: 40px"><div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; gap: 14px; font-size: 13px; line-height: 1.7; color: #8C9BC7"><div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #E8EEFF; letter-spacing: .06em">ATLAS HUB · 글로벌 아틀라스</span><span style="display: flex; flex-wrap: wrap; gap: 16px"><a href="credits.html" style="color: #B4C0E4">사진 · 데이터 출처</a><a href="https://www.0404.go.kr" target="_blank" rel="noopener" style="color: #B4C0E4">외교부 해외안전여행</a><span>영사콜센터 +82-2-3210-0404</span></span></div><p style="margin: 0">정보 기준일 2026년 10월 · 비자·입국 조건과 여행경보는 수시로 바뀌어요. 이 사이트의 정보는 참고용이며, 출국 전 외교부 해외안전여행과 해당국 대사관에서 반드시 최신 정보를 확인하세요. 항공권 가격·환율·날씨·뉴스는 예시 또는 근사치예요.</p><p style="margin: 0">국가 사진: Wikimedia Commons(CC 라이선스, 사진마다 작가 표기) · 일부 AI 생성 이미지(표기됨) · 국기: 단순화한 SVG · 폰트: Google Fonts</p></div></footer>
+  <nav class="tabbar" aria-label="하단 메뉴" style="position: sticky; bottom: 0; z-index: 30; justify-content: space-around; padding: 8px 6px 14px; background: rgba(10,16,36,.97); border-top: 1px solid #1E2A52"><a href="index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"></path></svg>홈</a><a href="continent.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"></path></svg>대륙</a><a href="countries.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="4" width="7" height="7"></rect><rect x="13" y="4" width="7" height="7"></rect><rect x="4" y="13" width="7" height="7"></rect><rect x="13" y="13" width="7" height="7"></rect></svg>국가</a><a href="compare.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg>비교</a><a href="community.html" aria-current="page" style="color: #7FE3FF; background: #13224A"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path><path d="M8 9h8M8 12h5"></path></svg>꿀팁</a></nav>
+</div>
+</script>
+<script src="js/data.js"></script>
+<script src="js/runtime.js"></script>
+<script>
+(function () { var q = new URLSearchParams(location.search); function put(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } var c = q.get('code'), t = q.get('tab'), n = q.get('cont'), a = q.get('a'), b = q.get('b'); if (c && window.ATLAS_DB[c.toUpperCase()]) put('atlas.code', c.toUpperCase()); if (t) put('atlas.tab', t.toLowerCase()); if (n) put('atlas.cont', n.toUpperCase()); if (a && b && window.ATLAS_DB[a.toUpperCase()] && window.ATLAS_DB[b.toUpperCase()]) put('atlas.cmp', [a.toUpperCase(), b.toUpperCase()]); })();
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { country: 'ALL', cat: 'ALL', sort: 'new', mine: (function () { try { var v = JSON.parse(localStorage.getItem('atlas.posts') || '[]'); return Array.isArray(v) ? v.slice(-200) : []; } catch (e) { return []; } })(), liked: {}, draft: '', dCountry: 'VN', dCat: '교통', posted: false }; }
+  renderVals() {
+    var DB = this.__DB || (this.__DB = window.ATLAS_DB);
+    var FL = {}; Object.keys(DB).forEach(function (k) { FL[k] = DB[k].flag; });
+    function __nav(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} try { sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+    var self = this, st = this.state;
+    var SEED = [
+      ['VN', '교통', '하노이·호찌민은 오토바이가 정말 많아요. 길을 건널 때는 뛰지 말고 일정한 속도로 천천히 걸으면 알아서 피해 가요.'],
+      ['VN', '결제 · 환전', '택시·오토바이 택시·음식 배달은 그랩(Grab) 앱 하나로 해결돼요. 요금이 미리 정해져 있어 흥정이 필요 없어요.'],
+      ['JP', '교통', '교통카드(스이카·파스모 등) 하나면 전철·버스·편의점 결제까지 돼요. 휴대폰에 넣어 쓰면 더 편해요.'],
+      ['JP', '음식', '라멘집은 입구의 식권 자판기에서 먼저 표를 사는 곳이 많아요. 현금만 받는 기계도 있으니 동전을 챙기세요.'],
+      ['DE', '결제 · 환전', '카드가 안 되는 작은 가게·빵집이 아직 있어요. 소액 현금은 늘 챙겨 다니는 게 좋아요.'],
+      ['DE', '숙소', '일요일에는 대부분 상점과 마트가 문을 닫아요. 토요일에 장을 미리 봐 두세요.'],
+      ['FR', '음식', '식당에서 물을 달라고 하면 생수 값을 받아요. "Une carafe d\'eau"라고 하면 무료 수돗물을 줘요.'],
+      ['GB', '교통', '런던 지하철·버스는 컨택리스 카드를 단말기에 대기만 하면 돼요. 하루 요금 상한이 있어 따로 표를 살 필요가 없어요.'],
+      ['US', '결제 · 환전', '식당 영수증에 팁 비율(18·20·22%)이 계산돼 나오는 경우가 많아요. 세금은 메뉴판 가격에 포함돼 있지 않아요.'],
+      ['TH', '안전', '사원에 들어갈 때는 신발을 벗고, 어깨와 무릎을 가리는 옷을 입어야 해요. 얇은 숄 하나 챙기면 편해요.'],
+      ['AE', '비즈니스', '금요일 오후부터 토요일이 주말이에요. 현지 파트너와 미팅은 월~목요일로 잡는 게 안전해요.'],
+      ['IN', '음식', '물은 꼭 밀봉된 생수를 사 드세요. 길거리 음식은 사람이 많아 회전이 빠른 곳을 고르는 게 좋아요.'],
+      ['EG', '결제 · 환전', '소액 팁(바크시시) 문화가 있어요. 화장실·짐 운반 등에 쓸 작은 지폐를 따로 준비해 두면 편해요.'],
+      ['KE', '결제 · 환전', '현지에서는 휴대폰 송금 서비스 M-Pesa가 현금보다 많이 쓰여요. 여행자도 관광 유심과 함께 등록할 수 있어요.'],
+      ['PE', '안전', '쿠스코는 해발 3,400m 고지대라 첫날은 무리하지 말고 천천히 움직이세요. 물을 충분히 마시는 것도 잊지 마세요.'],
+      ['MA', '쇼핑', '시장(수크)에서는 처음 부른 값에서 흥정하는 게 자연스러워요. 웃으면서 여유 있게 협상해 보세요.'],
+      ['AU', '안전', '자외선이 아주 강해요. 흐린 날에도 선크림과 모자는 필수예요.'],
+      ['BR', '안전', '사람이 많은 해변이나 거리에서는 휴대폰을 손에 들고 다니지 않는 게 좋아요.']
+    ];
+    [0, 1, 2].forEach(function (j) { Object.keys(DB).forEach(function (k) { var t = DB[k].tips[j]; if (t) SEED.push([k, t[0], t[1]]); }); });
+    var posts = st.mine.map(function (p) { return { id: p.id, code: p.code, cat: p.cat, text: p.text, mine: true, t: p.t }; })
+      .concat(SEED.map(function (r, i) { return { id: 's' + i, code: r[0], cat: r[1], text: r[2], mine: false, t: -i }; }));
+    var counts = {}; posts.forEach(function (p) { counts[p.code] = (counts[p.code] || 0) + 1; });
+    var list = posts.filter(function (p) { return (st.country === 'ALL' || p.code === st.country) && (st.cat === 'ALL' || p.cat === st.cat); });
+    if (st.sort === 'new') list.sort(function (a, b) { return b.t - a.t; });
+    else list.sort(function (a, b) { return (st.liked[b.id] ? 1 : 0) - (st.liked[a.id] ? 1 : 0) || b.t - a.t; });
+    var catNames = ['교통', '결제 · 환전', '음식', '안전', '비즈니스', '숙소', '쇼핑', '여행', '건강', '통신'];
+    function chip(on) { return 'height: 40px; padding: 0 14px; border-radius: 999px; font: inherit; font-size: 14px; cursor: pointer; ' + (on ? 'border: 1px solid #7FE3FF; background: #13324A; color: #7FE3FF; font-weight: 600' : 'border: 1px solid #2A3A6E; background: #0B1228; color: #B4C0E4'); }
+    var draft = st.draft || '', canPost = draft.trim().length >= 5;
+    var ranking = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; }).slice(0, 5);
+    var codes = Object.keys(DB);
+    var __s = this;
+    var __menu = { menuOpen: !!(this.state && this.state.menu), menuAria: (this.state && this.state.menu) ? 'true' : 'false', toggleMenu: function () { __s.setState({ menu: !(__s.state && __s.state.menu) }); } };
+    return Object.assign(__menu, {
+      total: posts.length, countryCount: Object.keys(counts).length, shown: list.length, empty: list.length === 0,
+      country: st.country,
+      countryOpts: [{ code: 'ALL', label: '전체 나라' }].concat(codes.map(function (k) { return { code: k, label: DB[k].name + (counts[k] ? ' (' + counts[k] + ')' : '') }; })),
+      onCountry: function (e) { self.setState({ country: e.target.value, limit: 12 }); },
+      sorts: [['new', '최신순'], ['help', '도움순']].map(function (o) { var on = st.sort === o[0]; return { label: o[1], on: on ? 'true' : 'false', pick: function () { self.setState({ sort: o[0] }); }, style: 'height: 36px; padding: 0 14px; border-radius: 8px; border: 0; font: inherit; font-size: 14px; cursor: pointer; ' + (on ? 'background: #1A2752; color: #FFFFFF; font-weight: 600' : 'background: transparent; color: #B4C0E4') }; }),
+      catChips: ['ALL'].concat(catNames).map(function (n) { var on = st.cat === n; return { label: n === 'ALL' ? '전체' : n, on: on ? 'true' : 'false', pick: function () { self.setState({ cat: n, limit: 12 }); }, style: chip(on) }; }),
+      more: list.length > (st.limit || 12), moreLabel: '더 보기 (' + (list.length - (st.limit || 12)) + '개 남음)',
+      showMore: function () { self.setState({ limit: (st.limit || 12) + 12 }); },
+      posts: list.slice(0, st.limit || 12).map(function (p) {
+        var d = DB[p.code], on = !!st.liked[p.id];
+        return { open: function () { __nav('atlas.code', p.code); }, name: d.name, flag: d.flag, photo: d.photo, cat: p.cat, text: p.text,
+          who: p.mine ? '내가 쓴 글 · 이 브라우저에만 저장' : '예시 제보',
+          whoStyle: 'font-size: 13px; ' + (p.mine ? 'color: #7FF0B0; font-weight: 600' : 'color: #8C9BC7'),
+          count: on ? 1 : 0, likedAria: on ? 'true' : 'false',
+          likeStyle: 'height: 38px; padding: 0 14px; border-radius: 999px; font: inherit; font-size: 13px; cursor: pointer; ' + (on ? 'border: 1px solid #7FE3FF; background: #13324A; color: #7FE3FF; font-weight: 600' : 'border: 1px solid #2A3A6E; background: transparent; color: #B4C0E4'),
+          like: function () { var l = Object.assign({}, st.liked); l[p.id] = !on; self.setState({ liked: l }); } };
+      }),
+      dCountry: st.dCountry,
+      writeOpts: codes.map(function (k) { return { code: k, label: DB[k].name + ' · ' + DB[k].cont }; }),
+      onDCountry: function (e) { self.setState({ dCountry: e.target.value }); },
+      dCats: catNames.map(function (n) { var on = st.dCat === n; return { label: n, on: on ? 'true' : 'false', pick: function () { self.setState({ dCat: n }); }, style: chip(on).replace('height: 40px', 'height: 36px') }; }),
+      draft: draft, draftCount: draft.length,
+      onDraft: function (e) { self.setState({ draft: e.target.value.slice(0, 200), posted: false }); },
+      submitStyle: 'height: 44px; padding: 0 22px; border-radius: 12px; border: 0; font: inherit; font-weight: 700; cursor: pointer; ' + (canPost ? 'background: #FFC857; color: #1A1300' : 'background: #1A2752; color: #7F8DBB'),
+      submit: function (e) {
+        if (e && e.preventDefault) e.preventDefault();
+        if (!canPost) return;
+        var nm = st.mine.concat([{ id: 'u' + Date.now(), code: st.dCountry, cat: st.dCat, text: draft.trim(), t: Date.now() }]); try { localStorage.setItem('atlas.posts', JSON.stringify(nm.slice(-200))); } catch (er) {}
+        self.setState({ mine: nm, draft: '', posted: true, sort: 'new' });
+      },
+      posted: st.posted,
+      ranking: ranking.map(function (k, i) { return { n: i + 1, name: DB[k].name, flag: DB[k].flag, count: counts[k], pick: function () { self.setState({ country: k }); } }; })
+    });
+  }
+}
+
+mountAtlas(Component);
+(function () { if (!window.fetch) return; fetch('data/live.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { if (!j || !j.countries) return; var D = window.ATLAS_DB, up = String(j.updated || '').slice(0, 10); Object.keys(j.countries).forEach(function (k) { var L = j.countries[k], d = D[k]; if (!d || k === 'KR') return; d.tr = d.tr || {}; if (L.alert) d.tr.alert = L.alert; if (typeof L.alertLevel === 'number') d.tr.alertLevel = L.alertLevel; if (L.visa) { d.tr.visaLive = L.visa; d.liveVisa = true; } d.liveUpdated = up; }); if (window.__atlas && window.__atlas.__render) window.__atlas.__render(); }).catch(function () {}); })();
+</script>
+</body>
+</html>

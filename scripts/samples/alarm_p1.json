@@ -1,0 +1,63 @@
+{
+ "response": {
+  "header": {
+   "resultCode": "00",
+   "resultMsg": "NORMAL SERVICE."
+  },
+  "body": {
+   "dataType": "JSON",
+   "items": {
+    "item": [
+     {
+      "country_eng_nm": "Vietnam",
+      "country_nm": "베트남",
+      "country_iso_alp2": "VN",
+      "continent_cd": "20",
+      "continent_eng_nm": "",
+      "continent_nm": "아시아/태평양",
+      "dang_map_download_url": "https://www.0404.go.kr/...",
+      "flag_download_url": "",
+      "map_download_url": "",
+      "alarm_lvl": 1,
+      "region_ty": "일부",
+      "written_dt": "2025-03-02",
+      "remark": "북부 산악 일부 지역"
+     },
+     {
+      "country_eng_nm": "Thailand",
+      "country_nm": "태국",
+      "country_iso_alp2": "TH",
+      "continent_cd": "20",
+      "continent_eng_nm": "",
+      "continent_nm": "아시아/태평양",
+      "dang_map_download_url": "https://www.0404.go.kr/...",
+      "flag_download_url": "",
+      "map_download_url": "",
+      "alarm_lvl": 1,
+      "region_ty": "일부",
+      "written_dt": "2025-03-02",
+      "remark": "방콕 등"
+     },
+     {
+      "country_eng_nm": "Thailand",
+      "country_nm": "태국",
+      "country_iso_alp2": "TH",
+      "continent_cd": "20",
+      "continent_eng_nm": "",
+      "continent_nm": "아시아/태평양",
+      "dang_map_download_url": "https://www.0404.go.kr/...",
+      "flag_download_url": "",
+      "map_download_url": "",
+      "alarm_lvl": 3,
+      "region_ty": "일부",
+      "written_dt": "2025-03-02",
+      "remark": "남부 나라티왓·얄라·빠따니 주"
+     }
+    ]
+   },
+   "numOfRows": 3,
+   "pageNo": 1,
+   "totalCount": 6
+  }
+ }
+}

@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>국가 비교 · ATLAS HUB</title>
+<meta name="description" content="지구본에서 나라를 고르면 비자·항공권·예산·명소·축제·에티켓·경제·뉴스까지 한 번에. 98개국 여행·문화·무역 정보 허브.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="국가 비교 · ATLAS HUB">
+<meta property="og:description" content="지구본에서 나라를 고르면 비자·항공권·예산·명소·축제·에티켓·경제·뉴스까지 한 번에. 98개국 여행·문화·무역 정보 허브.">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta name="theme-color" content="#070B1A">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#070B1A}
+a{color:#7FE3FF}a:hover{color:#C8F3FF}
+.nl{color:#B4C0E4;text-decoration:none;padding:10px 4px;border-bottom:2px solid transparent}
+.nl:hover{color:#FFFFFF;border-bottom-color:#2A3A6E}
+.swap:hover{background:#1A2752;transform:rotate(180deg)}
+.swap{transition:transform .35s, background .2s}
+.bar{transition:width .5s ease}
+select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #FFC857;outline-offset:2px}
+tbody tr:hover{background:#0B1228}
+.app{container-type:inline-size}
+.mbtn,.tabbar{display:none}
+.tabbar a{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:56px;padding:6px 4px;border-radius:10px;text-decoration:none;color:#9AA8D4;font-size:12px}
+.tabbar a:hover{color:#FFFFFF}
+.mlink{display:block;padding:14px 12px;border-radius:10px;color:#E8EEFF;text-decoration:none;font-size:17px}
+.mlink:hover{background:#13224A}
+@container (max-width: 760px){
+.dnav,.dextra,.hide-m{display:none!important}
+.mbtn{display:inline-flex!important}
+.tabbar{display:flex!important}
+.wrap{padding-left:16px!important;padding-right:16px!important}
+.h1x{font-size:40px!important}
+.h1s{font-size:32px!important}
+.h2x{font-size:27px!important}
+.cpad{padding:24px!important}
+.tray{bottom:86px!important}
+.ctable{min-width:0!important}
+.pcredit{top:10px!important;left:10px!important;right:auto!important;max-width:calc(100% - 20px)!important;font-size:11px!important;padding:5px 10px!important;opacity:.85}
+.ctable thead th:first-child{display:none}
+.ctable tr{display:grid;grid-template-columns:1fr 1fr}
+.ctable tbody tr>th{grid-column:1/-1;padding-bottom:0!important;color:#7FE3FF!important}
+.ctable th,.ctable td{padding:10px 14px!important}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/x-template" id="tpl">
+<div class="app" style="font-family: 'IBM Plex Sans KR', sans-serif; color: #E8EEFF; background: #070B1A; min-height: 100vh">
+  <header style="position: sticky; top: 0; z-index: 30; border-bottom: 1px solid #141E3E; background: rgba(7,11,26,.95)">
+    <div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 14px 32px; display: flex; gap: 20px; align-items: center; justify-content: space-between">
+      <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #E8EEFF">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7FE3FF" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><ellipse cx="12" cy="12" rx="4.2" ry="9.5"></ellipse><path d="M2.5 12h19M4 7h16M4 17h16"></path></svg>
+        <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: .06em">ATLAS HUB</span>
+      </a>
+      <nav class="dnav" aria-label="주 메뉴" style="display: flex; flex-wrap: wrap; gap: 22px; font-size: 15px"><a class="nl" href="index.html">홈</a><a class="nl" href="continent.html">대륙 허브</a><a class="nl" href="countries.html">국가 백과</a><a class="nl" href="country.html">국가 상세</a><a class="nl" href="compare.html" aria-current="page" style="color: #FFFFFF; border-bottom-color: #7FE3FF">국가 비교</a><a class="nl" href="community.html">로컬 꿀팁</a></nav>
+      <div class="dextra" style="display: flex; gap: 10px; align-items: center">
+        
+      </div>
+      <button class="mbtn" onClick="{{toggleMenu}}" aria-expanded="{{menuAria}}" aria-label="메뉴 열기" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid #2A3A6E; background: transparent; color: #E8EEFF; align-items: center; justify-content: center; cursor: pointer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      </button>
+    </div>
+    <template data-if="{{menuOpen}}">
+      <nav aria-label="모바일 메뉴" class="wrap" style="padding: 4px 32px 16px; display: flex; flex-direction: column; gap: 2px; border-top: 1px solid #141E3E"><a class="mlink" href="index.html">홈</a><a class="mlink" href="continent.html">대륙 허브</a><a class="mlink" href="countries.html">국가 백과</a><a class="mlink" href="country.html">국가 상세</a><a class="mlink" href="compare.html" aria-current="page" style="background: #13224A; color: #7FE3FF; font-weight: 600">국가 비교</a><a class="mlink" href="community.html">로컬 꿀팁</a>
+      </nav>
+    </template>
+  </header>
+
+  <main class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 28px 32px 96px; display: flex; flex-direction: column; gap: 26px">
+    <nav aria-label="현재 위치" style="font-size: 14px; color: #8C9BC7"><a href="index.html" style="color: #B4C0E4; text-decoration: none">홈</a> &#160;/&#160; 국가 비교</nav>
+    <div>
+      <h1 class="h1s" style="margin: 0; font-size: 44px; font-weight: 700; letter-spacing: -.02em">국가 비교</h1>
+      <p style="margin: 10px 0 0; font-size: 16px; color: #B4C0E4">두 나라를 고르면 차이가 큰 항목부터 먼저 보여드려요.</p>
+    </div>
+
+    <!-- SELECTORS -->
+    <section style="display: flex; flex-wrap: wrap; gap: 14px; align-items: stretch">
+      <div style="flex: 1 1 380px; min-width: 0; padding: 0 24px 24px; border-radius: 22px; background: #0C1E33; border: 1px solid #1E4A6A; display: flex; flex-direction: column; gap: 16px; overflow: hidden"><img loading="lazy" decoding="async" src="{{photoA}}" alt="{{A.name}} 대표 풍경 — {{A.landmark}}" style="display: block; width: calc(100% + 48px); margin: 0 -24px; height: 130px; object-fit: cover">
+        <label for="sa" style="font-size: 13px; font-weight: 600; color: #7FE3FF; letter-spacing: .08em">국가 A</label>
+        <select id="sa" value="{{a}}" onChange="{{onA}}" style="height: 52px; padding: 0 14px; border-radius: 12px; border: 1px solid #2A5A7A; background: #081626; color: #E8EEFF; font: inherit; font-size: 18px; font-weight: 600">
+          <template data-for="{{opts}}" data-as="o"><option value="{{o.code}}">{{o.name}}</option></template>
+        </select>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px">
+          <span style="display: flex; align-items: center; gap: 14px"><img loading="lazy" decoding="async" src="{{flagA}}" alt="{{A.name}} 국기" style="width: 60px; height: 40px; border-radius: 6px; object-fit: cover; box-shadow: 0 0 0 1px rgba(255,255,255,.2)"><span><span style="font-size: 30px; font-weight: 700">{{A.name}}</span><br><span style="font-size: 14px; color: #B4C0E4">{{A.capital}} · {{A.cont}}</span></span></span>
+          <span style="font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace; font-size: 28px; color: #7FE3FF">{{clockA}}</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center; flex: 0 0 auto">
+        <button class="swap" onClick="{{swap}}" aria-label="두 나라 자리 바꾸기" style="width: 56px; height: 56px; border-radius: 50%; border: 1px solid #2A3A6E; background: #0E1530; color: #E8EEFF; cursor: pointer; display: inline-flex; align-items: center; justify-content: center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg>
+        </button>
+      </div>
+      <div style="flex: 1 1 380px; min-width: 0; padding: 0 24px 24px; border-radius: 22px; background: #2A200C; border: 1px solid #5A4818; display: flex; flex-direction: column; gap: 16px; overflow: hidden"><img loading="lazy" decoding="async" src="{{photoB}}" alt="{{B.name}} 대표 풍경 — {{B.landmark}}" style="display: block; width: calc(100% + 48px); margin: 0 -24px; height: 130px; object-fit: cover">
+        <label for="sb" style="font-size: 13px; font-weight: 600; color: #FFC857; letter-spacing: .08em">국가 B</label>
+        <select id="sb" value="{{b}}" onChange="{{onB}}" style="height: 52px; padding: 0 14px; border-radius: 12px; border: 1px solid #6A5520; background: #1E1708; color: #E8EEFF; font: inherit; font-size: 18px; font-weight: 600">
+          <template data-for="{{opts}}" data-as="o"><option value="{{o.code}}">{{o.name}}</option></template>
+        </select>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px">
+          <span style="display: flex; align-items: center; gap: 14px"><img loading="lazy" decoding="async" src="{{flagB}}" alt="{{B.name}} 국기" style="width: 60px; height: 40px; border-radius: 6px; object-fit: cover; box-shadow: 0 0 0 1px rgba(255,255,255,.2)"><span><span style="font-size: 30px; font-weight: 700">{{B.name}}</span><br><span style="font-size: 14px; color: #E6D6AE">{{B.capital}} · {{B.cont}}</span></span></span>
+          <span style="font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace; font-size: 28px; color: #FFC857">{{clockB}}</span>
+        </div>
+      </div>
+    </section>
+
+    <template data-if="{{same}}">
+      <div style="padding: 16px 20px; border-radius: 14px; background: #2B2410; border: 1px solid #5A4A1A; color: #FFD98A">같은 나라를 골랐어요. 국가 B를 바꿔 보세요.</div>
+    </template>
+
+    <!-- INSIGHTS -->
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px">
+      <div style="padding: 22px; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 13px; color: #8C9BC7">시차</span>
+        <span style="font-size: 26px; font-weight: 700">{{gapText}}</span>
+        <span style="font-size: 14px; color: #B4C0E4; line-height: 1.6">{{A.name}} 오전 9시 = {{B.name}} {{meet}}</span>
+      </div>
+      <div style="padding: 22px; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 13px; color: #8C9BC7">전자기기 · 콘센트</span>
+        <span style="{{plugStyle}}">{{plugHead}}</span>
+        <span style="font-size: 14px; color: #B4C0E4; line-height: 1.6">{{A.volt}} → {{B.volt}}</span>
+      </div>
+      <div style="padding: 22px; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 13px; color: #8C9BC7">인구 규모</span>
+        <span style="font-size: 26px; font-weight: 700">{{popHead}}</span>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <div style="display: flex; align-items: center; gap: 8px"><span style="width: 24px; font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace; font-size: 12px; color: #7FE3FF">A</span><span style="flex: 1; height: 10px; border-radius: 5px; background: #13224A"><span class="bar" style="{{barA}}"></span></span></div>
+          <div style="display: flex; align-items: center; gap: 8px"><span style="width: 24px; font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace; font-size: 12px; color: #FFC857">B</span><span style="flex: 1; height: 10px; border-radius: 5px; background: #13224A"><span class="bar" style="{{barB}}"></span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABLE -->
+    <section style="border-radius: 20px; background: #0E1530; border: 1px solid #1E2A52; overflow: hidden">
+      <div style="padding: 18px 22px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; align-items: center; border-bottom: 1px solid #1E2A52">
+        <h2 style="margin: 0; font-size: 19px">항목별 비교</h2>
+        <button onClick="{{toggleDiff}}" aria-pressed="{{onlyDiffAria}}" style="{{diffBtn}}">{{diffLabel}}</button>
+      </div>
+      <div style="overflow-x: auto">
+        <table class="ctable" style="width: 100%; min-width: 620px; border-collapse: collapse; font-size: 15px">
+          <thead>
+            <tr>
+              <th scope="col" style="text-align: left; padding: 14px 22px; font-size: 13px; color: #8C9BC7; font-weight: 600; width: 22%">항목</th>
+              <th scope="col" style="text-align: left; padding: 14px 22px; color: #7FE3FF"><span style="display: inline-flex; align-items: center; gap: 8px"><img loading="lazy" decoding="async" src="{{flagA}}" alt="" style="width: 24px; height: 16px; border-radius: 3px; object-fit: cover">{{A.name}}</span></th>
+              <th scope="col" style="text-align: left; padding: 14px 22px; color: #FFC857"><span style="display: inline-flex; align-items: center; gap: 8px"><img loading="lazy" decoding="async" src="{{flagB}}" alt="" style="width: 24px; height: 16px; border-radius: 3px; object-fit: cover">{{B.name}}</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <template data-for="{{rows}}" data-as="r">
+              <tr style="border-top: 1px solid #1A2550">
+                <th scope="row" style="text-align: left; padding: 14px 22px; color: #B4C0E4; font-weight: 500; font-size: 14px">{{r.label}} <span style="{{r.dot}}"></span></th>
+                <td style="padding: 14px 22px">{{r.a}}</td>
+                <td style="padding: 14px 22px">{{r.b}}</td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding: 12px 22px; border-top: 1px solid #1E2A52; font-size: 13px; color: #8C9BC7; display: flex; align-items: center; gap: 8px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FFC857"></span>노란 점 = 두 나라가 다른 항목 · 1인당 GDP·물가는 World Bank API 연동 후 표시</div>
+    </section>
+
+    <!-- FOOD & ETIQUETTE -->
+    <section style="display: flex; flex-wrap: wrap; gap: 14px">
+      <div style="flex: 1 1 380px; min-width: 0; padding: 24px; border-radius: 20px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 16px">
+        <h2 style="margin: 0; font-size: 19px">대표 음식</h2>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <span style="font-size: 13px; font-weight: 600; color: #7FE3FF">{{A.name}}</span>
+            <template data-for="{{A.dishes}}" data-as="d"><span style="padding: 12px 14px; border-radius: 10px; background: #0C1E33; font-size: 15px">{{d}}</span></template>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <span style="font-size: 13px; font-weight: 600; color: #FFC857">{{B.name}}</span>
+            <template data-for="{{B.dishes}}" data-as="d"><span style="padding: 12px 14px; border-radius: 10px; background: #2A200C; font-size: 15px">{{d}}</span></template>
+          </div>
+        </div>
+      </div>
+      <div style="flex: 1 1 380px; min-width: 0; padding: 24px; border-radius: 20px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 14px">
+        <h2 style="margin: 0; font-size: 19px">{{B.name}}에서 미팅할 때</h2>
+        <template data-for="{{etq}}" data-as="e">
+          <div style="display: flex; gap: 12px; font-size: 15px; line-height: 1.6"><span style="font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace; color: #FFC857">0{{e.n}}</span><span>{{e.t}}</span></div>
+        </template>
+        <a href="country.html" onClick="{{openB}}" style="margin-top: auto; font-size: 14px; font-weight: 600">{{B.name}} 상세 페이지 →</a>
+      </div>
+    </section>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; padding: 20px 24px; border-radius: 18px; border: 1px dashed #2A3A6E">
+      <span style="color: #B4C0E4">세 나라 이상 비교는 2단계 로드맵에서 추가할 수 있어요.</span>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap">
+        <a href="countries.html" style="display: inline-flex; align-items: center; height: 46px; padding: 0 18px; border-radius: 12px; border: 1px solid #2A3A6E; color: #E8EEFF; text-decoration: none">다른 나라 찾기</a>
+        <button onClick="{{savePdf}}" aria-busy="{{pdfBusy}}" style="height: 46px; padding: 0 18px; border-radius: 12px; border: 0; background: #7FE3FF; color: #04101F; font: inherit; font-weight: 700; cursor: pointer">{{pdfLabel}}</button>
+      </div>
+    </div>
+  </main>
+  
+  
+  
+  
+  <footer id="site-footer" style="border-top: 1px solid #141E3E; margin-top: 40px"><div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; gap: 14px; font-size: 13px; line-height: 1.7; color: #8C9BC7"><div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #E8EEFF; letter-spacing: .06em">ATLAS HUB · 글로벌 아틀라스</span><span style="display: flex; flex-wrap: wrap; gap: 16px"><a href="credits.html" style="color: #B4C0E4">사진 · 데이터 출처</a><a href="https://www.0404.go.kr" target="_blank" rel="noopener" style="color: #B4C0E4">외교부 해외안전여행</a><span>영사콜센터 +82-2-3210-0404</span></span></div><p style="margin: 0">정보 기준일 2026년 10월 · 비자·입국 조건과 여행경보는 수시로 바뀌어요. 이 사이트의 정보는 참고용이며, 출국 전 외교부 해외안전여행과 해당국 대사관에서 반드시 최신 정보를 확인하세요. 항공권 가격·환율·날씨·뉴스는 예시 또는 근사치예요.</p><p style="margin: 0">국가 사진: Wikimedia Commons(CC 라이선스, 사진마다 작가 표기) · 일부 AI 생성 이미지(표기됨) · 국기: 단순화한 SVG · 폰트: Google Fonts</p></div></footer>
+  <nav class="tabbar" aria-label="하단 메뉴" style="position: sticky; bottom: 0; z-index: 30; justify-content: space-around; padding: 8px 6px 14px; background: rgba(10,16,36,.97); border-top: 1px solid #1E2A52"><a href="index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"></path></svg>홈</a><a href="continent.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"></path></svg>대륙</a><a href="countries.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="4" width="7" height="7"></rect><rect x="13" y="4" width="7" height="7"></rect><rect x="4" y="13" width="7" height="7"></rect><rect x="13" y="13" width="7" height="7"></rect></svg>국가</a><a href="compare.html" aria-current="page" style="color: #7FE3FF; background: #13224A"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg>비교</a><a href="community.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path><path d="M8 9h8M8 12h5"></path></svg>꿀팁</a></nav>
+</div>
+</script>
+<script src="js/data.js"></script>
+<script src="js/runtime.js"></script>
+<script>
+(function () { var q = new URLSearchParams(location.search); function put(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } var c = q.get('code'), t = q.get('tab'), n = q.get('cont'), a = q.get('a'), b = q.get('b'); if (c && window.ATLAS_DB[c.toUpperCase()]) put('atlas.code', c.toUpperCase()); if (t) put('atlas.tab', t.toLowerCase()); if (n) put('atlas.cont', n.toUpperCase()); if (a && b && window.ATLAS_DB[a.toUpperCase()] && window.ATLAS_DB[b.toUpperCase()]) put('atlas.cmp', [a.toUpperCase(), b.toUpperCase()]); })();
+class Component extends DCLogic {
+  _pdf(spec) {
+  // spec: { filename, title, subtitle, flags: [url...], sections: [{ h, rows: [[k, v] | [k, vA, vB]], cols? }], note }
+  var W = 1240, H = 1754, M = 84, FONT = "'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif";
+  function loadImg(u) { return new Promise(function (res) { if (!u) return res(null); var im = new Image(); im.onload = function () { res(im); }; im.onerror = function () { res(null); }; im.src = u; }); }
+  function wrap(ctx, text, maxW) {
+    var out = [], line = '';
+    String(text == null ? '' : text).split('\n').forEach(function (para) {
+      var chars = Array.from(para); line = '';
+      for (var i = 0; i < chars.length; i++) {
+        var t = line + chars[i];
+        if (ctx.measureText(t).width > maxW && line) {
+          var sp = line.lastIndexOf(' ');
+          if (sp > line.length * 0.6) { out.push(line.slice(0, sp)); line = line.slice(sp + 1) + chars[i]; }
+          else { out.push(line); line = chars[i]; }
+        } else line = t;
+      }
+      out.push(line);
+    });
+    return out;
+  }
+  function render(imgs) {
+    var pages = [], cv, ctx, y;
+    function newPage(first) {
+      cv = document.createElement('canvas'); cv.width = W; cv.height = H; ctx = cv.getContext('2d');
+      ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0, 0, W, H); ctx.textBaseline = 'top';
+      if (first) {
+        ctx.fillStyle = '#0B1330'; ctx.fillRect(0, 0, W, 300);
+        ctx.fillStyle = '#7FE3FF'; ctx.font = '700 24px ' + FONT; ctx.fillText('ATLAS HUB · 글로벌 아틀라스', M, 64);
+        var x = M;
+        imgs.forEach(function (im) { if (!im) return; try { ctx.drawImage(im, x, 112, 96, 64); ctx.strokeStyle = 'rgba(255,255,255,.4)'; ctx.strokeRect(x, 112, 96, 64); x += 112; } catch (e) {} });
+        ctx.fillStyle = '#FFFFFF'; ctx.font = '700 50px ' + FONT; ctx.fillText(spec.title, x + (x > M ? 12 : 0), 116);
+        ctx.fillStyle = '#B4C0E4'; ctx.font = '400 24px ' + FONT; ctx.fillText(spec.subtitle || '', M, 216);
+        y = 352;
+      } else {
+        ctx.fillStyle = '#0B1330'; ctx.fillRect(0, 0, W, 8);
+        ctx.fillStyle = '#5B6478'; ctx.font = '600 20px ' + FONT; ctx.fillText(spec.title, M, 44);
+        y = 104;
+      }
+      pages.push(cv);
+    }
+    function ensure(h) { if (y + h > H - 120) newPage(false); }
+    newPage(true);
+    spec.sections.forEach(function (sec) {
+      ensure(110);
+      ctx.fillStyle = '#1F4FD6'; ctx.font = '700 30px ' + FONT; ctx.fillText(sec.h, M, y); y += 50;
+      if (sec.cols) {
+        ctx.font = '700 20px ' + FONT; ctx.fillStyle = '#5B6478'; ctx.fillText('항목', M, y);
+        ctx.fillStyle = '#0E7490'; ctx.fillText(sec.cols[0], M + 280, y); ctx.fillStyle = '#B45309'; ctx.fillText(sec.cols[1], M + 280 + (W - 2 * M - 280) / 2, y); y += 36;
+      }
+      sec.rows.forEach(function (r) {
+        ctx.font = '400 22px ' + FONT;
+        var colW = sec.cols ? (W - 2 * M - 280) / 2 - 20 : W - 2 * M - 280;
+        var la = wrap(ctx, r[1], colW), lb = r.length > 2 ? wrap(ctx, r[2], colW) : [];
+        var lk = wrap(ctx, r[0], 250);
+        var hh = Math.max(la.length, lb.length, lk.length) * 32 + 24;
+        ensure(hh);
+        ctx.strokeStyle = '#E2E6F0'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(M, y); ctx.lineTo(W - M, y); ctx.stroke();
+        ctx.fillStyle = '#5B6478'; ctx.font = '600 21px ' + FONT; lk.forEach(function (l, i) { ctx.fillText(l, M, y + 12 + i * 32); });
+        ctx.fillStyle = '#0F172A'; ctx.font = '400 22px ' + FONT;
+        la.forEach(function (l, i) { ctx.fillText(l, M + 280, y + 12 + i * 32); });
+        lb.forEach(function (l, i) { ctx.fillText(l, M + 280 + (W - 2 * M - 280) / 2, y + 12 + i * 32); });
+        y += hh;
+      });
+      y += 34;
+    });
+    pages.forEach(function (p, i) {
+      var c = p.getContext('2d'); c.textBaseline = 'top';
+      c.fillStyle = '#8C94A8'; c.font = '400 18px ' + FONT;
+      c.fillText((spec.note || '') , M, H - 76);
+      c.fillText((i + 1) + ' / ' + pages.length, W - M - 60, H - 76);
+    });
+    return pages;
+  }
+  function b64ToBytes(d) { var s = atob(d.split(',')[1]), u = new Uint8Array(s.length); for (var i = 0; i < s.length; i++) u[i] = s.charCodeAt(i); return u; }
+  function buildPdf(jpegs) {
+    var chunks = [], len = 0, offs = [];
+    function add(x) { var u = typeof x === 'string' ? new TextEncoder().encode(x) : x; chunks.push(u); len += u.length; }
+    add('%PDF-1.4\n%\xE2\xE3\xCF\xD3\n'.replace(/[\u0080-ÿ]/g, 'A'));
+    var n = jpegs.length, kids = [];
+    for (var i = 0; i < n; i++) kids.push((3 + i * 3) + ' 0 R');
+    function obj(id, body) { offs[id] = len; add(id + ' 0 obj\n'); add(body); add('\nendobj\n'); }
+    obj(1, '<< /Type /Catalog /Pages 2 0 R >>');
+    obj(2, '<< /Type /Pages /Kids [' + kids.join(' ') + '] /Count ' + n + ' >>');
+    jpegs.forEach(function (j, i) {
+      var pid = 3 + i * 3, cid = pid + 1, iid = pid + 2;
+      obj(pid, '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /XObject << /Im' + i + ' ' + iid + ' 0 R >> >> /Contents ' + cid + ' 0 R >>');
+      var cs = 'q 595.28 0 0 841.89 0 0 cm /Im' + i + ' Do Q';
+      obj(cid, '<< /Length ' + cs.length + ' >>\nstream\n' + cs + '\nendstream');
+      offs[iid] = len; add(iid + ' 0 obj\n<< /Type /XObject /Subtype /Image /Width ' + W + ' /Height ' + H + ' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ' + j.length + ' >>\nstream\n'); add(j); add('\nendstream\nendobj\n');
+    });
+    var total = 3 + n * 3, xref = len, s = 'xref\n0 ' + total + '\n0000000000 65535 f \n';
+    for (var k = 1; k < total; k++) s += ('0000000000' + offs[k]).slice(-10) + ' 00000 n \n';
+    add(s + 'trailer\n<< /Size ' + total + ' /Root 1 0 R >>\nstartxref\n' + xref + '\n%%EOF');
+    var out = new Uint8Array(len), p = 0; chunks.forEach(function (c) { out.set(c, p); p += c.length; }); return out;
+  }
+  var ready = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+  return ready.then(function () { return Promise.all((spec.flags || []).map(loadImg)); }).then(function (imgs) {
+    var pages = render(imgs), jpegs;
+    try { jpegs = pages.map(function (p) { return b64ToBytes(p.toDataURL('image/jpeg', 0.9)); }); }
+    catch (e) { pages = render([]); jpegs = pages.map(function (p) { return b64ToBytes(p.toDataURL('image/jpeg', 0.9)); }); }
+    var bytes = buildPdf(jpegs);
+    var fallback = function () {
+      var url = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+      var a = document.createElement('a'); a.href = url; a.download = spec.filename; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 30000);
+      return 'fallback';
+    };
+    var cl = window.claude;
+    if (cl && cl.use) {
+      return cl.use('downloads').then(function (dl) {
+        if (!dl) return fallback();
+        return dl.save({ filename: spec.filename, data: bytes }).then(function () { return 'saved'; }, function (err) { return err && err.code === 'declined' ? 'declined' : fallback(); });
+      }, fallback);
+    }
+    return fallback();
+  });
+}
+
+  _read(k) { var v = null; try { v = localStorage.getItem(k); } catch (e) {} if (!v) { try { v = sessionStorage.getItem(k); } catch (e) {} } try { return v ? JSON.parse(v) : null; } catch (e) { return null; } }
+  constructor(p) { super(p); var ab = this._read('atlas.cmp') || ['KR', 'VN']; this.state = { a: ab[0], b: ab[1], onlyDiff: false, now: Date.now() }; }
+  componentDidMount() {
+    var s = this; this.t = setInterval(function () { s.setState({ now: Date.now() }); }, 30000);
+    this._last = JSON.stringify(this._read('atlas.cmp'));
+    this.sync = setInterval(function () { var v = s._read('atlas.cmp'), j = JSON.stringify(v); if (j !== s._last) { s._last = j; if (v && v.length === 2) s.setState({ a: v[0], b: v[1] }); } }, 700);
+  }
+  componentWillUnmount() { clearInterval(this.t); clearInterval(this.sync); }
+  renderVals() {
+    var DB = this.__DB || (this.__DB = window.ATLAS_DB);
+    var FL = {}; Object.keys(DB).forEach(function (k) { FL[k] = DB[k].flag; });
+    function __nav(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} try { sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+    var self = this, st = this.state;
+    var D = {}; Object.keys(DB).forEach(function (k) { var d = DB[k]; D[k] = { name: d.name, capital: d.capital, cont: d.cont, lang: d.lang, cur: d.cur, pop: d.pop, off: d.off, volt: d.volt + ' · ' + d.plug + '형', plug: d.plug, drive: d.drive, tip: d.tip, dishes: d.dishes.slice(0, 3).map(function (x) { return x.n; }), exp: d.exp.join(' · '), etq: d.etq.slice(0, 2).concat(d.etq2.slice(0, 2)), emergency: d.emergency, hello: d.hello + ' (' + d.helloRead + ')', climate: d.climate, best: d.best, fta: d.fta, companies: d.companies.slice(0, 3).join(' · '), drink: d.drink, photo: d.photo, landmark: d.landmark, area: d.area, work: d.work, greet: d.greet, gift: d.gift, dress: d.dress, taboo: d.taboo[0], airport: d.airport, flight: d.flight, popc: d.popc, street: d.street, rel: d.rel }; });
+    Object.keys(DB).forEach(function (k) { var t = DB[k].tr || {}; D[k].visa = t.visa || '—'; D[k].budget = t.budget ? t.budget[1] + ' (보통)' : '—'; D[k].safety = ['—', '매우 안전', '안전 · 소매치기 주의', '주의 필요', '여행 자제 지역 있음'][t.safety || 0]; D[k].alert = t.alert || '—'; D[k].water = t.water || '—'; D[k].stay = t.stay || '—'; var fa = DB[k].fare; D[k].fare = fa ? fa.fare[0] + ' ~ ' + fa.fare[1] : '—'; D[k].events = fa ? fa.events.slice(0, 3).map(function (e) { return e[0] + ' (' + e[1] + ')'; }).join(', ') : '—'; })
+    var order = Object.keys(DB);
+    var A = D[st.a], B = D[st.b];
+    function clock(o, base) { var d = new Date((base || st.now) + o * 3600000); var h = d.getUTCHours(), m = d.getUTCMinutes(); return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m; }
+    var gap = B.off - A.off;
+    var mh = ((9 + gap) % 24 + 24) % 24;
+    var meet = (mh < 12 ? '오전 ' : '오후 ') + (Math.floor(mh) % 12 === 0 ? 12 : Math.floor(mh) % 12) + '시' + (mh % 1 ? ' ' + Math.round((mh % 1) * 60) + '분' : '') + (9 + gap < 0 ? ' (전날)' : (9 + gap >= 24 ? ' (다음 날)' : ''));
+    var plugOk = A.plug.split('/').some(function (p) { return B.plug.split('/').some(function (q) { return p === q || (p === 'C' && (q === 'E' || q === 'F')); }); });
+    var big = Math.max(A.pop, B.pop);
+    function fmtPop(p) { return p >= 100 ? '약 ' + (p / 100).toFixed(p >= 1000 ? 0 : 1).replace('.0', '') + '억 명' : '약 ' + Math.round(p * 100).toLocaleString('ko-KR') + '만 명'; }
+    var ratio = A.pop > B.pop ? A.pop / B.pop : B.pop / A.pop;
+    var fields = [['수도', 'capital'], ['대륙', 'cont'], ['공용어', 'lang'], ['인사말', 'hello'], ['통화', 'cur'], ['인구', 'pop'], ['전압 · 플러그', 'volt'], ['통행 방향', 'drive'], ['팁 문화', 'tip'], ['긴급 전화', 'emergency'], ['기후', 'climate'], ['여행 적기', 'best'], ['면적', 'area'], ['업무 시간', 'work'], ['대표 공항', 'airport'], ['인천 출발 비행', 'flight'], ['인사 방식', 'greet'], ['선물 예절', 'gift'], ['옷차림', 'dress'], ['대표 금기', 'taboo'], ['대중문화', 'popc'], ['대표 음료', 'drink'], ['길거리 음식', 'street'], ['주요 수출 품목', 'exp'], ['대표 기업', 'companies'], ['한국과의 FTA', 'fta'], ['한국과의 경제 관계', 'rel']];
+    fields = fields.concat([['비자 (한국 여권)', 'visa'], ['하루 예산', 'budget'], ['외교부 여행경보', 'alert'], ['치안', 'safety'], ['수돗물', 'water'], ['추천 여행 기간', 'stay'], ['왕복 항공권 (인천)', 'fare'], ['대표 축제 · 행사', 'events']]);
+    var allRows = fields.map(function (f) { return [f[0], f[1] === 'pop' ? fmtPop(A.pop) : String(A[f[1]]), f[1] === 'pop' ? fmtPop(B.pop) : String(B[f[1]])]; });
+    var rows = fields.map(function (f) {
+      var a = f[1] === 'pop' ? fmtPop(A.pop) : A[f[1]], b = f[1] === 'pop' ? fmtPop(B.pop) : B[f[1]];
+      var differ = a !== b;
+      return { label: f[0], a: a, b: b, differ: differ, dot: differ ? 'display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #FFC857; margin-left: 6px; vertical-align: middle' : 'display: none' };
+    }).filter(function (r) { return !st.onlyDiff || r.differ; });
+    rows.push({ label: '1인당 GDP', a: 'World Bank 연동 예정', b: 'World Bank 연동 예정', dot: 'display: none' });
+    var __s = this;
+    var __menu = { menuOpen: !!(this.state && this.state.menu), menuAria: (this.state && this.state.menu) ? 'true' : 'false', toggleMenu: function () { __s.setState({ menu: !(__s.state && __s.state.menu) }); } };
+        return Object.assign(__menu, {
+      pdfLabel: st.pdf === 'busy' ? 'PDF 만드는 중…' : (st.pdf === 'saved' ? '✓ PDF 저장 완료' : (st.pdf === 'declined' ? '저장 취소됨 · 다시 시도' : (st.pdf === 'error' ? 'PDF 생성 실패 · 다시 시도' : '비교표 PDF로 저장'))), pdfBusy: st.pdf === 'busy' ? 'true' : 'false',
+      savePdf: function () {
+        if (st.pdf === 'busy') return;
+        self.setState({ pdf: 'busy' });
+        var da = DB[st.a], db = DB[st.b];
+        var spec = { filename: 'ATLAS_compare_' + st.a + '-' + st.b + '.pdf', title: A.name + '  vs  ' + B.name, subtitle: '국가 비교 리포트 · ' + new Date().toLocaleDateString('ko-KR') + ' 기준', flags: [FL[st.a], FL[st.b]],
+          note: 'ATLAS HUB · 정보 기준일 2026년 10월 · 비자·치안 정보는 출국 전 외교부 해외안전여행(0404.go.kr)에서 확인하세요.',
+          sections: [
+            { h: '핵심 비교', cols: [A.name, B.name], rows: [['시차', A.name + ' 기준 ' + (gap === 0 ? '시차 없음' : Math.abs(gap) + '시간 ' + (gap > 0 ? B.name + '이(가) 빠름' : B.name + '이(가) 느림')), A.name + ' 오전 9시 = ' + B.name + ' ' + meet], ['플러그 호환', plugOk ? '변환 어댑터 없이 사용 가능' : '어댑터 필요', A.volt + ' → ' + B.volt]] },
+            { h: '항목별 비교', cols: [A.name, B.name], rows: allRows },
+            { h: '여행 핵심', cols: [A.name, B.name], rows: [['꼭 가볼 곳', (da.tr ? da.tr.spots.map(function (x) { return x[0]; }).join(', ') : '—'), (db.tr ? db.tr.spots.map(function (x) { return x[0]; }).join(', ') : '—')], ['대표 음식', da.dishes.map(function (x) { return x.n; }).slice(0, 4).join(', '), db.dishes.map(function (x) { return x.n; }).slice(0, 4).join(', ')], ['에티켓', da.etq.slice(0, 2).join(' / '), db.etq.slice(0, 2).join(' / ')], ['FTA', da.fta, db.fta]] }
+          ] };
+        Promise.resolve().then(function () { return self._pdf(spec); }).then(function (r) { self.setState({ pdf: r === 'declined' ? 'declined' : 'saved' }); setTimeout(function () { self.setState({ pdf: null }); }, 4000); }, function () { self.setState({ pdf: 'error' }); });
+      },
+      a: st.a, b: st.b, A: A, B: B, openB: function () { __nav('atlas.code', st.b); }, photoA: A.photo, photoB: B.photo, flagA: FL[st.a], flagB: FL[st.b], same: st.a === st.b,
+      opts: order.map(function (k) { return { code: k, name: D[k].name }; }),
+      onA: function (e) { self.setState({ a: e.target.value }); },
+      onB: function (e) { self.setState({ b: e.target.value }); },
+      swap: function () { self.setState({ a: st.b, b: st.a }); },
+      clockA: clock(A.off), clockB: clock(B.off),
+      gapText: gap === 0 ? '시차 없음' : (B.name + ' 쪽이 ' + (gap < 0 ? (-gap) + '시간 늦음' : gap + '시간 빠름')),
+      meet: meet,
+      plugHead: plugOk ? '그대로 사용 가능' : '어댑터 필요',
+      plugStyle: 'font-size: 26px; font-weight: 700; color: ' + (plugOk ? '#7FF0B0' : '#FF9B8A'),
+      popHead: st.a === st.b ? '같은 나라' : (A.pop > B.pop ? A.name : B.name) + ' 쪽이 약 ' + ratio.toFixed(1) + '배',
+      barA: 'display: block; height: 100%; border-radius: 5px; background: #7FE3FF; width: ' + (A.pop / big * 100) + '%',
+      barB: 'display: block; height: 100%; border-radius: 5px; background: #FFC857; width: ' + (B.pop / big * 100) + '%',
+      rows: rows,
+      onlyDiffAria: st.onlyDiff ? 'true' : 'false',
+      diffLabel: st.onlyDiff ? '✓ 다른 항목만 보는 중' : '다른 항목만 보기',
+      diffBtn: 'height: 40px; padding: 0 14px; border-radius: 999px; font: inherit; font-size: 14px; cursor: pointer; ' + (st.onlyDiff ? 'border: 1px solid #FFC857; background: #3A2A10; color: #FFD98A; font-weight: 600' : 'border: 1px solid #2A3A6E; background: transparent; color: #B4C0E4'),
+      toggleDiff: function () { self.setState({ onlyDiff: !st.onlyDiff }); },
+      etq: B.etq.map(function (t, i) { return { n: i + 1, t: t }; })
+    });
+  }
+}
+window.__afterRender = function (c) { var u = '?a=' + c.state.a + '&b=' + c.state.b; if (location.search !== u) history.replaceState(null, '', u); };
+mountAtlas(Component);
+(function () { if (!window.fetch) return; fetch('data/live.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { if (!j || !j.countries) return; var D = window.ATLAS_DB, up = String(j.updated || '').slice(0, 10); Object.keys(j.countries).forEach(function (k) { var L = j.countries[k], d = D[k]; if (!d || k === 'KR') return; d.tr = d.tr || {}; if (L.alert) d.tr.alert = L.alert; if (typeof L.alertLevel === 'number') d.tr.alertLevel = L.alertLevel; if (L.visa) { d.tr.visaLive = L.visa; d.liveVisa = true; } d.liveUpdated = up; }); if (window.__atlas && window.__atlas.__render) window.__atlas.__render(); }).catch(function () {}); })();
+</script>
+</body>
+</html>

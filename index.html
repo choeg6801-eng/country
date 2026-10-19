@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ATLAS HUB · 글로벌 아틀라스 — 나라별 여행·문화·무역 정보</title>
+<meta name="description" content="지구본에서 나라를 고르면 비자·항공권·예산·명소·축제·에티켓·경제·뉴스까지 한 번에. 98개국 여행·문화·무역 정보 허브.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ATLAS HUB · 글로벌 아틀라스 — 나라별 여행·문화·무역 정보">
+<meta property="og:description" content="지구본에서 나라를 고르면 비자·항공권·예산·명소·축제·에티켓·경제·뉴스까지 한 번에. 98개국 여행·문화·무역 정보 허브.">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta name="theme-color" content="#070B1A">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#070B1A}
+a{color:#7FE3FF}a:hover{color:#C8F3FF}
+.nl{color:#B4C0E4;text-decoration:none;padding:10px 4px;border-bottom:2px solid transparent}
+.nl:hover{color:#FFFFFF;border-bottom-color:#2A3A6E}
+.chip{transition:.15s}
+.chip:hover{border-color:#7FE3FF;color:#FFFFFF;background:#13224A}
+.lift{transition:transform .2s, border-color .2s, background .2s}
+.lift:hover{border-color:#7FE3FF;transform:translateY(-4px);background:#121C3E}
+.sug:hover{background:#1A2752}
+.fl{transition:transform .15s, border-color .15s}
+.fl:hover{transform:translateY(-2px);border-color:#7FE3FF}
+.btnp:hover{background:#B5F0FF}
+.btng:hover{background:#FFD98A}
+.cat{transition:border-color .2s, transform .2s}
+.cat:hover{border-color:#7FE3FF;transform:translateY(-3px)}
+input::placeholder{color:#7F8DBB}
+input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #FFC857;outline-offset:2px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.live{animation:blink 1.4s infinite}
+.tick{animation:ticker 48s linear infinite}
+.rise{animation:rise .35s ease both}
+.app{container-type:inline-size}
+.mbtn,.tabbar{display:none}
+.tabbar a{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:56px;padding:6px 4px;border-radius:10px;text-decoration:none;color:#9AA8D4;font-size:12px}
+.tabbar a:hover{color:#FFFFFF}
+.mlink{display:block;padding:14px 12px;border-radius:10px;color:#E8EEFF;text-decoration:none;font-size:17px}
+.mlink:hover{background:#13224A}
+@container (max-width: 760px){
+.dnav,.dextra,.hide-m{display:none!important}
+.mbtn{display:inline-flex!important}
+.tabbar{display:flex!important}
+.wrap{padding-left:16px!important;padding-right:16px!important}
+.h1x{font-size:40px!important}
+.h1s{font-size:32px!important}
+.h2x{font-size:27px!important}
+.cpad{padding:24px!important}
+.tray{bottom:86px!important}
+.ctable{min-width:0!important}
+.pcredit{top:10px!important;left:10px!important;right:auto!important;max-width:calc(100% - 20px)!important;font-size:11px!important;padding:5px 10px!important;opacity:.85}
+.ctable thead th:first-child{display:none}
+.ctable tr{display:grid;grid-template-columns:1fr 1fr}
+.ctable tbody tr>th{grid-column:1/-1;padding-bottom:0!important;color:#7FE3FF!important}
+.ctable th,.ctable td{padding:10px 14px!important}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/x-template" id="tpl">
+<div class="app" style="font-family: 'IBM Plex Sans KR', sans-serif; color: #E8EEFF; background: #070B1A; min-height: 100vh; overflow-x: hidden">
+  <header style="position: sticky; top: 0; z-index: 30; border-bottom: 1px solid #141E3E; background: rgba(7,11,26,.95)">
+    <div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 14px 32px; display: flex; gap: 20px; align-items: center; justify-content: space-between">
+      <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #E8EEFF">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7FE3FF" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><ellipse cx="12" cy="12" rx="4.2" ry="9.5"></ellipse><path d="M2.5 12h19M4 7h16M4 17h16"></path></svg>
+        <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: .06em">ATLAS HUB</span>
+      </a>
+      <nav class="dnav" aria-label="주 메뉴" style="display: flex; flex-wrap: wrap; gap: 22px; font-size: 15px"><a class="nl" href="index.html" aria-current="page" style="color: #FFFFFF; border-bottom-color: #7FE3FF">홈</a><a class="nl" href="continent.html">대륙 허브</a><a class="nl" href="countries.html">국가 백과</a><a class="nl" href="country.html">국가 상세</a><a class="nl" href="compare.html">국가 비교</a><a class="nl" href="community.html">로컬 꿀팁</a></nav>
+      <div class="dextra" style="display: flex; gap: 10px; align-items: center">
+        <a class="btnp" href="countries.html" style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 10px; background: #7FE3FF; color: #04101F; text-decoration: none; font-weight: 700; font-size: 14px">탐색 시작</a>
+      </div>
+      <button class="mbtn" onClick="{{toggleMenu}}" aria-expanded="{{menuAria}}" aria-label="메뉴 열기" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid #2A3A6E; background: transparent; color: #E8EEFF; align-items: center; justify-content: center; cursor: pointer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      </button>
+    </div>
+    <template data-if="{{menuOpen}}">
+      <nav aria-label="모바일 메뉴" class="wrap" style="padding: 4px 32px 16px; display: flex; flex-direction: column; gap: 2px; border-top: 1px solid #141E3E"><a class="mlink" href="index.html" aria-current="page" style="background: #13224A; color: #7FE3FF; font-weight: 600">홈</a><a class="mlink" href="continent.html">대륙 허브</a><a class="mlink" href="countries.html">국가 백과</a><a class="mlink" href="country.html">국가 상세</a><a class="mlink" href="compare.html">국가 비교</a><a class="mlink" href="community.html">로컬 꿀팁</a>
+      </nav>
+    </template>
+  </header>
+
+  <!-- HERO -->
+  <section class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 48px 32px 56px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
+    <div style="flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+      <div style="display: inline-flex; align-self: flex-start; align-items: center; gap: 10px; padding: 8px 14px; border: 1px solid #2A3A6E; border-radius: 999px; font-size: 13px; color: #B4C0E4">
+        <span class="live" style="width: 8px; height: 8px; border-radius: 50%; background: #FFC857"></span>
+        {{countryCount}}개국 상세 정보 · 6개 대륙 · 공공 데이터 연동
+      </div>
+      <h1 class="h1x" style="margin: 0; font-size: 60px; line-height: 1.14; font-weight: 700; letter-spacing: -.02em">세계를,<br>한 번의 회전으로<br><span style="color: #7FE3FF">펼쳐보다.</span></h1>
+      <p style="margin: 0; font-size: 18px; line-height: 1.75; color: #B4C0E4; max-width: 540px">나라를 고르면 지구본이 그곳으로 돌아가요. 기본 정보부터 에티켓·음식·경제·로컬 꿀팁·뉴스까지 한 나라에 9가지 카테고리를 담았어요.</p>
+
+      <div style="position: relative; max-width: 580px">
+        <form onSubmit="{{onSubmit}}" style="display: flex; gap: 8px; padding: 8px; border-radius: 16px; background: #0E1530; border: 1px solid #2A3A6E">
+          <label for="q" style="position: absolute; left: -9999px">국가 검색</label>
+          <div style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 10px; padding: 0 12px">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7F8DBB" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+            <input id="q" value="{{q}}" onChange="{{onQ}}" autocomplete="off" placeholder="예: 스페인, 도쿄, 쌀국수, 에펠탑" style="flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: #E8EEFF; font: inherit; font-size: 16px; height: 44px">
+          </div>
+          <button type="submit" class="btng" style="height: 48px; padding: 0 22px; border: 0; border-radius: 10px; background: #FFC857; color: #1A1300; font: inherit; font-weight: 700; cursor: pointer">지구본에서 보기</button>
+        </form>
+        <template data-if="{{showSug}}">
+          <div style="position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 6; padding: 8px; border-radius: 14px; background: #0E1530; border: 1px solid #2A3A6E; box-shadow: 0 18px 40px rgba(0,0,0,.5); display: flex; flex-direction: column">
+            <template data-for="{{sug}}" data-as="s">
+              <button class="sug" onClick="{{s.pick}}" style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 0; border-radius: 10px; background: transparent; color: #E8EEFF; font: inherit; text-align: left; cursor: pointer">
+                <img loading="lazy" decoding="async" src="{{s.flag}}" alt="" style="width: 30px; height: 20px; border-radius: 3px; object-fit: cover; flex: none">
+                <span style="flex: 1"><b>{{s.name}}</b> <span style="color: #9AA8D4; font-size: 14px">· {{s.capital}} · {{s.cont}}</span><br><span style="color: #7F8DBB; font-size: 12px">{{s.why}}</span></span>
+                <span style="font-size: 13px; color: #7FE3FF">지구본에서 보기</span>
+              </button>
+            </template>
+            <template data-if="{{noSug}}">
+              <div style="padding: 14px; color: #9AA8D4; font-size: 14px">일치하는 나라가 없어요. <a href="countries.html">전체 국가 보기</a></div>
+            </template>
+          </div>
+        </template>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 13px; color: #8C9BC7">지구본에서 바로 보기</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px">
+          <template data-for="{{quick}}" data-as="k">
+            <button class="fl" onClick="{{k.pick}}" aria-pressed="{{k.on}}" title="{{k.name}}" style="{{k.style}}"><img loading="lazy" decoding="async" src="{{k.flag}}" alt="" style="width: 24px; height: 16px; border-radius: 3px; object-fit: cover">{{k.name}}</button>
+          </template>
+          <button class="chip" onClick="{{random}}" style="display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 14px; border-radius: 999px; border: 1px dashed #3D5AA8; background: transparent; color: #FFD98A; font: inherit; font-size: 14px; cursor: pointer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"></path></svg>랜덤 나라
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GLOBE -->
+    <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 14px">
+      <div style="position: relative; width: 100%; max-width: 540px">
+        <canvas ref="{{globeRef}}" width="1000" height="1000" onPointerDown="{{onDown}}" onPointerMove="{{onMove}}" onPointerUp="{{onUp}}" onPointerLeave="{{onUp}}" role="img" aria-label="{{globeLabel}}" style="display: block; width: 100%; aspect-ratio: 1; cursor: grab; touch-action: none"></canvas>
+        <span style="position: absolute; left: 50%; bottom: 2%; transform: translateX(-50%); font-size: 12px; color: #7F8DBB; white-space: nowrap">드래그해서 돌려 보세요 · 노란 점 = 정보가 있는 나라</span>
+      </div>
+      <!-- selected country card -->
+      <div class="rise" style="width: 100%; max-width: 540px; border-radius: 18px; overflow: hidden; background: #0E1530; border: 1px solid #2A3A6E; display: flex; flex-wrap: wrap">
+        <img loading="lazy" decoding="async" src="{{sel.photo}}" alt="{{sel.name}} 대표 풍경" style="flex: 1 1 170px; min-height: 150px; max-height: 210px; width: 100%; object-fit: cover">
+        <div style="flex: 2 1 260px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px">
+          <div style="display: flex; align-items: center; gap: 10px">
+            <img loading="lazy" decoding="async" src="{{sel.flag}}" alt="{{sel.name}} 국기" style="width: 34px; height: 23px; border-radius: 4px; object-fit: cover; box-shadow: 0 0 0 1px rgba(255,255,255,.2)">
+            <b style="font-size: 21px">{{sel.name}}</b>
+            <span style="font-size: 13px; color: #9AA8D4">{{sel.cont}}</span>
+          </div>
+          <div style="display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; font-size: 14px">
+            <span style="color: #8C9BC7">수도</span><span>{{sel.capital}}</span>
+            <span style="color: #8C9BC7">시차</span><span>{{selDiff}}</span>
+            <span style="color: #8C9BC7">인사말</span><span>{{sel.hello}} <span style="color: #7FE3FF">[{{sel.helloRead}}]</span></span>
+            <span style="color: #8C9BC7">한국 플러그</span><span style="{{plugStyle}}">{{plugText}}</span>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px">
+            <a class="btnp" href="country.html" onClick="{{openSel}}" style="display: inline-flex; align-items: center; height: 42px; padding: 0 16px; border-radius: 10px; background: #7FE3FF; color: #04101F; text-decoration: none; font-weight: 700; font-size: 14px">상세 페이지 열기</a>
+            <a href="compare.html" onClick="{{cmpSel}}" style="display: inline-flex; align-items: center; height: 42px; padding: 0 16px; border-radius: 10px; border: 1px solid #2A3A6E; color: #E8EEFF; text-decoration: none; font-size: 14px">한국과 비교</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div style="border-top: 1px solid #141E3E; border-bottom: 1px solid #141E3E; background: #0A1024; overflow: hidden; white-space: nowrap; font-size: 14px">
+    <div class="tick" style="display: inline-flex; gap: 48px; padding: 16px 0; color: #B4C0E4">
+      <template data-for="{{tickerItems}}" data-as="t"><span>{{t.k}} <b style="{{t.style}}">{{t.v}}</b></span></template>
+    </div>
+  </div>
+
+  <!-- WHAT YOU GET -->
+  <section class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 88px 32px 24px; display: flex; flex-direction: column; gap: 28px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
+      <div style="max-width: 640px">
+        <div style="font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace; font-size: 13px; color: #7FE3FF; letter-spacing: .12em; margin-bottom: 12px">ONE COUNTRY, NINE CATEGORIES</div>
+        <h2 class="h2x" style="margin: 0; font-size: 40px; font-weight: 700; letter-spacing: -.01em">{{sel.name}} 한 나라에만 이만큼</h2>
+        <p style="margin: 12px 0 0; font-size: 16px; line-height: 1.7; color: #B4C0E4">출장 전 체크, 여행 준비, 시장 조사까지. 지금 고른 나라의 실제 데이터로 미리 보여드려요.</p>
+      </div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap">
+        <div style="padding: 14px 18px; border-radius: 14px; background: #0E1530; border: 1px solid #1E2A52; min-width: 110px"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 700; color: #7FE3FF">{{countryCount}}</div><div style="font-size: 13px; color: #9AA8D4">수록 국가</div></div>
+        <div style="padding: 14px 18px; border-radius: 14px; background: #0E1530; border: 1px solid #1E2A52; min-width: 110px"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 700; color: #FFC857">9</div><div style="font-size: 13px; color: #9AA8D4">정보 카테고리</div></div>
+        <div style="padding: 14px 18px; border-radius: 14px; background: #0E1530; border: 1px solid #1E2A52; min-width: 110px"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 700; color: #7FF0B0">{{itemCount}}+</div><div style="font-size: 13px; color: #9AA8D4">{{sel.name}} 정보 항목</div></div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px">
+      <template data-for="{{cats}}" data-as="c">
+        <a class="cat" href="country.html" onClick="{{c.open}}" style="text-decoration: none; color: #E8EEFF; padding: 22px; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 12px">
+          <span style="display: flex; justify-content: space-between; align-items: center">
+            <span style="{{c.iconStyle}}">{{c.no}}</span>
+            <span style="font-size: 12px; color: #9AA8D4">{{c.count}}</span>
+          </span>
+          <b style="font-size: 18px">{{c.title}}</b>
+          <span style="font-size: 14px; line-height: 1.6; color: #B4C0E4">{{c.sample}}</span>
+          <span style="margin-top: auto; font-size: 13px; font-weight: 600; color: #7FE3FF">{{c.cta}} →</span>
+        </a>
+      </template>
+    </div>
+  </section>
+
+  <!-- POPULAR -->
+  <section class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 72px 32px 24px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 26px">
+      <div>
+        <div style="font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace; font-size: 13px; color: #7FE3FF; letter-spacing: .12em; margin-bottom: 12px">POPULAR</div>
+        <h2 class="h2x" style="margin: 0; font-size: 38px; font-weight: 700">많이 찾는 나라</h2>
+      </div>
+      <a href="countries.html" style="font-size: 15px; font-weight: 600">{{countryCount}}개국 전체 보기 →</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px">
+      <template data-for="{{popular}}" data-as="c">
+        <a class="lift" href="country.html" onClick="{{c.open}}" style="text-decoration: none; color: #E8EEFF; border-radius: 20px; background: #0E1530; border: 1px solid #1E2A52; overflow: hidden; display: flex; flex-direction: column">
+          <img loading="lazy" decoding="async" src="{{c.photo}}" alt="{{c.name}} 대표 풍경 — {{c.landmark}}" style="width: 100%; height: 150px; object-fit: cover; display: block">
+          <span style="padding: 16px 18px; display: flex; flex-direction: column; gap: 6px">
+            <span style="display: flex; align-items: center; gap: 8px"><img loading="lazy" decoding="async" src="{{c.flag}}" alt="" style="width: 26px; height: 17px; border-radius: 3px; object-fit: cover"><b style="font-size: 18px">{{c.name}}</b></span>
+            <span style="font-size: 13px; color: #B4C0E4">{{c.capital}} · {{c.diff}}</span>
+          </span>
+        </a>
+      </template>
+    </div>
+  </section>
+
+  <!-- FESTIVAL CALENDAR -->
+  <section class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 72px 32px 24px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 20px">
+      <div>
+        <div style="font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace; font-size: 13px; color: #FFC857; letter-spacing: .12em; margin-bottom: 12px">FESTIVAL CALENDAR</div>
+        <h2 class="h2x" style="margin: 0; font-size: 38px; font-weight: 700">{{evTitle}}</h2>
+        <p style="margin: 10px 0 0; color: #B4C0E4; font-size: 15px">{{evSub}}</p>
+      </div>
+    </div>
+    <div style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 18px">
+      <template data-for="{{evMonths}}" data-as="m"><button onClick="{{m.pick}}" aria-pressed="{{m.on}}" style="{{m.style}}">{{m.label}}</button></template>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px">
+      <template data-for="{{evList}}" data-as="e">
+        <a class="lift" href="country.html" onClick="{{e.open}}" style="text-decoration: none; color: #E8EEFF; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52; overflow: hidden; display: flex; flex-direction: column">
+          <span style="position: relative; display: block; height: 110px"><img loading="lazy" decoding="async" src="{{e.photo}}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block; opacity: .85"><span style="position: absolute; left: 12px; bottom: 10px; padding: 4px 10px; border-radius: 999px; background: rgba(7,11,26,.8); font-size: 12px; font-weight: 700; color: #FFC857">{{e.when}}</span></span>
+          <span style="padding: 14px 16px; display: flex; flex-direction: column; gap: 6px">
+            <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #9AA8D4"><img loading="lazy" decoding="async" src="{{e.flag}}" alt="" style="width: 22px; height: 15px; border-radius: 3px; object-fit: cover">{{e.country}}</span>
+            <b style="font-size: 17px; line-height: 1.4">{{e.name}}</b>
+            <span style="font-size: 14px; color: #B4C0E4; line-height: 1.55">{{e.desc}}</span>
+          </span>
+        </a>
+      </template>
+    </div>
+    <template data-if="{{evMore}}">
+      <div style="display: flex; justify-content: center; margin-top: 16px"><button onClick="{{evShowMore}}" style="height: 48px; padding: 0 24px; border-radius: 12px; border: 1px solid #2A3A6E; background: #0E1530; color: #E8EEFF; font: inherit; font-weight: 600; cursor: pointer">{{evMoreLabel}}</button></div>
+    </template>
+  </section>
+
+  <!-- CONTINENTS -->
+  <section class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 64px 32px 24px">
+    <div style="font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace; font-size: 13px; color: #7FE3FF; letter-spacing: .12em; margin-bottom: 12px">CONTINENT HUB</div>
+    <h2 class="h2x" style="margin: 0 0 26px; font-size: 38px; font-weight: 700">대륙에서 시작해, 나라로 들어가기</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px">
+      <template data-for="{{conts}}" data-as="k">
+        <a class="lift" href="continent.html" onClick="{{k.open}}" style="text-decoration: none; color: #E8EEFF; padding: 20px; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 22px">
+          <span style="display: flex; gap: 4px">
+            <template data-for="{{k.flags}}" data-as="f"><img loading="lazy" decoding="async" src="{{f}}" alt="" style="width: 26px; height: 17px; border-radius: 3px; object-fit: cover"></template>
+          </span>
+          <span><span style="display: block; font-size: 22px; font-weight: 700">{{k.name}}</span><span style="font-size: 13px; color: #B4C0E4">상세 {{k.n}}개국 · {{k.bloc}}</span></span>
+        </a>
+      </template>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 64px 32px">
+    <div style="border-radius: 24px; border: 1px solid #1E2A52; background: #0A0F22; overflow: hidden">
+      <div style="padding: 30px 34px 0; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: flex-end">
+        <div>
+          <div style="font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace; font-size: 13px; color: #7FE3FF; letter-spacing: .12em; margin-bottom: 12px">LIVE MAP</div>
+          <h2 class="h2x" style="margin: 0; font-size: 32px; font-weight: 700">서울에서 세계로 이어지는 길</h2>
+        </div>
+        <div style="display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; color: #B4C0E4">
+          <span style="display: flex; align-items: center; gap: 8px"><span style="width: 18px; height: 3px; background: #7FE3FF; border-radius: 2px"></span>교역 · 이동 경로</span>
+          <span style="display: flex; align-items: center; gap: 8px"><span style="width: 9px; height: 9px; border-radius: 50%; background: #FFC857"></span>주요 도시</span>
+        </div>
+      </div>
+      <img loading="lazy" decoding="async" src="assets/798341bd3c77f6130a427bfb06dd520e.gif" alt="서울에서 세계 주요 도시로 이어지는 경로 애니메이션 지도" style="width: 100%; display: block; margin-top: 12px">
+    </div>
+  </section>
+
+  <!-- COMPARE CTA -->
+  <section class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 8px 32px 96px">
+    <div class="cpad" style="border-radius: 28px; padding: 40px; background: #0E1530; border: 1px solid #2A3A6E; display: flex; flex-wrap: wrap; gap: 28px; align-items: center; justify-content: space-between">
+      <div style="flex: 1 1 420px; min-width: 0">
+        <div style="font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace; font-size: 13px; color: #FFC857; letter-spacing: .12em; margin-bottom: 12px">COMPARE</div>
+        <h2 class="h2x" style="margin: 0 0 12px; font-size: 32px; font-weight: 700">한국 vs {{cmpName}}, 뭐가 다를까?</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.7; color: #B4C0E4">시차, 콘센트, 팁 문화, 비즈니스 매너, 인사 방식, 선물 예절까지 30여 개 항목을 나란히 비교해요.</p>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
+        <img loading="lazy" decoding="async" src="{{krFlag}}" alt="대한민국 국기" style="width: 48px; height: 32px; border-radius: 5px; object-fit: cover">
+        <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #8C9BC7">VS</span>
+        <img loading="lazy" decoding="async" src="{{cmpFlag}}" alt="{{cmpName}} 국기" style="width: 48px; height: 32px; border-radius: 5px; object-fit: cover">
+        <a class="btng" href="compare.html" onClick="{{cmpSel}}" style="display: inline-flex; align-items: center; height: 52px; padding: 0 24px; border-radius: 12px; background: #FFC857; color: #1A1300; text-decoration: none; font-weight: 700; margin-left: 8px">비교 화면 열기</a>
+      </div>
+    </div>
+  </section>
+
+  
+  <footer id="site-footer" style="border-top: 1px solid #141E3E; margin-top: 40px"><div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; gap: 14px; font-size: 13px; line-height: 1.7; color: #8C9BC7"><div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #E8EEFF; letter-spacing: .06em">ATLAS HUB · 글로벌 아틀라스</span><span style="display: flex; flex-wrap: wrap; gap: 16px"><a href="credits.html" style="color: #B4C0E4">사진 · 데이터 출처</a><a href="https://www.0404.go.kr" target="_blank" rel="noopener" style="color: #B4C0E4">외교부 해외안전여행</a><span>영사콜센터 +82-2-3210-0404</span></span></div><p style="margin: 0">정보 기준일 2026년 10월 · 비자·입국 조건과 여행경보는 수시로 바뀌어요. 이 사이트의 정보는 참고용이며, 출국 전 외교부 해외안전여행과 해당국 대사관에서 반드시 최신 정보를 확인하세요. 항공권 가격·환율·날씨·뉴스는 예시 또는 근사치예요.</p><p style="margin: 0">국가 사진: Wikimedia Commons(CC 라이선스, 사진마다 작가 표기) · 일부 AI 생성 이미지(표기됨) · 국기: 단순화한 SVG · 폰트: Google Fonts</p></div></footer>
+  <nav class="tabbar" aria-label="하단 메뉴" style="position: sticky; bottom: 0; z-index: 30; justify-content: space-around; padding: 8px 6px 14px; background: rgba(10,16,36,.97); border-top: 1px solid #1E2A52"><a href="index.html" aria-current="page" style="color: #7FE3FF; background: #13224A"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"></path></svg>홈</a><a href="continent.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"></path></svg>대륙</a><a href="countries.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="4" width="7" height="7"></rect><rect x="13" y="4" width="7" height="7"></rect><rect x="4" y="13" width="7" height="7"></rect><rect x="13" y="13" width="7" height="7"></rect></svg>국가</a><a href="compare.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg>비교</a><a href="community.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path><path d="M8 9h8M8 12h5"></path></svg>꿀팁</a></nav>
+</div>
+</script>
+<script src="js/data.js"></script>
+<script src="js/runtime.js"></script>
+<script>
+(function () { var q = new URLSearchParams(location.search); function put(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } var c = q.get('code'), t = q.get('tab'), n = q.get('cont'), a = q.get('a'), b = q.get('b'); if (c && window.ATLAS_DB[c.toUpperCase()]) put('atlas.code', c.toUpperCase()); if (t) put('atlas.tab', t.toLowerCase()); if (n) put('atlas.cont', n.toUpperCase()); if (a && b && window.ATLAS_DB[a.toUpperCase()] && window.ATLAS_DB[b.toUpperCase()]) put('atlas.cmp', [a.toUpperCase(), b.toUpperCase()]); })();
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.state = { q: '', sel: 'VN' };
+    this.rot = { lon: 106, lat: 16 }; this.tgt = { lon: 106, lat: 16 }; this.drag = null;
+    var s = this;
+    this._ref = function (el) { s.cv = el; };
+  }
+  componentDidMount() {
+    var s = this;
+    var loop = function () { try { s._draw(); } catch (e) {} s.raf = requestAnimationFrame(loop); };
+    this.raf = requestAnimationFrame(loop);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); }
+  _focus(code) {
+    var d = this.__DB && this.__DB[code]; if (!d) return;
+    this.tgt = { lon: d.lon, lat: Math.max(-35, Math.min(35, d.lat)) };
+  }
+  _draw() {
+    var cv = this.cv; if (!cv || !this.__DB) return;
+    var ctx = cv.getContext('2d'); if (!ctx) return;
+    var W = cv.width, R = W * 0.43, cx = W / 2, cy = W / 2;
+    if (!this.drag) {
+      var dl = ((this.tgt.lon - this.rot.lon + 540) % 360) - 180;
+      this.rot.lon += dl * 0.07; this.rot.lat += (this.tgt.lat - this.rot.lat) * 0.07;
+    }
+    var L0 = this.rot.lon * Math.PI / 180, P0 = this.rot.lat * Math.PI / 180;
+    var sP = Math.sin(P0), cP = Math.cos(P0);
+    function proj(la, lo) {
+      var a = la * Math.PI / 180, l = lo * Math.PI / 180 - L0;
+      var ca = Math.cos(a), sa = Math.sin(a), cl = Math.cos(l);
+      return [cx + R * ca * Math.sin(l), cy - R * (cP * sa - sP * ca * cl), sP * sa + cP * ca * cl];
+    }
+    ctx.clearRect(0, 0, W, W);
+    var g = ctx.createRadialGradient(cx, cy, R * 0.85, cx, cy, R * 1.12);
+    g.addColorStop(0, 'rgba(127,227,255,0.18)'); g.addColorStop(1, 'rgba(127,227,255,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, R * 1.12, 0, Math.PI * 2); ctx.fill();
+    var og = ctx.createRadialGradient(cx - R * 0.3, cy - R * 0.35, R * 0.1, cx, cy, R);
+    og.addColorStop(0, '#13224A'); og.addColorStop(1, '#0A1230');
+    ctx.fillStyle = og; ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(127,227,255,0.35)'; ctx.lineWidth = 2; ctx.stroke();
+    var D = this.__LAND || (this.__LAND = [82.4,-41.6,81.4,-29.2,80.8,-49.3,79.9,-36.9,79.4,-56.9,78.6,-44.5,78.2,-64.6,77.9,-32.1,77.4,-52.2,76.8,-39.8,76.4,-59.8,76.1,-27.4,75.8,-47.4,75.2,102.5,75.2,-35.0,74.8,-55.1,74.6,-22.6,74.3,94.8,74.3,-42.7,73.8,107.2,73.7,-30.3,73.4,87.1,73.4,-50.4,72.9,99.5,72.9,-38.0,72.6,79.5,72.4,111.9,72.4,-25.6,72.1,91.9,72.1,-45.6,71.9,124.3,71.8,71.8,71.6,104.3,71.6,-33.2,71.5,-85.8,71.5,136.7,71.4,84.2,71.3,-53.3,71.2,116.7,71.0,149.1,70.9,96.6,70.9,-40.9,70.8,-93.4,70.7,129.1,70.6,76.5,70.5,24.0,70.4,109.0,70.4,-28.5,70.3,141.5,70.2,88.9,70.1,-48.6,70.0,-101.1,70.0,121.4,69.9,-153.6,69.9,68.9,69.8,153.9,69.7,101.3,69.7,-36.2,69.6,-88.7,69.6,133.8,69.5,-141.2,69.5,81.3,69.4,166.3,69.4,28.8,69.3,113.7,69.3,-23.8,69.2,-161.3,69.2,61.2,69.1,146.2,69.1,-128.8,69.1,93.7,69.0,-43.8,68.9,-96.3,68.9,126.1,68.8,-148.9,68.8,73.6,68.7,158.6,68.7,21.1,68.6,106.1,68.6,-31.4,68.5,53.6,68.5,-83.9,68.5,138.5,68.4,-136.5,68.4,86.0,68.4,-51.5,68.3,171.0,68.3,33.5,68.3,-104.0,68.2,118.5,68.2,-156.5,68.1,66.0,68.1,150.9,68.0,-124.1,68.0,98.4,68.0,-39.1,67.9,45.9,67.9,-91.6,67.8,130.9,67.8,-144.1,67.7,78.4,67.7,163.3,67.7,25.8,67.6,-111.7,67.6,110.8,67.5,-164.2,67.5,58.3,67.4,143.3,67.4,-131.7,67.4,90.8,67.3,-46.8,67.3,175.7,67.3,38.2,67.2,-99.3,67.2,123.2,67.1,-151.8,67.1,70.7,67.1,155.7,67.0,18.2,67.0,-119.3,67.0,103.2,66.9,-34.4,66.9,50.6,66.9,-86.9,66.8,135.6,66.8,-139.4,66.7,83.1,66.7,168.1,66.6,30.6,66.6,-106.9,66.6,115.6,66.5,-159.5,66.5,63.0,66.4,148.0,66.4,-127.0,66.4,95.5,66.3,-42.0,66.3,43.0,66.2,-94.5,66.2,128.0,66.2,-147.1,66.1,75.4,66.1,160.4,66.0,22.9,66.0,-114.6,66.0,107.9,65.9,55.4,65.9,-82.1,65.9,140.4,65.8,-134.7,65.8,87.8,65.7,-49.7,65.7,172.8,65.7,35.3,65.7,-102.2,65.6,120.3,65.6,-17.2,65.6,-154.7,65.5,67.8,65.5,152.8,65.5,15.2,65.4,-122.3,65.4,100.2,65.4,-37.3,65.3,47.7,65.3,-89.8,65.3,132.7,65.2,-142.3,65.2,80.2,65.1,165.2,65.1,27.6,65.1,-109.9,65.1,112.6,65.0,-162.4,65.0,60.1,64.9,145.1,64.9,-129.9,64.8,92.6,64.8,-44.9,64.8,177.6,64.8,40.0,64.7,-97.5,64.7,125.0,64.6,-150.0,64.6,72.5,64.6,157.5,64.5,20.0,64.5,-117.5,64.5,105.0,64.4,52.4,64.4,-85.1,64.4,137.4,64.3,-137.6,64.3,84.9,64.2,169.9,64.2,32.4,64.2,-105.1,64.1,117.4,64.1,-20.1,64.1,-157.7,64.1,64.8,64.0,149.8,64.0,12.3,64.0,-125.2,63.9,97.3,63.9,-40.2,63.9,44.8,63.8,-92.7,63.8,129.8,63.8,-145.3,63.7,77.2,63.7,162.2,63.7,24.7,63.6,-112.8,63.6,109.7,63.5,-165.3,63.5,57.2,63.5,142.2,63.4,-132.9,63.4,89.6,63.4,-47.9,63.3,174.6,63.3,37.1,63.3,-100.4,63.3,122.1,63.2,-152.9,63.2,69.6,63.1,154.6,63.1,17.1,63.1,-120.5,63.1,102.0,63.0,49.5,63.0,-88.0,62.9,134.5,62.9,-140.5,62.9,82.0,62.8,167.0,62.8,29.5,62.8,-108.1,62.7,114.4,62.7,-160.6,62.7,61.9,62.6,146.9,62.6,9.4,62.6,-128.1,62.5,94.4,62.5,-43.1,62.5,41.9,62.4,-95.7,62.4,126.8,62.4,-148.2,62.3,74.3,62.3,159.3,62.3,21.8,62.2,-115.7,62.2,106.8,62.1,54.3,62.1,139.2,62.0,-135.8,62.0,86.7,62.0,171.7,61.9,34.2,61.9,-103.3,61.9,119.2,61.8,-155.8,61.8,66.6,61.8,151.6,61.8,14.1,61.7,-123.4,61.7,99.1,61.6,46.6,61.6,-90.9,61.6,131.6,61.5,-143.4,61.5,79.0,61.5,164.0,61.4,26.5,61.4,-111.0,61.4,111.5,61.3,-163.5,61.3,59.0,61.3,144.0,61.2,6.5,61.2,-131.0,61.2,91.4,61.1,38.9,61.1,-98.6,61.1,123.9,61.0,-151.1,61.0,71.4,61.0,156.4,60.9,18.9,60.9,-118.6,60.9,103.8,60.8,51.3,60.8,136.3,60.7,-138.7,60.7,83.8,60.7,168.8,60.6,31.3,60.6,-106.2,60.6,116.2,60.5,-158.8,60.5,63.7,60.5,148.7,60.4,11.2,60.4,-126.3,60.4,96.2,60.3,43.7,60.3,-93.8,60.3,128.6,60.2,76.1,60.2,161.1,60.1,23.6,60.1,-113.9,60.1,108.6,60.0,56.1,60.0,141.0,59.9,-134.0,59.9,88.5,59.8,36.0,59.8,-101.5,59.8,121.0,59.8,-154.0,59.7,68.5,59.7,153.4,59.7,15.9,59.6,-121.6,59.6,100.9,59.6,48.4,59.5,133.4,59.4,80.9,59.4,28.3,59.4,-109.2,59.3,113.3,59.3,-161.7,59.3,60.8,59.2,145.8,59.2,8.3,59.2,-129.2,59.1,93.3,59.1,40.7,59.1,-96.8,59.0,125.7,59.0,73.2,58.9,-64.3,58.9,158.2,58.9,20.7,58.9,-116.8,58.9,105.7,58.8,53.1,58.7,138.1,58.7,-136.9,58.7,85.6,58.6,33.1,58.6,-104.4,58.6,118.1,58.5,-157.0,58.5,65.5,58.5,150.5,58.4,13.0,58.4,-124.5,58.4,98.0,58.3,45.5,58.3,130.5,58.2,77.9,58.2,162.9,58.2,25.4,58.1,-112.1,58.1,110.4,58.0,57.9,58.0,5.3,58.0,-132.2,57.9,90.3,57.9,37.8,57.9,-99.7,57.8,122.8,57.8,70.3,57.7,-67.2,57.7,155.3,57.7,17.7,57.7,-119.8,57.7,102.7,57.6,50.2,57.6,135.2,57.5,-2.3,57.5,82.7,57.4,30.1,57.4,-107.4,57.4,115.1,57.3,62.6,57.3,10.1,57.2,-127.4,57.2,95.1,57.2,42.5,57.1,-95.0,57.1,127.5,57.0,75.0,57.0,160.0,57.0,22.5,57.0,-115.0,56.9,107.5,56.9,54.9,56.8,87.4,56.7,34.9,56.7,-102.6,56.7,119.9,56.6,67.3,56.6,-70.2,56.5,14.8,56.5,-122.7,56.5,99.8,56.4,47.3,56.4,-90.2,56.4,132.3,56.4,-5.2,56.3,79.7,56.3,27.2,56.3,-110.3,56.2,112.2,56.2,59.7,56.1,-130.4,56.1,92.1,56.0,39.6,56.0,-97.9,56.0,124.6,55.9,72.1,55.9,-65.4,55.9,157.1,55.8,19.6,55.8,-118.0,55.8,104.5,55.7,52.0,55.6,84.5,55.6,32.0,55.6,-105.6,55.5,116.9,55.5,64.4,55.4,11.9,55.4,-125.6,55.4,96.9,55.3,44.4,55.3,-93.2,55.3,129.3,55.2,76.8,55.2,161.8,55.2,24.3,55.1,-113.2,55.1,109.3,55.1,56.8,55.0,89.2,54.9,36.7,54.9,-100.8,54.9,121.7,54.8,69.1,54.8,-68.4,54.7,16.6,54.7,-120.9,54.7,101.6,54.6,49.1,54.6,-88.4,54.6,134.1,54.6,-3.4,54.5,81.5,54.5,29.0,54.5,-108.5,54.4,114.0,54.4,61.5,54.3,9.0,54.3,-128.5,54.3,93.9,54.2,41.4,54.2,-96.1,54.2,126.4,54.1,73.9,54.1,-63.6,54.1,158.9,54.1,21.4,54.0,-116.1,54.0,106.3,54.0,53.8,53.9,-83.7,53.9,86.3,53.8,33.8,53.8,-103.7,53.8,118.7,53.7,66.2,53.7,-71.3,53.7,13.7,53.6,-123.8,53.6,98.7,53.6,46.2,53.5,-91.3,53.5,131.1,53.5,-6.4,53.5,78.6,53.4,-58.9,53.4,26.1,53.4,-111.4,53.4,111.1,53.3,58.6,53.2,91.0,53.2,38.5,53.1,-99.0,53.1,123.5,53.1,71.0,53.0,-66.5,53.0,155.9,53.0,18.4,53.0,-119.1,53.0,103.4,52.9,50.9,52.9,-86.6,52.9,135.9,52.9,-1.6,52.8,83.4,52.8,30.8,52.7,-106.7,52.7,115.8,52.7,63.3,52.6,-74.2,52.6,10.8,52.6,-126.7,52.6,95.8,52.5,43.2,52.5,-94.3,52.5,128.2,52.5,-9.3,52.4,75.7,52.4,-61.8,52.4,23.2,52.3,-114.3,52.3,108.2,52.3,55.6,52.3,-81.9,52.2,88.1,52.1,35.6,52.1,-101.9,52.1,120.6,52.0,68.0,52.0,-69.5,52.0,15.5,52.0,-122.0,51.9,100.5,51.9,48.0,51.9,-89.5,51.8,133.0,51.8,-4.6,51.8,80.4,51.8,-57.1,51.7,27.9,51.7,-109.6,51.7,112.9,51.6,60.4,51.6,-77.1,51.6,7.8,51.5,92.8,51.5,40.3,51.5,-97.2,51.5,125.3,51.4,72.8,51.4,-64.7,51.3,20.2,51.3,-117.3,51.3,105.2,51.3,52.7,51.2,-84.8,51.2,137.7,51.2,0.2,51.2,85.2,51.1,32.6,51.1,-104.9,51.1,117.6,51.0,65.1,51.0,-72.4,51.0,12.6,50.9,-124.9,50.9,97.6,50.9,45.0,50.9,-92.5,50.8,130.0,50.8,77.5,50.8,-60.0,50.7,25.0,50.7,-112.5,50.7,110.0,50.6,57.4,50.6,-80.1,50.6,4.9,50.5,89.9,50.5,37.4,50.5,-100.1,50.5,122.4,50.4,69.8,50.4,-67.7,50.3,17.3,50.3,-120.2,50.3,102.3,50.3,49.8,50.2,-87.7,50.2,134.8,50.2,82.2,50.1,29.7,50.1,-107.8,50.1,114.7,50.0,62.2,50.0,-75.3,50.0,9.7,49.9,94.6,49.9,42.1,49.9,-95.4,49.8,127.1,49.8,74.6,49.8,-62.9,49.7,22.1,49.7,-115.5,49.7,107.0,49.6,54.5,49.6,-83.0,49.6,2.0,49.6,87.0,49.5,34.5,49.5,-103.1,49.5,119.4,49.4,66.9,49.4,-70.6,49.4,14.4,49.3,-123.1,49.3,99.4,49.3,46.9,49.3,-90.7,49.2,131.8,49.2,79.3,49.1,26.8,49.1,-110.7,49.1,111.8,49.1,59.3,49.0,-78.3,49.0,6.7,49.0,91.7,48.9,39.2,48.9,-98.3,48.9,124.2,48.8,71.6,48.8,-65.9,48.8,19.1,48.8,-118.4,48.7,104.1,48.7,51.6,48.7,-85.9,48.7,136.6,48.6,-0.9,48.6,84.0,48.5,31.5,48.5,-106.0,48.5,116.5,48.5,64.0,48.4,-73.5,48.4,11.5,48.4,96.4,48.3,43.9,48.3,-93.6,48.3,128.9,48.2,76.4,48.2,23.9,48.2,-113.6,48.2,108.8,48.1,56.3,48.1,-81.2,48.0,3.8,48.0,88.8,48.0,36.3,47.9,-101.2,47.9,121.2,47.9,68.7,47.9,-68.8,47.8,16.2,47.8,-121.3,47.8,101.2,47.7,48.7,47.7,-88.8,47.7,133.6,47.7,-3.9,47.7,81.1,47.6,28.6,47.6,-108.9,47.6,113.6,47.5,61.1,47.5,-76.4,47.5,8.5,47.4,93.5,47.4,41.0,47.4,-96.5,47.3,126.0,47.3,73.5,47.3,-64.0,47.2,20.9,47.2,-116.6,47.2,105.9,47.2,53.4,47.1,-84.1,47.1,138.4,47.1,0.9,47.1,85.9,47.0,33.3,47.0,-104.2,47.0,118.3,46.9,65.8,46.9,-71.7,46.9,13.3,46.9,98.3,46.8,45.7,46.8,-91.8,46.8,130.7,46.7,78.2,46.7,25.7,46.7,-111.8,46.6,110.7,46.6,58.1,46.6,-79.4,46.5,5.6,46.5,90.6,46.5,38.1,46.4,-99.4,46.4,123.1,46.4,70.5,46.4,-67.0,46.3,18.0,46.3,-119.5,46.3,103.0,46.2,50.5,46.2,-87.0,46.2,135.5,46.2,-2.1,46.2,82.9,46.1,30.4,46.1,-107.1,46.1,115.4,46.0,62.9,46.0,-74.6,46.0,10.3,45.9,95.3,45.9,42.8,45.9,-94.7,45.9,127.8,45.8,75.3,45.8,22.7,45.7,-114.8,45.7,107.7,45.7,55.2,45.7,-82.3,45.6,2.7,45.6,87.7,45.6,35.1,45.5,-102.4,45.5,120.1,45.5,67.6,45.5,-69.9,45.4,15.1,45.4,-122.4,45.4,100.1,45.3,47.5,45.3,-90.0,45.3,132.5,45.3,80.0,45.2,27.5,45.2,-110.0,45.2,112.5,45.1,59.9,45.1,-77.6,45.1,7.4,45.0,92.4,45.0,39.9,45.0,-97.6,45.0,124.9,44.9,72.3,44.9,19.8,44.9,-117.7,44.8,104.8,44.8,52.3,44.8,-85.2,44.7,-0.2,44.7,84.7,44.7,32.2,44.6,-105.3,44.6,117.2,44.6,64.7,44.6,-72.8,44.5,12.2,44.5,97.1,44.5,44.6,44.4,-92.9,44.4,129.6,44.4,77.1,44.3,24.6,44.3,-113.0,44.3,109.5,44.2,57.0,44.2,-80.5,44.2,142.0,44.2,4.5,44.2,89.5,44.1,37.0,44.1,-100.6,44.1,121.9,44.0,69.4,44.0,-68.1,44.0,16.9,44.0,-120.6,44.0,101.9,43.9,49.4,43.9,-88.2,43.8,81.8,43.8,29.3,43.8,-108.2,43.7,114.3,43.7,61.8,43.7,-75.8,43.6,94.2,43.6,41.7,43.6,-95.8,43.5,126.7,43.5,74.1,43.4,21.6,43.4,-115.9,43.4,106.6,43.4,54.1,43.4,-83.4,43.3,1.6,43.3,86.5,43.2,34.0,43.2,-103.5,43.2,119.0,43.2,66.5,43.1,-71.0,43.1,14.0,43.1,-123.5,43.1,98.9,43.0,46.4,43.0,-91.1,43.0,131.4,43.0,-6.1,43.0,78.9,42.9,26.4,42.9,-111.1,42.9,111.3,42.8,58.8,42.8,-78.7,42.8,143.8,42.8,91.3,42.7,38.8,42.7,-98.7,42.7,123.7,42.6,71.2,42.6,18.7,42.6,-118.8,42.6,103.7,42.5,51.2,42.5,-86.3,42.5,-1.4,42.4,83.6,42.4,31.1,42.4,-106.4,42.4,116.1,42.3,63.6,42.3,-73.9,42.2,96.0,42.2,43.5,42.2,-94.0,42.2,128.5,42.1,-9.0,42.1,76.0,42.1,23.4,42.0,-114.1,42.0,108.4,42.0,55.9,42.0,-81.6,41.9,88.4,41.9,35.8,41.8,-101.7,41.8,120.8,41.8,68.3,41.7,15.8,41.7,-121.7,41.7,100.8,41.7,48.2,41.6,-89.3,41.6,-4.3,41.6,80.7,41.5,28.2,41.5,-109.3,41.5,113.2,41.5,60.6,41.4,-76.9,41.4,93.1,41.3,40.6,41.3,-96.9,41.3,125.6,41.3,73.0,41.2,20.5,41.2,-117.0,41.2,105.5,41.1,53.0,41.1,-84.5,41.1,0.4,41.1,85.4,41.0,32.9,41.0,-104.6,41.0,117.9,40.9,65.4,40.9,-72.1,40.9,12.8,40.9,97.8,40.8,45.3,40.8,-92.2,40.8,-7.2,40.7,77.8,40.7,25.2,40.7,-112.3,40.7,110.2,40.6,57.7,40.6,-79.8,40.5,90.2,40.5,37.6,40.5,-99.9,40.5,122.6,40.4,70.1,40.4,-119.9,40.4,102.6,40.3,50.0,40.3,-87.5,40.3,-2.5,40.2,82.5,40.2,30.0,40.2,-107.5,40.2,115.0,40.1,62.4,40.1,-75.1,40.0,94.9,40.0,42.4,40.0,-95.1,40.0,127.4,39.9,74.8,39.9,22.3,39.9,-115.2,39.8,107.3,39.8,54.8,39.8,-82.7,39.8,139.8,39.7,87.2,39.7,34.7,39.7,-102.8,39.7,119.7,39.6,67.2,39.6,14.7,39.5,-122.9,39.5,99.6,39.5,47.1,39.5,-90.4,39.4,-5.4,39.4,79.6,39.4,27.1,39.4,-110.5,39.3,112.0,39.3,59.5,39.3,-78.0,39.2,92.0,39.2,39.5,39.2,-98.1,39.1,124.4,39.1,71.9,39.0,-118.1,39.0,104.4,39.0,51.9,39.0,-85.7,38.9,-0.7,38.9,84.3,38.9,31.8,38.9,-105.7,38.8,116.8,38.8,64.3,38.7,96.7,38.7,44.2,38.7,-93.3,38.6,-8.3,38.6,76.6,38.5,-113.4,38.5,109.1,38.5,56.6,38.5,-80.9,38.4,89.0,38.4,36.5,38.4,-101.0,38.3,121.5,38.3,69.0,38.2,-121.0,38.2,101.4,38.2,48.9,38.2,-88.6,38.1,-3.6,38.1,81.4,38.1,28.9,38.0,-108.6,38.0,113.8,38.0,61.3,38.0,-76.2,37.9,93.8,37.9,41.3,37.9,-96.2,37.8,126.2,37.8,73.7,37.7,-116.3,37.7,106.2,37.7,53.7,37.7,-83.8,37.7,138.6,37.6,86.1,37.6,33.6,37.6,-103.9,37.5,118.6,37.5,66.1,37.4,98.5,37.4,46.0,37.4,-91.5,37.3,-6.5,37.3,78.5,37.3,-111.6,37.2,110.9,37.2,58.4,37.2,-79.1,37.1,90.9,37.1,38.3,37.1,-99.2,37.0,70.8,36.9,-119.2,36.9,103.3,36.9,50.7,36.9,-86.8,36.8,-1.8,36.8,83.2,36.8,30.7,36.8,-106.8,36.7,115.7,36.7,63.1,36.6,95.6,36.6,43.1,36.6,-94.4,36.6,128.1,36.5,-9.5,36.5,75.5,36.5,-114.5,36.4,108.0,36.4,55.5,36.4,-82.0,36.4,140.5,36.4,2.9,36.3,87.9,36.3,35.4,36.3,-102.1,36.3,120.4,36.2,67.9,36.1,100.3,36.1,47.8,36.1,-89.7,36.1,-4.7,36.0,80.3,36.0,-109.8,36.0,112.7,35.9,60.2,35.9,-77.3,35.9,7.7,35.9,92.7,35.8,40.1,35.8,-97.4,35.7,72.6,35.7,-117.4,35.7,105.1,35.6,52.5,35.6,-85.0,35.6,137.5,35.6,0.0,35.6,85.0,35.5,-105.0,35.5,117.5,35.4,64.9,35.4,97.4,35.3,44.9,35.3,-92.6,35.3,77.3,35.2,-112.7,35.2,109.8,35.1,57.3,35.1,-80.2,35.1,4.8,35.1,89.7,35.0,37.2,35.0,-100.3,35.0,69.7,34.9,102.1,34.9,49.6,34.8,-87.9,34.8,134.6,34.8,-2.9,34.8,82.1,34.7,-108.0,34.7,114.5,34.7,62.0,34.6,9.5,34.6,94.5,34.6,42.0,34.5,-95.6,34.5,74.4,34.4,-115.6,34.4,106.9,34.4,54.4,34.4,-83.2,34.3,1.8,34.3,86.8,34.3,-103.2,34.2,119.3,34.2,66.8,34.1,99.2,34.1,46.7,34.1,-90.8,34.0,-5.8,34.0,79.1,34.0,-110.9,34.0,111.6,33.9,59.1,33.9,-78.4,33.9,6.6,33.8,91.5,33.8,39.0,33.8,-98.5,33.7,71.5,33.7,103.9,33.6,51.4,33.6,-86.1,33.6,-1.1,33.6,83.9,33.5,-106.1,33.5,116.3,33.4,63.8,33.4,96.3,33.3,43.8,33.3,-93.7,33.3,76.2,33.2,-113.8,33.2,108.7,33.2,56.2,33.1,-81.3,33.1,3.6,33.1,88.6,33.0,36.1,33.0,-101.4,33.0,68.6,32.9,101.0,32.9,48.5,32.9,-89.0,32.8,-4.0,32.8,81.0,32.7,-109.1,32.7,113.4,32.7,60.9,32.6,8.4,32.6,93.4,32.6,40.8,32.6,-96.7,32.5,73.3,32.5,-116.7,32.4,105.8,32.4,53.2,32.4,-84.3,32.4,0.7,32.3,85.7,32.3,-104.3,32.3,118.2,32.2,65.6,32.2,13.1,32.2,98.1,32.1,45.6,32.1,-91.9,32.1,130.6,32.1,-7.0,32.1,78.0,32.0,-112.0,32.0,110.5,31.9,58.0,31.9,5.4,31.9,90.4,31.8,37.9,31.8,-99.6,31.8,70.4,31.7,102.8,31.7,50.3,31.6,-87.2,31.6,-2.2,31.6,82.8,31.5,-107.3,31.5,115.2,31.5,62.7,31.4,10.2,31.4,95.2,31.4,42.6,31.4,-94.9,31.3,75.1,31.3,-114.9,31.2,107.6,31.2,55.0,31.2,-82.5,31.2,2.5,31.1,87.5,31.1,35.0,31.1,-102.5,31.1,120.0,31.0,67.4,31.0,14.9,31.0,99.9,30.9,47.4,30.9,-90.1,30.9,-5.1,30.9,79.8,30.8,27.3,30.8,-110.2,30.8,112.3,30.8,59.8,30.7,7.3,30.7,92.2,30.6,39.7,30.6,-97.8,30.6,72.2,30.5,19.7,30.5,104.6,30.5,52.1,30.5,-85.4,30.4,-0.4,30.4,84.6,30.4,-105.5,30.3,117.0,30.3,64.5,30.3,12.0,30.2,97.0,30.2,44.5,30.2,-93.1,30.2,-8.1,30.1,76.9,30.1,24.4,30.1,-113.1,30.1,109.4,30.0,56.9,30.0,4.3,30.0,89.3,29.9,36.8,29.9,-100.7,29.8,69.3,29.8,16.7,29.8,101.7,29.7,49.2,29.7,-3.3,29.7,81.6,29.6,29.1,29.6,-108.4,29.6,114.1,29.6,61.6,29.5,9.1,29.5,94.0,29.5,41.5,29.5,-96.0,29.4,-11.0,29.4,74.0,29.4,21.5,29.3,106.4,29.3,53.9,29.3,-83.6,29.3,1.4,29.2,86.4,29.2,33.9,29.2,-103.6,29.2,118.8,29.1,66.3,29.1,13.8,29.1,98.8,29.0,46.3,29.0,-6.3,29.0,78.7,28.9,26.2,28.9,-111.3,28.9,111.2,28.8,58.7,28.8,6.1,28.8,91.1,28.7,38.6,28.7,-98.9,28.7,71.1,28.6,18.5,28.6,103.5,28.6,51.0,28.5,-1.5,28.5,83.5,28.5,30.9,28.5,-106.6,28.4,115.9,28.4,63.4,28.4,10.9,28.3,95.9,28.3,43.3,28.3,-94.2,28.3,-9.2,28.2,75.8,28.2,23.3,28.2,108.3,28.1,55.7,28.1,-81.8,28.1,3.2,28.1,88.2,28.0,35.7,28.0,-101.8,28.0,120.7,28.0,68.1,27.9,15.6,27.9,100.6,27.9,48.1,27.8,-4.5,27.8,80.5,27.8,28.0,27.7,-109.5,27.7,113.0,27.7,60.5,27.7,7.9,27.6,92.9,27.6,40.4,27.6,-97.1,27.5,-12.1,27.5,72.9,27.5,20.3,27.5,105.3,27.4,52.8,27.4,0.3,27.4,85.3,27.3,32.7,27.3,-104.8,27.3,117.7,27.3,65.2,27.2,12.7,27.2,97.7,27.1,45.1,27.1,-7.4,27.1,77.6,27.0,25.1,27.0,110.1,27.0,57.5,26.9,5.0,26.9,90.0,26.9,37.5,26.9,-100.0,26.8,-15.0,26.8,69.9,26.8,17.4,26.8,102.4,26.7,-2.6,26.6,82.3,26.6,29.8,26.6,-107.7,26.6,114.8,26.5,62.3,26.5,9.8,26.5,94.7,26.4,42.2,26.4,-10.3,26.4,74.7,26.3,22.2,26.3,107.1,26.2,2.1,26.2,87.1,26.2,-103.0,26.1,119.5,26.1,67.0,26.1,14.5,26.0,99.5,26.0,47.0,26.0,-5.6,25.9,79.4,25.9,26.9,25.9,-110.6,25.9,111.9,25.8,59.4,25.8,6.8,25.8,91.8,25.7,39.3,25.7,-98.2,25.7,-13.2,25.7,71.8,25.6,19.2,25.6,104.2,25.6,51.7,25.5,-0.8,25.5,84.1,25.5,31.6,25.5,-105.9,25.4,116.6,25.4,64.1,25.4,11.6,25.3,96.5,25.3,44.0,25.3,-8.5,25.2,76.5,25.2,24.0,25.2,108.9,25.1,3.9,25.1,88.9,25.0,-101.1,25.0,121.3,25.0,-16.2,25.0,68.8,24.9,16.3,24.9,101.3,24.9,48.8,24.8,-3.8,24.8,81.2,24.8,28.7,24.8,-108.8,24.8,113.7,24.7,8.6,24.7,93.6,24.6,41.1,24.6,-11.4,24.6,73.6,24.5,21.0,24.5,106.0,24.5,53.5,24.4,1.0,24.4,86.0,24.3,33.4,24.3,-104.1,24.3,65.9,24.2,13.4,24.2,98.4,24.2,45.8,24.1,-6.7,24.1,78.3,24.1,25.8,24.1,110.8,24.0,5.7,24.0,90.7,23.9,38.2,23.9,-99.3,23.9,-14.4,23.9,70.6,23.8,18.1,23.8,103.1,23.8,50.6,23.7,-2.0,23.7,83.0,23.7,30.5,23.6,-107.0,23.6,115.5,23.6,10.4,23.5,95.4,23.5,42.9,23.5,-9.6,23.4,75.4,23.4,22.8,23.4,107.8,23.3,55.3,23.3,2.8,23.3,87.8,23.2,35.2,23.2,-102.3,23.2,120.2,23.1,15.2,23.1,100.2,23.1,47.6,23.0,-4.9,23.0,80.1,23.0,27.6,22.9,112.6,22.9,7.5,22.8,92.5,22.8,40.0,22.8,-97.5,22.8,-12.5,22.7,72.4,22.7,19.9,22.7,104.9,22.6,52.4,22.6,-0.1,22.6,84.8,22.6,32.3,22.5,-105.2,22.5,12.3,22.4,97.2,22.4,44.7,22.4,-7.8,22.3,77.2,22.3,24.7,22.3,109.6,22.2,57.1,22.2,-80.4,22.2,4.6,22.2,89.6,22.1,-100.5,22.1,-15.5,22.0,17.0,22.0,102.0,22.0,49.5,21.9,-3.1,21.9,81.9,21.9,29.4,21.8,9.3,21.7,94.3,21.7,41.8,21.7,-10.7,21.6,74.3,21.6,21.7,21.6,106.7,21.5,54.2,21.5,1.7,21.5,86.6,21.5,34.1,21.4,-103.4,21.4,14.1,21.3,99.0,21.3,46.5,21.3,-6.0,21.2,79.0,21.2,26.5,21.1,-78.6,21.1,6.4,21.0,-98.6,21.0,-13.7,20.9,18.8,20.9,103.8,20.9,51.3,20.8,-1.3,20.8,83.7,20.8,31.2,20.7,11.1,20.7,96.1,20.6,43.6,20.6,-8.9,20.6,76.1,20.5,23.5,20.5,56.0,20.4,3.5,20.4,35.9,20.3,-101.6,20.3,-16.6,20.3,15.9,20.2,100.9,20.2,48.3,20.2,-4.2,20.1,80.8,20.1,28.3,20.0,8.2,20.0,93.2,19.9,40.7,19.9,-96.8,19.9,-11.9,19.9,73.1,19.8,20.6,19.8,105.6,19.8,53.1,19.7,0.5,19.7,33.0,19.6,12.9,19.6,97.9,19.5,45.4,19.5,-7.1,19.5,77.9,19.4,25.3,19.3,5.3,19.3,-99.8,19.2,-14.8,19.2,17.7,19.2,102.7,19.1,50.1,19.1,-2.4,19.1,82.6,19.0,30.1,18.9,10.0,18.9,95.0,18.9,42.5,18.9,-95.0,18.8,-10.0,18.8,74.9,18.8,22.4,18.7,54.9,18.7,2.4,18.6,34.8,18.5,14.8,18.5,99.7,18.5,47.2,18.4,-90.3,18.4,-5.3,18.4,79.7,18.4,27.2,18.3,7.1,18.2,-98.0,18.2,-13.0,18.1,19.5,18.1,104.5,18.0,52.0,18.0,-0.6,17.9,31.9,17.8,11.8,17.8,96.8,17.8,44.3,17.8,-93.2,17.8,-8.2,17.7,76.8,17.7,24.2,17.6,4.2,17.5,36.6,17.5,121.6,17.5,-15.9,17.4,16.6,17.4,101.5,17.4,49.0,17.4,-88.5,17.3,-3.5,17.3,81.5,17.3,29.0,17.2,8.9,17.2,93.9,17.1,41.4,17.1,-96.1,17.1,-11.2,17.1,73.8,17.0,21.3,16.9,1.2,16.9,33.7,16.8,13.6,16.8,98.6,16.7,46.1,16.7,-91.4,16.7,-6.4,16.7,78.6,16.6,26.0,16.5,6.0,16.5,38.4,16.4,-14.1,16.4,18.4,16.3,103.4,16.3,50.8,16.3,-1.7,16.2,30.8,16.1,10.7,16.1,95.7,16.1,43.2,16.1,-94.3,16.0,-9.4,16.0,75.6,16.0,23.1,15.9,3.0,15.8,35.5,15.8,120.5,15.7,15.4,15.7,100.4,15.7,47.9,15.6,-89.6,15.6,-4.6,15.6,80.4,15.6,27.8,15.5,7.8,15.4,-12.3,15.3,20.2,15.3,105.2,15.2,0.1,15.2,32.6,15.1,12.5,15.0,45.0,15.0,-92.5,15.0,-7.5,14.9,77.4,14.9,24.9,14.8,4.9,14.8,37.3,14.7,122.3,14.7,-15.2,14.7,17.3,14.6,102.2,14.6,-87.8,14.6,-2.8,14.5,29.7,14.4,9.6,14.3,-10.5,14.3,74.5,14.3,22.0,14.2,107.0,14.2,1.9,14.1,34.4,14.0,14.3,14.0,99.3,14.0,46.8,13.9,-90.7,13.9,-5.7,13.9,79.3,13.9,26.7,13.8,6.7,13.7,39.1,13.7,-13.4,13.6,19.1,13.6,104.0,13.5,-86.0,13.5,-1.0,13.5,31.5,13.4,11.4,13.3,43.9,13.3,-8.7,13.2,76.3,13.2,23.8,13.1,3.7,13.1,36.2,13.0,121.2,13.0,-16.3,13.0,16.1,12.9,101.1,12.9,-88.9,12.9,-3.9,12.8,28.5,12.7,8.5,12.7,40.9,12.6,-11.6,12.6,20.9,12.5,105.9,12.5,0.8,12.4,33.3,12.3,13.2,12.3,98.2,12.2,-6.9,12.2,78.1,12.2,25.6,12.1,5.5,12.0,38.0,12.0,123.0,12.0,-14.5,11.9,17.9,11.9,102.9,11.9,50.4,11.8,-87.1,11.8,-2.1,11.8,30.3,11.7,10.3,11.6,42.7,11.6,-9.8,11.5,22.7,11.5,107.7,11.4,2.6,11.4,35.1,11.3,15.0,11.2,47.5,11.2,-5.0,11.1,27.4,11.0,7.4,11.0,39.8,10.9,-12.7,10.9,19.8,10.9,104.7,10.8,-85.3,10.8,-0.3,10.7,32.2,10.7,-72.9,10.6,12.1,10.6,44.6,10.5,-8.0,10.5,77.0,10.5,24.5,10.4,4.4,10.3,36.9,10.3,121.9,10.3,-68.2,10.2,16.8,10.2,49.3,10.1,-3.2,10.1,29.2,10.0,-75.8,10.0,9.2,9.9,41.6,9.9,-10.9,9.9,-63.4,9.8,21.6,9.8,-83.5,9.7,1.5,9.7,34.0,9.6,-71.1,9.6,13.9,9.6,98.9,9.5,46.4,9.5,-6.2,9.4,26.3,9.4,-78.7,9.4,6.2,9.3,38.7,9.3,123.7,9.3,-13.8,9.2,-66.3,9.2,18.6,9.1,-1.4,9.1,31.0,9.0,-74.0,9.0,11.0,8.9,43.4,8.9,-9.1,8.8,-61.6,8.8,23.4,8.7,-81.7,8.7,3.3,8.7,35.8,8.6,-69.3,8.6,15.7,8.5,48.2,8.5,-4.4,8.4,80.6,8.4,28.1,8.3,-76.9,8.3,8.0,8.3,40.5,8.2,125.5,8.2,-12.0,8.2,-64.5,8.2,20.4,8.1,0.4,8.0,32.8,7.9,-72.2,7.9,12.8,7.9,45.2,7.8,-7.3,7.8,-59.8,7.8,25.2,7.7,-79.9,7.7,5.1,7.6,37.6,7.6,122.6,7.6,-67.5,7.5,17.5,7.4,-2.5,7.4,29.9,7.3,-75.1,7.3,9.9,7.2,42.3,7.2,-10.2,7.2,-62.7,7.1,22.3,7.0,2.2,7.0,34.7,6.9,-70.4,6.9,14.6,6.9,99.6,6.8,47.1,6.8,-5.5,6.8,-58.0,6.7,27.0,6.7,-78.1,6.7,6.9,6.6,39.4,6.5,-65.7,6.5,19.3,6.4,-0.7,6.4,31.7,6.3,116.7,6.3,-73.3,6.3,11.7,6.2,44.1,6.2,-8.4,6.1,-60.9,6.1,24.1,6.0,4.0,6.0,36.5,5.9,-68.6,5.9,16.4,5.8,-3.7,5.7,-56.2,5.7,28.8,5.7,-76.2,5.6,8.7,5.6,41.2,5.5,-63.8,5.5,21.1,5.3,33.5,5.3,-71.5,5.2,13.5,5.2,45.9,5.1,-6.6,5.1,-59.1,5.1,25.9,4.9,38.3,4.9,-66.8,4.8,18.2,4.7,-54.4,4.7,30.6,4.7,115.6,4.6,-74.4,4.6,10.5,4.6,95.5,4.5,43.0,4.5,-62.0,4.5,22.9,4.3,35.3,4.2,-69.7,4.2,15.3,4.2,100.3,4.1,-57.3,4.1,27.7,3.9,40.1,3.8,-65.0,3.8,20.0,3.7,-52.6,3.7,32.4,3.7,117.4,3.6,-72.6,3.6,12.4,3.6,97.3,3.5,44.8,3.5,-60.2,3.4,24.8,3.3,37.2,3.2,-67.9,3.2,17.1,3.1,-55.5,3.0,29.5,3.0,114.5,3.0,-75.6,2.9,41.9,2.8,-63.2,2.8,21.8,2.7,34.2,2.6,-70.8,2.6,14.2,2.5,99.1,2.4,-58.4,2.4,26.6,2.4,111.5,2.3,39.0,2.2,-66.1,2.2,18.9,2.0,-53.7,2.0,31.3,2.0,116.3,2.0,-73.7,1.9,11.2,1.9,43.7,1.8,-61.3,1.8,23.6,1.6,36.0,1.6,-69.0,1.5,16.0,1.4,-56.6,1.4,28.4,1.4,113.4,1.3,-76.7,1.2,40.8,1.2,-64.3,1.2,20.7,1.0,-51.9,1.0,33.1,1.0,118.1,0.9,-71.9,0.9,13.0,0.9,98.0,0.8,-59.5,0.8,25.4,0.7,110.4,0.6,37.8,0.5,-67.2,0.5,17.8,0.4,-54.8,0.4,30.2,0.3,115.2,0.3,-74.9,0.3,10.1,0.2,42.6,0.2,-62.5,0.1,22.5,0.0,-50.1,-0.0,34.9,-0.1,-70.1,-0.1,14.9,-0.1,99.8,-0.2,-57.7,-0.3,27.3,-0.3,112.2,-0.3,-77.8,-0.4,39.7,-0.5,-65.4,-0.5,19.6,-0.6,-53.0,-0.6,32.0,-0.7,117.0,-0.7,-73.1,-0.7,11.9,-0.9,-60.7,-0.9,24.3,-1.0,-48.3,-1.0,36.7,-1.1,-68.3,-1.1,16.7,-1.2,101.6,-1.3,-55.9,-1.3,29.1,-1.3,114.0,-1.3,-76.0,-1.4,41.5,-1.5,-63.6,-1.5,21.4,-1.6,-51.2,-1.7,33.8,-1.7,-71.2,-1.8,13.7,-1.9,-58.8,-1.9,26.1,-1.9,111.1,-2.0,-78.9,-2.0,-46.4,-2.1,38.5,-2.1,-66.5,-2.1,18.5,-2.2,135.9,-2.3,-54.1,-2.3,30.9,-2.3,115.9,-2.4,-74.2,-2.4,10.8,-2.5,-61.8,-2.5,23.2,-2.7,-49.4,-2.7,35.6,-2.8,-69.4,-2.8,15.5,-2.9,133.0,-2.9,-57.0,-2.9,27.9,-3.0,112.9,-3.0,-77.1,-3.1,-44.6,-3.1,-64.7,-3.2,20.3,-3.3,137.7,-3.3,-52.3,-3.3,32.7,-3.4,-72.4,-3.4,12.6,-3.4,-39.9,-3.5,-60.0,-3.6,25.0,-3.6,-80.0,-3.7,-47.6,-3.7,37.4,-3.8,-67.6,-3.8,17.4,-3.8,102.3,-3.9,134.8,-3.9,-55.2,-4.0,29.8,-4.0,-75.3,-4.1,-42.8,-4.2,-62.9,-4.2,22.1,-4.3,139.5,-4.3,-50.5,-4.3,34.5,-4.4,-70.6,-4.4,14.4,-4.5,-38.1,-4.6,-58.2,-4.6,26.8,-4.7,-78.2,-4.7,-45.8,-4.7,39.2,-4.8,-65.8,-4.8,19.2,-4.8,104.1,-4.9,136.6,-5.0,-53.4,-5.0,31.6,-5.0,-73.5,-5.1,11.5,-5.1,-41.0,-5.2,-61.1,-5.2,23.9,-5.3,141.3,-5.3,-48.7,-5.4,36.3,-5.4,-68.7,-5.5,16.2,-5.5,-36.3,-5.6,-56.3,-5.6,28.6,-5.7,-76.4,-5.7,-43.9,-5.8,-64.0,-5.8,21.0,-5.9,138.4,-6.0,-51.6,-6.0,33.4,-6.1,-71.7,-6.1,13.3,-6.1,-39.2,-6.2,-59.3,-6.2,25.7,-6.3,-79.3,-6.3,143.2,-6.4,-46.9,-6.4,38.1,-6.5,-66.9,-6.5,18.0,-6.6,-54.5,-6.6,30.4,-6.7,-74.6,-6.8,-42.1,-6.9,-62.2,-6.9,22.8,-6.9,107.8,-7.0,140.2,-7.0,-49.8,-7.0,35.2,-7.1,-69.9,-7.1,15.1,-7.2,-37.4,-7.2,-57.5,-7.3,27.5,-7.3,112.5,-7.3,-77.5,-7.3,145.0,-7.4,-45.1,-7.4,39.9,-7.5,-65.1,-7.5,19.9,-7.6,-52.7,-7.7,32.3,-7.7,-72.8,-7.8,12.2,-7.8,-40.3,-7.9,-60.4,-7.9,24.6,-7.9,109.6,-8.0,142.0,-8.0,-48.0,-8.1,37.0,-8.1,-68.1,-8.1,16.9,-8.3,-55.7,-8.3,29.3,-8.4,-75.7,-8.4,146.8,-8.4,-43.3,-8.5,-63.3,-8.5,21.7,-8.7,-50.9,-8.7,34.1,-8.8,-71.0,-8.8,14.0,-8.8,-38.5,-8.9,-58.6,-8.9,26.4,-9.0,-78.6,-9.0,143.8,-9.1,-46.2,-9.1,38.8,-9.2,-66.2,-9.2,18.7,-9.3,-53.8,-9.3,31.1,-9.4,-73.9,-9.4,148.6,-9.5,-41.4,-9.5,-61.5,-9.6,23.5,-9.7,-49.1,-9.7,35.9,-9.8,-69.2,-9.8,15.8,-9.9,-56.8,-10.0,28.2,-10.0,-76.8,-10.1,-44.4,-10.2,-64.4,-10.2,20.5,-10.3,-52.0,-10.4,32.9,-10.4,-72.1,-10.5,-39.6,-10.6,-59.7,-10.6,25.3,-10.7,-47.3,-10.8,37.7,-10.8,-67.4,-10.9,17.6,-11.0,-55.0,-11.0,30.0,-11.1,-75.0,-11.1,-42.6,-11.2,-62.6,-11.3,22.4,-11.4,-50.2,-11.4,34.8,-11.5,-70.3,-11.5,14.7,-11.5,-37.8,-11.6,-57.9,-11.6,27.1,-11.8,-45.5,-11.9,-65.6,-11.9,19.4,-12.0,-53.2,-12.0,31.8,-12.1,-73.2,-12.2,-40.8,-12.3,-60.8,-12.3,24.2,-12.4,-48.4,-12.4,36.6,-12.5,-68.5,-12.5,16.5,-12.6,49.0,-12.6,133.9,-12.7,-56.1,-12.7,28.9,-12.8,-76.1,-12.8,-43.7,-12.9,-63.7,-12.9,21.2,-13.1,-51.3,-13.1,33.6,-13.2,-71.4,-13.2,13.6,-13.2,-38.9,-13.3,131.0,-13.3,-59.0,-13.3,26.0,-13.5,-46.6,-13.6,-66.7,-13.6,18.3,-13.7,135.8,-13.7,-54.3,-13.7,30.7,-13.8,-74.3,-13.9,-41.9,-13.9,128.1,-14.0,-61.9,-14.0,23.0,-14.1,-49.5,-14.1,35.4,-14.2,-69.6,-14.2,15.4,-14.3,47.8,-14.3,132.8,-14.4,-57.2,-14.4,27.8,-14.5,-44.8,-14.6,-64.9,-14.6,20.1,-14.7,137.6,-14.8,-52.5,-14.8,32.5,-14.9,-72.5,-14.9,12.5,-14.9,-40.1,-15.0,129.9,-15.0,-60.1,-15.0,24.9,-15.1,142.3,-15.2,-47.7,-15.3,-67.8,-15.3,17.2,-15.3,49.7,-15.4,134.6,-15.4,-55.4,-15.4,29.6,-15.6,-43.0,-15.6,127.0,-15.7,-63.1,-15.7,21.9,-15.8,139.4,-15.8,-50.7,-15.8,34.3,-15.9,-70.7,-15.9,14.3,-16.0,46.7,-16.0,131.7,-16.1,-58.3,-16.1,26.7,-16.2,144.1,-16.2,-45.9,-16.3,124.0,-16.3,-66.0,-16.3,19.0,-16.4,136.4,-16.5,-53.6,-16.5,31.4,-16.6,-41.2,-16.7,128.8,-16.7,-61.2,-16.8,23.7,-16.8,141.2,-16.9,-48.8,-17.0,-68.9,-17.0,16.1,-17.1,48.5,-17.1,133.5,-17.1,-56.5,-17.2,28.5,-17.3,-44.1,-17.3,125.9,-17.4,-64.2,-17.4,20.8,-17.5,138.3,-17.5,-51.8,-17.6,33.2,-17.7,13.1,-17.7,-39.4,-17.7,45.6,-17.8,130.6,-17.8,-59.4,-17.8,25.5,-17.9,143.0,-18.0,-47.0,-18.0,122.9,-18.1,-67.1,-18.1,17.9,-18.2,135.3,-18.2,-54.7,-18.2,30.3,-18.4,-42.3,-18.4,127.7,-18.5,-62.4,-18.5,22.6,-18.6,140.1,-18.6,-50.0,-18.7,-70.0,-18.7,15.0,-18.8,47.4,-18.8,132.4,-18.9,-57.6,-18.9,27.4,-19.0,144.8,-19.0,-45.2,-19.1,124.7,-19.1,-65.3,-19.2,19.7,-19.2,137.1,-19.3,-52.9,-19.3,32.1,-19.4,-40.5,-19.5,44.5,-19.5,129.5,-19.5,-60.6,-19.6,24.4,-19.7,141.9,-19.7,-48.2,-19.7,121.8,-19.8,-68.2,-19.8,16.8,-19.9,134.2,-20.0,-55.8,-20.0,29.2,-20.1,146.6,-20.1,-43.4,-20.2,126.5,-20.2,-63.5,-20.2,21.5,-20.3,138.9,-20.4,-51.1,-20.4,33.9,-20.4,118.9,-20.5,13.8,-20.6,46.3,-20.6,131.3,-20.6,-58.7,-20.7,26.2,-20.7,143.7,-20.8,-46.3,-20.8,123.6,-20.9,-66.4,-20.9,18.6,-21.0,136.0,-21.0,-54.0,-21.1,31.0,-21.1,116.0,-21.2,148.4,-21.2,-41.6,-21.3,128.4,-21.3,-61.7,-21.3,23.3,-21.4,140.8,-21.5,-49.3,-21.5,120.7,-21.6,-69.3,-21.6,15.6,-21.7,133.1,-21.7,-56.9,-21.7,28.0,-21.8,145.5,-21.9,-44.5,-21.9,125.4,-22.0,-64.6,-22.0,20.4,-22.1,137.8,-22.1,-52.2,-22.2,32.8,-22.2,117.8,-22.3,45.2,-22.4,130.2,-22.4,-59.9,-22.4,25.1,-22.5,142.6,-22.6,-47.5,-22.6,122.5,-22.7,-67.5,-22.7,17.5,-22.8,134.9,-22.8,-55.1,-22.8,29.9,-22.9,114.8,-22.9,147.3,-23.0,-42.7,-23.0,127.2,-23.1,-62.8,-23.1,22.2,-23.2,139.6,-23.2,-50.4,-23.3,34.6,-23.3,119.6,-23.4,14.5,-23.4,47.0,-23.5,132.0,-23.5,-58.1,-23.5,26.9,-23.6,144.4,-23.7,-45.7,-23.7,124.3,-23.8,-65.7,-23.8,19.3,-23.9,136.7,-23.9,-53.3,-24.0,31.7,-24.0,116.6,-24.0,149.1,-24.1,44.1,-24.1,129.0,-24.2,-61.0,-24.2,24.0,-24.3,141.4,-24.4,-48.6,-24.4,121.4,-24.5,-68.6,-24.5,16.3,-24.6,133.8,-24.6,-56.2,-24.7,28.7,-24.7,146.2,-24.8,126.1,-24.9,-63.9,-24.9,21.1,-25.0,138.5,-25.1,-51.5,-25.1,33.5,-25.1,118.5,-25.2,150.9,-25.3,130.9,-25.3,-59.2,-25.3,25.8,-25.4,143.3,-25.5,123.2,-25.6,-66.8,-25.6,18.1,-25.7,135.6,-25.8,-54.4,-25.8,30.5,-25.8,115.5,-25.9,148.0,-26.0,127.9,-26.0,-62.1,-26.0,22.9,-26.1,140.3,-26.2,-49.7,-26.2,120.3,-26.3,-69.8,-26.3,152.7,-26.4,132.7,-26.5,-57.4,-26.5,27.6,-26.6,145.1,-26.7,125.0,-26.7,-65.0,-26.8,20.0,-26.8,137.4,-26.9,-52.6,-26.9,32.4,-26.9,117.3,-27.0,149.8,-27.1,129.7,-27.2,-60.3,-27.2,24.7,-27.3,142.1,-27.4,122.1,-27.4,-68.0,-27.5,17.0,-27.5,134.5,-27.6,-55.6,-27.6,29.4,-27.7,114.4,-27.7,146.9,-27.8,126.8,-27.9,-63.2,-27.9,21.8,-28.0,139.2,-28.0,-50.8,-28.1,119.1,-28.2,151.6,-28.3,131.5,-28.3,-58.5,-28.3,26.5,-28.4,143.9,-28.5,123.9,-28.6,-66.1,-28.6,18.8,-28.7,136.3,-28.8,-53.7,-28.8,31.2,-28.8,116.2,-28.9,148.7,-29.0,128.6,-29.0,-61.4,-29.1,23.6,-29.2,141.0,-29.3,121.0,-29.3,-69.1,-29.4,133.4,-29.5,-56.7,-29.5,28.3,-29.6,145.8,-29.7,125.7,-29.8,-64.3,-29.8,20.6,-29.9,138.1,-29.9,-51.9,-30.0,118.0,-30.0,150.5,-30.2,130.4,-30.2,-59.6,-30.2,25.4,-30.3,142.8,-30.4,122.8,-30.5,-67.3,-30.5,17.7,-30.6,135.2,-30.7,-54.9,-30.7,115.1,-30.8,147.6,-30.9,127.5,-30.9,-62.5,-31.0,22.5,-31.1,139.9,-31.2,119.8,-31.2,-70.2,-31.2,152.3,-31.3,132.2,-31.4,-57.8,-31.4,27.2,-31.5,144.6,-31.6,124.6,-31.7,-65.5,-31.7,19.5,-31.8,137.0,-31.9,-53.1,-31.9,116.9,-32.0,149.4,-32.1,129.3,-32.1,-60.7,-32.2,24.3,-32.3,141.7,-32.4,121.6,-32.4,-68.4,-32.5,134.0,-32.6,-56.0,-32.7,146.4,-32.9,-63.6,-32.9,21.3,-33.0,138.8,-33.1,118.7,-33.2,-71.3,-33.2,151.2,-33.3,-58.9,-33.4,26.1,-33.5,143.5,-33.6,-66.6,-33.8,135.9,-33.8,-54.2,-33.9,115.8,-33.9,148.3,-34.1,-61.8,-34.1,23.1,-34.2,140.6,-34.4,-69.5,-34.6,-57.1,-34.7,145.3,-34.9,-64.8,-34.9,20.2,-35.2,150.1,-35.3,-60.0,-35.5,142.4,-35.6,-67.7,-35.8,-55.3,-36.0,147.1,-36.1,-63.0,-36.2,139.5,-36.4,-70.6,-36.6,-58.2,-36.7,144.2,-36.9,-65.9,-37.2,148.9,-37.4,-61.1,-37.5,141.3,-37.6,173.7,-37.7,-68.8,-38.0,146.0,-38.2,-64.1,-38.5,-71.7,-38.7,-59.3,-38.9,175.6,-39.0,-67.0,-39.5,-62.3,-39.7,172.6,-39.8,-69.9,-40.3,-65.2,-41.2,-68.1,-41.7,-63.4,-41.9,171.5,-42.0,-71.0,-42.5,-66.3,-43.4,-69.2,-43.9,-64.5,-44.1,170.4,-44.3,-72.2,-44.8,-67.4,-45.7,-70.4,-46.3,-65.6,-46.6,-73.3,-47.2,-68.5,-48.1,-71.5,-48.7,-66.7,-49.7,-69.7,-50.7,-72.6,-52.3,-70.8,-54.0,-69.0,0.6,103.1,0.6,104.5,2.0,103.1,2.0,104.5,-2.7,112.3,-2.7,113.7,-1.3,112.3,-1.3,113.7,-1.2,100.8,-1.2,102.2,0.2,100.8,0.2,102.2,-8.2,109.8,-8.2,111.2,-6.8,109.8,-6.8,111.2,-9.1,114.5,-9.1,115.9,-7.7,114.5,-7.7,115.9,-3.7,119.3,-3.7,120.7,-2.3,119.3,-2.3,120.7,-4.7,121.3,-4.7,122.7,-3.3,121.3,-3.3,122.7,11.3,121.3,11.3,122.7,12.7,121.3,12.7,122.7,9.3,123.3,9.3,124.7,10.7,123.3,10.7,124.7,15.3,120.3,15.3,121.7,16.7,120.3,16.7,121.7,6.3,124.3,6.3,125.7,7.7,124.3,7.7,125.7,3.3,101.3,3.3,102.7,4.7,101.3,4.7,102.7,1.8,111.8,1.8,113.2,3.2,111.8,3.2,113.2,23.0,120.3,23.0,121.7,24.4,120.3,24.4,121.7,-9.2,117.3,-9.2,118.7,-7.8,117.3,-7.8,118.7,-9.3,120.3,-9.3,121.7,-7.9,120.3,-7.9,121.7,36.8,22.8,36.8,24.2,38.2,22.8,38.2,24.2,34.6,24.3,34.6,25.7,36.0,24.3,36.0,25.7]), buckets = [[], [], [], []];
+    for (var i = 0; i < D.length; i += 2) {
+      var p = proj(D[i], D[i + 1]); if (p[2] <= 0) continue;
+      buckets[Math.min(3, Math.floor(p[2] * 4))].push(p);
+    }
+    for (var b = 0; b < 4; b++) {
+      ctx.fillStyle = 'rgba(127,227,255,' + (0.28 + b * 0.22) + ')'; ctx.beginPath();
+      var r = 2.2 + b * 0.9;
+      for (var j = 0; j < buckets[b].length; j++) { var q = buckets[b][j]; ctx.moveTo(q[0] + r, q[1]); ctx.arc(q[0], q[1], r, 0, Math.PI * 2); }
+      ctx.fill();
+    }
+    var DB = this.__DB, sel = this.state.sel, t = Date.now() / 1000;
+    Object.keys(DB).forEach(function (k) {
+      if (k === sel) return;
+      var p = proj(DB[k].lat, DB[k].lon); if (p[2] <= 0.05) return;
+      ctx.fillStyle = 'rgba(255,200,87,' + (0.45 + p[2] * 0.5) + ')'; ctx.beginPath(); ctx.arc(p[0], p[1], 5, 0, Math.PI * 2); ctx.fill();
+    });
+    var d = DB[sel];
+    if (d) {
+      var p = proj(d.lat, d.lon);
+      if (p[2] > 0) {
+        for (var k2 = 0; k2 < 2; k2++) {
+          var ph = ((t * 0.8) + k2 * 0.5) % 1;
+          ctx.strokeStyle = 'rgba(255,200,87,' + (1 - ph) + ')'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.arc(p[0], p[1], 10 + ph * 46, 0, Math.PI * 2); ctx.stroke();
+        }
+        ctx.fillStyle = '#FFC857'; ctx.beginPath(); ctx.arc(p[0], p[1], 10, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#070B1A'; ctx.beginPath(); ctx.arc(p[0], p[1], 4, 0, Math.PI * 2); ctx.fill();
+        ctx.font = '700 34px "IBM Plex Sans KR", sans-serif';
+        var label = d.name, tw = ctx.measureText(label).width;
+        var lx = Math.min(W - tw - 40, Math.max(20, p[0] + 26)), ly = p[1] - 30;
+        ctx.fillStyle = 'rgba(7,11,26,0.85)'; ctx.strokeStyle = '#FFC857'; ctx.lineWidth = 2;
+        ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(lx - 14, ly - 34, tw + 28, 50, 12); else ctx.rect(lx - 14, ly - 34, tw + 28, 50);
+        ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#FFFFFF'; ctx.fillText(label, lx, ly + 2);
+      }
+    }
+  }
+  renderVals() {
+    var DB = this.__DB || (this.__DB = window.ATLAS_DB);
+    var FL = {}; Object.keys(DB).forEach(function (k) { FL[k] = DB[k].flag; });
+    function __nav(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} try { sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+    var self = this, st = this.state;
+    var codes = Object.keys(DB);
+    var sel = DB[st.sel] ? st.sel : 'VN', d = DB[sel];
+    function pick(k) { self.setState({ sel: k, q: '' }); self._focus(k); }
+    function diff(o) { var x = o - 9; return x === 0 ? '한국과 같음' : (x < 0 ? '한국보다 ' + (-x) + '시간 늦음' : '한국보다 ' + x + '시간 빠름'); }
+    var q = (st.q || '').trim().toLowerCase();
+    var sug = [];
+    if (q) codes.forEach(function (k) {
+      var c = DB[k], why = '';
+      if ((c.name + c.local + k).toLowerCase().indexOf(q) >= 0) why = c.local;
+      else if ((c.capital + c.cities.map(function (x) { return x.n; }).join(' ')).toLowerCase().indexOf(q) >= 0) why = '도시 · ' + c.capital;
+      else if ((c.landmark).toLowerCase().indexOf(q) >= 0) why = '명소 · ' + c.landmark;
+      else { var dish = c.dishes.filter(function (x) { return (x.n + ' ' + x.d).toLowerCase().indexOf(q) >= 0; })[0]; if (dish) why = '음식 · ' + dish.n; }
+      if (why) sug.push({ k: k, why: why });
+    });
+    sug = sug.slice(0, 6);
+    var quickCodes = ['KR', 'JP', 'VN', 'TH', 'SG', 'FR', 'GB', 'IT', 'US', 'BR', 'AR', 'EG', 'AU'];
+    var itemCount = 13 + d.fest.length + d.etq.length + d.etq2.length + d.taboo.length + 1 + d.dishes.length + d.dining.length + 2 + d.exp.length + d.companies.length + 3 + d.cities.length + 2 + d.tips.length + 5 + 6;
+    var evCur = st.evM || (new Date().getMonth() + 1), evAll = [];
+    Object.keys(DB).forEach(function (k) { var f = DB[k].fare; if (!f) return; var j = 0; f.events.forEach(function (e) { if (e[2] === evCur) evAll.push({ k: k, e: e, j: j++ }); }); });
+    var evKeys = Object.keys(DB); evAll.sort(function (x, y) { return (x.j - y.j) || ((x.k === 'KR') - (y.k === 'KR')) || (((evKeys.indexOf(x.k) * 37 + evCur * 11) % 97) - ((evKeys.indexOf(y.k) * 37 + evCur * 11) % 97)); });
+    var evLim = st.evLimit || 8;
+    var catDefs = [
+      ['overview', '기본 정보', '13개 항목', d.capital + ' · ' + d.lang + ' · ' + d.cur + ' · ' + d.volt, '#7FE3FF'],
+      ['culture', '문화 · 축제', d.fest.length + '개 축제', d.fest.map(function (x) { return x.n; }).join(' · ') + ' · ' + d.popc, '#C9B8FF'],
+      ['culture', '에티켓 · 금기', (d.etq.length + d.etq2.length) + '개 매너 · ' + (d.taboo.length + 1) + '개 금기', d.etq[0], '#FF9B8A'],
+      ['food', '음식 · 미식', 'TOP ' + d.dishes.length + ' + 길거리 음식', d.dishes.map(function (x) { return x.n; }).join(' · '), '#FFC857'],
+      ['economy', '경제 · 무역', '수출 ' + d.exp.length + '품목 · 기업 ' + d.companies.length + '곳', d.exp.join(' · '), '#7FF0B0'],
+      ['economy', '한국과의 관계', 'FTA · 교역', d.fta === '—' ? '한국 기준 화면' : d.fta + ' — ' + d.rel, '#9DB8FF'],
+      ['travel', '여행 가이드', '비자 · 예산 · TOP 5 · 3일 일정', d.tr ? d.tr.visa + ' · 하루 ' + d.tr.budget[1] + ' · ' + d.tr.spots.map(function (x) { return x[0]; }).slice(0, 3).join(' · ') : d.airport + ' · ' + d.flight, '#9BE7FF'],
+      ['tips', '로컬 꿀팁', d.tips.length + 5 + '개 + 커뮤니티', d.tips[0][1], '#FFB070'],
+      ['news', '뉴스 · 안전', '6개 카테고리', '경제·정치·사회·여행안전·문화·기술 뉴스와 여행경보 · 긴급 ' + d.emergency.split(' ')[0], '#FF8A7A']
+    ];
+    var contDefs = [['AS', '아시아', 'ASEAN · RCEP'], ['EU', '유럽', 'EU · EFTA'], ['NA', '북미', 'USMCA'], ['SA', '남미', 'MERCOSUR'], ['AF', '아프리카', 'AU · AfCFTA'], ['OC', '오세아니아', 'PIF']];
+    var __s = this;
+    var __menu = { menuOpen: !!(this.state && this.state.menu), menuAria: (this.state && this.state.menu) ? 'true' : 'false', toggleMenu: function () { __s.setState({ menu: !(__s.state && __s.state.menu) }); } };
+    return Object.assign(__menu, {
+      q: st.q, countryCount: codes.length, globeRef: this._ref,
+      globeLabel: '회전하는 지구본 — 현재 ' + d.name + ' 선택됨',
+      onQ: function (e) { self.setState({ q: e.target.value }); },
+      onSubmit: function (e) { if (e && e.preventDefault) e.preventDefault(); if (sug[0]) pick(sug[0].k); },
+      showSug: !!q, noSug: !!q && sug.length === 0,
+      sug: sug.map(function (x) { var c = DB[x.k]; return { name: c.name, capital: c.capital, cont: c.cont, flag: c.flag, why: x.why, pick: function () { pick(x.k); } }; }),
+      quick: quickCodes.map(function (k) { var on = k === sel; return { name: DB[k].name, flag: DB[k].flag, on: on ? 'true' : 'false', pick: function () { pick(k); },
+        style: 'display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 12px; border-radius: 999px; font: inherit; font-size: 14px; cursor: pointer; ' + (on ? 'border: 1px solid #FFC857; background: #3A2A10; color: #FFD98A; font-weight: 600' : 'border: 1px solid #2A3A6E; background: #0B1228; color: #B4C0E4') }; }),
+      random: function () { var others = codes.filter(function (k) { return k !== sel; }); pick(others[Math.floor(Math.random() * others.length)]); },
+      onDown: function (e) { self.drag = { x: e.clientX, y: e.clientY, lon: self.rot.lon, lat: self.rot.lat }; try { e.target.setPointerCapture(e.pointerId); } catch (x) {} },
+      onMove: function (e) { if (!self.drag) return; var k = 180 / (e.target.clientWidth || 500); self.rot.lon = self.drag.lon - (e.clientX - self.drag.x) * k; self.rot.lat = Math.max(-60, Math.min(60, self.drag.lat + (e.clientY - self.drag.y) * k)); self.tgt = { lon: self.rot.lon, lat: self.rot.lat }; },
+      onUp: function () { self.drag = null; },
+      sel: d, selDiff: diff(d.off),
+      plugText: d.plugOk ? '그대로 사용 가능' : '어댑터 필요 (' + d.plug + '형)',
+      plugStyle: 'color: ' + (d.plugOk ? '#7FF0B0' : '#FF9B8A'),
+      openSel: function () { __nav('atlas.code', sel); __nav('atlas.tab', 'overview'); },
+      cmpSel: function () { __nav('atlas.cmp', sel === 'KR' ? ['KR', 'JP'] : ['KR', sel]); },
+      cmpName: sel === 'KR' ? DB.JP.name : d.name, cmpFlag: sel === 'KR' ? DB.JP.flag : d.flag, krFlag: DB.KR.flag,
+      itemCount: itemCount,
+      cats: catDefs.map(function (c, i) { return { no: '0' + (i + 1), title: c[1], count: c[2], sample: c[3], cta: d.name + ' ' + c[1] + ' 보기',
+        iconStyle: "font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px; padding: 5px 10px; border-radius: 8px; background: rgba(255,255,255,.06); color: " + c[4],
+        open: function () { __nav('atlas.code', sel); __nav('atlas.tab', c[0]); } }; }),
+      tickerItems: ['US', 'JP', 'VN', 'GB', 'EU', 'CN'].map(function (k) { return { k: (k === 'EU' ? 'EUR' : (DB[k] ? DB[k].curCode : k)) + '/KRW', v: '≈ ' + ({ US: '1,390', JP: '9.4', VN: '0.055', GB: '1,850', EU: '1,600', CN: '192' })[k] + '원', style: 'color: #E8EEFF' }; })
+        .concat([{ k: d.capital + ' 날씨', v: Math.round(27 - 0.5 * Math.max(0, Math.abs(d.lat) - 12) + Math.cos((new Date().getMonth() - 6) / 12 * 2 * Math.PI) * (d.lat < 0 ? -1 : 1) * Math.min(14, 0.32 * Math.abs(d.lat))) + '°C', style: 'color: #E8EEFF' }, { k: d.name + ' 여행경보', v: '0404.go.kr 확인', style: 'color: #FFC857' }]),
+      evTitle: (st.evM || (new Date().getMonth() + 1)) + '월 세계 축제 · 행사',
+      evSub: '98개국의 대표 축제·음악·스포츠 행사를 달별로 모았어요. 날짜는 해마다 달라질 수 있어요.',
+      evMonths: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(function (m) { var cur = st.evM || (new Date().getMonth() + 1); var on = m === cur; return { label: m + '월', on: on ? 'true' : 'false', pick: function () { self.setState({ evM: m, evLimit: 8 }); }, style: 'flex: none; height: 40px; padding: 0 16px; border-radius: 999px; font: inherit; font-size: 14px; cursor: pointer; ' + (on ? 'border: 1px solid #FFC857; background: #3A2A10; color: #FFD98A; font-weight: 700' : 'border: 1px solid #2A3A6E; background: transparent; color: #B4C0E4') }; }),
+      evList: evAll.slice(0, evLim).map(function (x) { var d = DB[x.k]; return { country: d.name, flag: d.flag, photo: d.photo, name: x.e[0], when: x.e[1], desc: x.e[3], open: function () { __nav('atlas.code', x.k); __nav('atlas.tab', 'travel'); } }; }),
+      evMore: evAll.length > evLim, evMoreLabel: '이 달의 행사 더 보기 (' + (evAll.length - evLim) + '개)', evShowMore: function () { self.setState({ evLimit: evLim + 8 }); },
+      popular: ['VN', 'JP', 'FR', 'TH', 'GR', 'PE', 'CH', 'TR'].map(function (k) { var c = DB[k]; return { name: c.name, capital: c.capital, photo: c.photo, flag: c.flag, landmark: c.landmark, diff: diff(c.off), open: function () { __nav('atlas.code', k); __nav('atlas.tab', 'overview'); } }; }),
+      conts: contDefs.map(function (c) { var ks = codes.filter(function (k) { return DB[k].cc === c[0]; }); return { name: c[1], bloc: c[2], n: ks.length, flags: ks.slice(0, 5).map(function (k) { return DB[k].flag; }), open: function () { __nav('atlas.cont', c[0]); } }; })
+    });
+  }
+}
+
+mountAtlas(Component);
+(function () { if (!window.fetch) return; fetch('data/live.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { if (!j || !j.countries) return; var D = window.ATLAS_DB, up = String(j.updated || '').slice(0, 10); Object.keys(j.countries).forEach(function (k) { var L = j.countries[k], d = D[k]; if (!d || k === 'KR') return; d.tr = d.tr || {}; if (L.alert) d.tr.alert = L.alert; if (typeof L.alertLevel === 'number') d.tr.alertLevel = L.alertLevel; if (L.visa) { d.tr.visaLive = L.visa; d.liveVisa = true; } d.liveUpdated = up; }); if (window.__atlas && window.__atlas.__render) window.__atlas.__render(); }).catch(function () {}); })();
+</script>
+</body>
+</html>

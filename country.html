@@ -109,7 +109,7 @@ textarea::placeholder{color:#7F8DBB}
           <div style="display: flex; flex-wrap: wrap; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 14px; justify-content: flex-end">
             <span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(14,21,48,.88); border: 1px solid #2A3A6E"><span class="live" style="width: 7px; height: 7px; border-radius: 50%; background: #FFC857"></span>현지 {{clock}}</span>
             <span style="padding: 10px 14px; border-radius: 10px; background: rgba(14,21,48,.88); border: 1px solid #2A3A6E">{{c.capital}} {{temp}}°C</span>
-            <span style="padding: 10px 14px; border-radius: 10px; background: rgba(14,21,48,.88); border: 1px solid #2A3A6E">1 {{c.curCode}} ≈ {{fx}}</span>
+            <span style="padding: 10px 14px; border-radius: 10px; background: rgba(14,21,48,.88); border: 1px solid #2A3A6E">1 {{c.curCode}} ≈ {{fx}} <span style="font-size: 11px; color: #8C9BC7">10/19</span></span>
             <span style="{{alertChipStyle}}">{{alertChip}}</span>
           </div>
           <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end">
@@ -329,7 +329,7 @@ textarea::placeholder{color:#7F8DBB}
               <div style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52"><div style="font-size: 13px; color: #FFC857">선물 예절</div><div style="font-size: 15px; margin-top: 8px; line-height: 1.6">{{c.gift}}</div></div>
               <div style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52"><div style="font-size: 13px; color: #C9B8FF">옷차림</div><div style="font-size: 15px; margin-top: 8px; line-height: 1.6">{{c.dress}}</div></div>
             </div>
-            <section style="padding: 22px 24px; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center"><span style="font-size: 13px; color: #8C9BC7">대중문화 · 대표 콘텐츠</span><b style="font-size: 17px">{{c.popc}}</b><span style="font-size: 13px; color: #8C9BC7; margin-left: auto">상세 큐레이션은 CMS 연동</span></section>
+            <section style="padding: 22px 24px; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center"><span style="font-size: 13px; color: #8C9BC7">대중문화 · 대표 콘텐츠</span><b style="font-size: 17px">{{c.popc}}</b></section>
           </div>
         </template>
 
@@ -354,7 +354,7 @@ textarea::placeholder{color:#7F8DBB}
                 <span style="font-size: 13px; color: #8C9BC7">대표 음료</span><b style="font-size: 17px">{{c.drink}}</b>
                 <span style="font-size: 13px; color: #8C9BC7; margin-top: 8px">팁 문화</span><b style="font-size: 17px">{{c.tip}}</b>
               </div>
-              <div style="padding: 20px; border-radius: 16px; background: #2A200C; border: 1px solid #5A4818; display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #FFD98A">길거리 음식</span><b style="font-size: 17px">{{c.street}}</b><span style="font-size: 13px; color: #C9B98A; margin-top: 6px">채식 · 할랄 정보는 CMS 연동 예정</span></div>
+              <div style="padding: 20px; border-radius: 16px; background: #2A200C; border: 1px solid #5A4818; display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #FFD98A">길거리 음식</span><b style="font-size: 17px">{{c.street}}</b><span style="font-size: 13px; color: #C9B98A; margin-top: 6px">채식 식당은 HappyCow, 할랄 식당은 Zabihah 앱에서 찾을 수 있어요</span></div>
             </div>
           </div>
         </template>
@@ -379,14 +379,22 @@ textarea::placeholder{color:#7F8DBB}
               <div style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52"><div style="font-size: 13px; color: #8C9BC7">현지 업무 시간 · 미팅 잡기</div><div style="font-size: 16px; font-weight: 600; margin-top: 8px; line-height: 1.6">{{c.work}}</div><div style="font-size: 13px; color: #9AA8D4; margin-top: 6px">한국 오전 10시 = 현지 {{meetLocal}}</div></div>
             </div>
             <div style="padding: 24px; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52">
-              <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 18px"><h2 style="margin: 0; font-size: 19px">1인당 GDP · 성장률 추이</h2><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9AA8D4">World Bank API 연동 영역</span></div>
-              <svg viewBox="0 0 600 180" role="img" aria-label="데이터 연동 전 차트 자리" style="width: 100%; height: auto; display: block">
-                <line x1="40" y1="150" x2="590" y2="150" stroke="#2A3A6E"></line>
-                <line x1="40" y1="100" x2="590" y2="100" stroke="#1A2550" stroke-dasharray="4 6"></line>
-                <line x1="40" y1="50" x2="590" y2="50" stroke="#1A2550" stroke-dasharray="4 6"></line>
-                <path d="M60 132 L160 124 L260 112 L360 104 L460 88 L570 74" fill="none" stroke="#3D5AA8" stroke-width="3" stroke-dasharray="8 8"></path>
-                <text x="315" y="92" text-anchor="middle" fill="#9AA8D4" font-size="14" font-family="IBM Plex Sans KR">[연도별 실제 수치가 들어갈 자리]</text>
+              <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 6px"><h2 style="margin: 0; font-size: 19px">1인당 GDP · 경제성장률 추이</h2><span style="font-size: 12px; color: #9AA8D4">출처: {{gd.src}} · 미국 달러 기준</span></div>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px 22px; margin-bottom: 14px; font-size: 14px; color: #B4C0E4"><span>최근 1인당 GDP <b style="color: #7FE3FF; font-size: 18px">{{gd.lastTxt}}</b></span><span>한국 대비 <b style="color: #FFD98A">{{gd.vsKr}}</b></span></div>
+              <svg viewBox="0 0 600 190" role="img" aria-label="{{gd.aria}}" style="width: 100%; height: auto; display: block">
+                <line x1="20" y1="160" x2="580" y2="160" stroke="#2A3A6E"></line>
+                <line x1="20" y1="100" x2="580" y2="100" stroke="#1A2550" stroke-dasharray="4 6"></line>
+                <line x1="20" y1="40" x2="580" y2="40" stroke="#1A2550" stroke-dasharray="4 6"></line>
+                <path d="{{gd.area}}" fill="rgba(127,227,255,.10)"></path>
+                <path d="{{gd.path}}" fill="none" stroke="#7FE3FF" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path>
+                <circle cx="{{gd.x0}}" cy="{{gd.y0}}" r="{{gd.r0}}" fill="#7FE3FF" stroke="#0E1530" stroke-width="3"></circle><circle cx="{{gd.x1}}" cy="{{gd.y1}}" r="{{gd.r1}}" fill="#7FE3FF" stroke="#0E1530" stroke-width="3"></circle><circle cx="{{gd.x2}}" cy="{{gd.y2}}" r="{{gd.r2}}" fill="#7FE3FF" stroke="#0E1530" stroke-width="3"></circle><circle cx="{{gd.x3}}" cy="{{gd.y3}}" r="{{gd.r3}}" fill="#7FE3FF" stroke="#0E1530" stroke-width="3"></circle><circle cx="{{gd.x4}}" cy="{{gd.y4}}" r="{{gd.r4}}" fill="#7FE3FF" stroke="#0E1530" stroke-width="3"></circle><circle cx="{{gd.x5}}" cy="{{gd.y5}}" r="{{gd.r5}}" fill="#7FE3FF" stroke="#0E1530" stroke-width="3"></circle><circle cx="{{gd.x6}}" cy="{{gd.y6}}" r="{{gd.r6}}" fill="#7FE3FF" stroke="#0E1530" stroke-width="3"></circle><text x="{{gd.x0}}" y="{{gd.ty0}}" text-anchor="middle" fill="#E8EEFF" font-size="18" font-family="IBM Plex Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-weight="600">{{gd.v0}}</text><text x="{{gd.x1}}" y="{{gd.ty1}}" text-anchor="middle" fill="#E8EEFF" font-size="18" font-family="IBM Plex Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-weight="600">{{gd.v1}}</text><text x="{{gd.x2}}" y="{{gd.ty2}}" text-anchor="middle" fill="#E8EEFF" font-size="18" font-family="IBM Plex Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-weight="600">{{gd.v2}}</text><text x="{{gd.x3}}" y="{{gd.ty3}}" text-anchor="middle" fill="#E8EEFF" font-size="18" font-family="IBM Plex Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-weight="600">{{gd.v3}}</text><text x="{{gd.x4}}" y="{{gd.ty4}}" text-anchor="middle" fill="#E8EEFF" font-size="18" font-family="IBM Plex Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-weight="600">{{gd.v4}}</text><text x="{{gd.x5}}" y="{{gd.ty5}}" text-anchor="middle" fill="#E8EEFF" font-size="18" font-family="IBM Plex Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-weight="600">{{gd.v5}}</text><text x="{{gd.x6}}" y="{{gd.ty6}}" text-anchor="middle" fill="#E8EEFF" font-size="18" font-family="IBM Plex Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-weight="600">{{gd.v6}}</text>
               </svg>
+              <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; margin-top: 6px; text-align: center">
+                <template data-for="{{gd.cols}}" data-as="y">
+                  <div style="padding: 8px 2px; border-radius: 10px; background: #0A1024"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8C9BC7">{{y.y}}</div><div style="{{y.gs}}">{{y.g}}</div></div>
+                </template>
+              </div>
+              <div style="font-size: 12px; color: #8C9BC7; margin-top: 10px">아래 칸은 연도별 실질 경제성장률(%)이에요. 최신 연도 값은 추정치가 섞여 있어 이후 수정될 수 있어요.</div>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px">
               <div style="padding: 18px; border-radius: 14px; border: 1px dashed #2A3A6E"><div style="font-size: 13px; color: #8C9BC7">한국과의 경제 관계</div><div style="font-size: 15px; margin-top: 6px; color: #E8EEFF; line-height: 1.6">{{c.rel}}</div></div>
@@ -433,44 +441,24 @@ textarea::placeholder{color:#7F8DBB}
               <div style="padding: 16px 18px; border-radius: 14px; background: #2A1414; border: 1px solid #5A2626"><div style="font-size: 12px; color: #FFB4B4; font-weight: 600">현지 긴급 전화</div><div style="font-size: 15px; margin-top: 6px; color: #F5DCDC">{{c.emergency}}</div></div>
               <div style="padding: 16px 18px; border-radius: 14px; background: #0C1E33; border: 1px solid #1E4A6A"><div style="font-size: 12px; color: #7FE3FF; font-weight: 600">현지 시각 · 날씨</div><div style="font-size: 15px; margin-top: 6px">{{clock}} · {{c.capital}} {{temp}}°C</div></div>
             </div>
-            <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
-              <template data-for="{{newsChips}}" data-as="k">
-                <button onClick="{{k.pick}}" aria-pressed="{{k.on}}" style="{{k.style}}"><span style="{{k.dot}}"></span>{{k.name}}</button>
+            <div style="display: flex; flex-direction: column; gap: 4px"><h2 style="margin: 0; font-size: 19px">{{c.name}} 최신 뉴스 바로가기</h2><span style="font-size: 14px; color: #8C9BC7">분야를 누르면 구글 뉴스에서 지금 올라온 실제 기사를 한국어로 검색해 보여줘요. (새 창)</span></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+              <template data-for="{{newsLinks}}" data-as="n">
+                <section style="{{n.cardStyle}}">
+                  <div style="display: flex; align-items: center; gap: 10px"><span style="{{n.badge}}">{{n.short}}</span><b style="font-size: 16px">{{n.name}}</b></div>
+                  <span style="font-size: 13px; color: #8C9BC7">{{n.hint}}</span>
+                  <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                    <a href="{{n.url}}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; height: 38px; padding: 0 14px; border-radius: 10px; background: #13224A; color: #E8EEFF; text-decoration: none; font-size: 14px">최신 기사 보기 ↗</a>
+                    <a href="{{n.urlKr}}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; height: 38px; padding: 0 14px; border-radius: 10px; border: 1px dashed #3D5AA8; color: #B4C0E4; text-decoration: none; font-size: 14px">한국 관련만 ↗</a>
+                  </div>
+                </section>
               </template>
-              <button onClick="{{toggleKr}}" aria-pressed="{{krAria}}" style="{{krStyle}}">{{krLabel}}</button>
             </div>
-            <template data-if="{{newsAll}}">
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px">
-                <template data-for="{{newsCards}}" data-as="n">
-                  <section style="{{n.cardStyle}}">
-                    <div style="display: flex; align-items: center; gap: 10px">
-                      <span style="{{n.badge}}">{{n.short}}</span>
-                      <b style="font-size: 16px; flex: 1">{{n.name}}</b>
-                      <button onClick="{{n.pick}}" style="height: 36px; padding: 0 10px; border: 0; border-radius: 8px; background: rgba(255,255,255,.05); color: #B4C0E4; font: inherit; font-size: 13px; cursor: pointer">더 보기</button>
-                    </div>
-                    <a href="#" style="display: flex; gap: 12px; text-decoration: none; color: #E8EEFF">
-                      <img loading="lazy" decoding="async" src="{{c.photo}}" alt="" style="width: 92px; height: 66px; flex: none; border-radius: 10px; object-fit: cover; opacity: .8">
-                      <span style="display: flex; flex-direction: column; gap: 4px"><b style="font-size: 15px; line-height: 1.45">{{n.h1}}</b><span style="font-size: 12px; color: #8C9BC7">{{n.meta}}{{n.krNote}}</span></span>
-                    </a>
-                    <div style="display: flex; flex-direction: column; gap: 8px; padding-top: 10px; border-top: 1px solid #1A2550">
-                      <span style="display: flex; gap: 8px; align-items: center; font-size: 14px; color: #B4C0E4"><span style="{{n.dot}}"></span>{{n.h2}}</span>
-                      <span style="display: flex; gap: 8px; align-items: center; font-size: 14px; color: #B4C0E4"><span style="{{n.dot}}"></span>{{n.h3}}</span>
-                    </div>
-                  </section>
-                </template>
-              </div>
-            </template>
-            <template data-if="{{newsOne}}">
-              <div style="display: flex; flex-direction: column; gap: 10px">
-                <template data-for="{{newsList}}" data-as="n">
-                  <a href="#" style="display: flex; gap: 16px; padding: 14px; border-radius: 14px; background: #0E1530; border: 1px solid #1E2A52; text-decoration: none; color: #E8EEFF">
-                    <img loading="lazy" decoding="async" src="{{c.photo}}" alt="" style="width: 120px; height: 80px; flex: none; border-radius: 10px; object-fit: cover; opacity: .75">
-                    <span style="display: flex; flex-direction: column; gap: 6px"><span style="{{n.tag}}">{{n.cat}}</span><b style="font-size: 16px">{{n.t}}</b><span style="font-size: 13px; color: #8C9BC7">{{n.meta}}</span></span>
-                  </a>
-                </template>
-              </div>
-            </template>
-            <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #8C9BC7">위 기사 제목은 분야별 예시예요. 실제 뉴스 연동 시 GNews · NewsAPI에서 국가 코드와 카테고리별로 기사를 자동 수집하고, 외교부 해외안전여행 API로 경보를 함께 보여줘요.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px">
+              <a href="https://www.0404.go.kr" target="_blank" rel="noopener" style="padding: 16px 18px; border-radius: 14px; background: #0E1530; border: 1px solid #1E2A52; text-decoration: none; color: #E8EEFF"><b style="font-size: 15px">외교부 해외안전여행 ↗</b><div style="font-size: 13px; color: #8C9BC7; margin-top: 4px">국가별 안전공지 · 여행경보 지역 지도</div></a>
+              <a href="https://dream.kotra.or.kr" target="_blank" rel="noopener" style="padding: 16px 18px; border-radius: 14px; background: #0E1530; border: 1px solid #1E2A52; text-decoration: none; color: #E8EEFF"><b style="font-size: 15px">KOTRA 해외시장뉴스 ↗</b><div style="font-size: 13px; color: #8C9BC7; margin-top: 4px">무역관이 쓰는 시장 동향 · 수출 정보</div></a>
+              <a href="{{newsGov}}" target="_blank" rel="noopener" style="padding: 16px 18px; border-radius: 14px; background: #0E1530; border: 1px solid #1E2A52; text-decoration: none; color: #E8EEFF"><b style="font-size: 15px">주재국 대사관 소식 ↗</b><div style="font-size: 13px; color: #8C9BC7; margin-top: 4px">현지 공관 공지를 구글에서 검색</div></a>
+            </div>
           </div>
         </template>
       </div>
@@ -508,7 +496,7 @@ textarea::placeholder{color:#7F8DBB}
       </div>
     </section>
   </main>
-  <footer id="site-footer" style="border-top: 1px solid #141E3E; margin-top: 40px"><div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; gap: 14px; font-size: 13px; line-height: 1.7; color: #8C9BC7"><div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #E8EEFF; letter-spacing: .06em">ATLAS HUB · 글로벌 아틀라스</span><span style="display: flex; flex-wrap: wrap; gap: 16px"><a href="credits.html" style="color: #B4C0E4">사진 · 데이터 출처</a><a href="https://www.0404.go.kr" target="_blank" rel="noopener" style="color: #B4C0E4">외교부 해외안전여행</a><span>영사콜센터 +82-2-3210-0404</span></span></div><p style="margin: 0">정보 기준일 2026년 10월 · 비자·입국 조건과 여행경보는 수시로 바뀌어요. 이 사이트의 정보는 참고용이며, 출국 전 외교부 해외안전여행과 해당국 대사관에서 반드시 최신 정보를 확인하세요. 항공권 가격·환율·날씨·뉴스는 예시 또는 근사치예요.</p><p style="margin: 0">국가 사진: Wikimedia Commons(CC 라이선스, 사진마다 작가 표기) · 일부 AI 생성 이미지(표기됨) · 국기: 단순화한 SVG · 폰트: Google Fonts</p></div></footer>
+  <footer id="site-footer" style="border-top: 1px solid #141E3E; margin-top: 40px"><div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; gap: 14px; font-size: 13px; line-height: 1.7; color: #8C9BC7"><div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #E8EEFF; letter-spacing: .06em">ATLAS HUB · 글로벌 아틀라스</span><span style="display: flex; flex-wrap: wrap; gap: 16px"><a href="credits.html" style="color: #B4C0E4">사진 · 데이터 출처</a><a href="https://www.0404.go.kr" target="_blank" rel="noopener" style="color: #B4C0E4">외교부 해외안전여행</a><span>영사콜센터 +82-2-3210-0404</span></span></div><p style="margin: 0">정보 기준일 2026년 10월 · 비자·입국 조건과 여행경보는 수시로 바뀌어요. 이 사이트의 정보는 참고용이며, 출국 전 외교부 해외안전여행과 해당국 대사관에서 반드시 최신 정보를 확인하세요. 환율은 2026년 10월 19일 기준, 1인당 GDP는 World Bank·IMF 자료이고, 항공권 가격·날씨는 근사치예요.</p><p style="margin: 0">국가 사진: Wikimedia Commons(CC 라이선스, 사진마다 작가 표기) · 일부 AI 생성 이미지(표기됨) · 국기: 단순화한 SVG · 폰트: Google Fonts</p></div></footer>
   <nav class="tabbar" aria-label="하단 메뉴" style="position: sticky; bottom: 0; z-index: 30; justify-content: space-around; padding: 8px 6px 14px; background: rgba(10,16,36,.97); border-top: 1px solid #1E2A52"><a href="index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"></path></svg>홈</a><a href="continent.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"></path></svg>대륙</a><a href="countries.html" aria-current="page" style="color: #7FE3FF; background: #13224A"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="4" width="7" height="7"></rect><rect x="13" y="4" width="7" height="7"></rect><rect x="4" y="13" width="7" height="7"></rect><rect x="13" y="13" width="7" height="7"></rect></svg>국가</a><a href="compare.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg>비교</a><a href="community.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path><path d="M8 9h8M8 12h5"></path></svg>꿀팁</a></nav>
 </div>
 </script>
@@ -721,7 +709,7 @@ class Component extends DCLogic {
       prev: function () { go(order[(idx - 1 + order.length) % order.length]); },
       next: function () { go(order[(idx + 1) % order.length]); },
       temp: (function () { var L = Math.abs(c.lat), m = new Date().getMonth() + 1, sea = Math.cos((m - 7) / 12 * 2 * Math.PI) * (c.lat < 0 ? -1 : 1); return Math.round(27 - 0.5 * Math.max(0, L - 12) + sea * Math.min(14, 0.32 * L)); })(),
-      fx: (function () { var FXR = { USD: '1,390', JPY: '9.4', VND: '0.055', GBP: '1,850', EUR: '1,600', CNY: '192', THB: '41', SGD: '1,050', AUD: '910', CAD: '1,010', CHF: '1,700', TWD: '43', HKD: '178', INR: '16', MYR: '310', PHP: '24', IDR: '0.085', NZD: '830', SEK: '140', AED: '378', SAR: '370', TRY: '35', MXN: '74', BRL: '250' }; return FXR[c.curCode] ? FXR[c.curCode] + '원' : '실시간 연동'; })(),
+      fx: (function () { var FXR = {USD: '1,334', JPY: '8.4', VND: '0.052', GBP: '1,777', EUR: '1,497', CNY: '199', THB: '39.9', SGD: '1,042', AUD: '929', CAD: '944', CHF: '1,618', TWD: '41.1', HKD: '170', INR: '14.0', MYR: '327', PHP: '21.1', IDR: '0.074', AED: '363', SAR: '356', SEK: '134', NZD: '754', MXN: '72.3', BRL: '263', TRY: '26.9', PEN: '388', EGP: '24.9', KES: '10.3', ZAR: '81.0', MAD: '137', MNT: '0.370', PLN: '343', CZK: '61.5', ARS: '0.881', CLP: '1.4', COP: '0.420', UYU: '33.2', PYG: '0.233', BOB: '114', VES: '1.5', GYD: '6.4', SRD: '35.2', CUP: '55.6', CRC: '2.9', DKK: '201', NOK: '141', ISK: '11.0', HUF: '4.1', RON: '281', RSD: '12.8', UAH: '29.7', ALL: '16.4', GTQ: '175', DOP: '21.8', JMD: '8.4', KHR: '0.329', LAK: '0.060', MMK: '0.636', NPR: '8.8', LKR: '4.0', BDT: '10.8', PKR: '4.8', KZT: '2.9', UZS: '0.109', QAR: '366', ILS: '429', JOD: '1,881', NGN: '1.0', ETB: '8.3', TZS: '0.507', GHS: '114', XOF: '2.3', TND: '446', RWF: '0.904', FJD: '588', PGK: '294', BGN: '765', KRW: '1'}; return FXR[c.curCode] ? FXR[c.curCode] + '원' : '—'; })(),
       clock: (hh < 10 ? '0' : '') + hh + ':' + (mm < 10 ? '0' : '') + mm,
       diff: df === 0 ? '한국과 같음' : (df < 0 ? '한국보다 ' + (-df) + '시간 늦음' : '한국보다 ' + df + '시간 빠름'),
       plugText: c.plugOk ? '그대로 사용 가능' : '어댑터 필요',
@@ -776,6 +764,20 @@ class Component extends DCLogic {
       trSeasons: ['봄 (3~5월)', '여름 (6~8월)', '가을 (9~11월)', '겨울 (12~2월)'].map(function (k, i) { var on = i === curS; return { k: k, now: on ? ' · 지금' : '', v: String(tr.seasons[i] || '').replace(/^(봄|여름|가을|겨울)\s*:\s*/, ''), style: 'padding: 14px 16px; border-radius: 12px; display: flex; flex-direction: column; gap: 6px; background: ' + (on ? '#1A2752' : '#0A1024') + '; border: 1px solid ' + (on ? '#FFC857' : '#1E2A52') }; }),
       taboos: c.taboo.concat([c.taboo2]),
       dishes: c.dishes.map(function (dd, i) { return { n: dd.n, d: dd.d, rank: i + 1, tag: i === 0 ? '대표 메뉴' : (i < 3 ? '인기' : '추천'), tagStyle: 'font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.06); color: ' + tagCols[i] }; }),
+      newsLinks: NC.map(function (k) { var KW = { econ: '경제', pol: '외교 정치', soc: '사회', safe: '안전 여행', cult: '축제 문화', tech: 'IT 기술' }; var G = function (q) { return 'https://news.google.com/search?q=' + encodeURIComponent(q) + '&hl=ko&gl=KR&ceid=KR%3Ako'; }; return { name: k.name, short: k.short, hint: k.hint, url: G(c.name + ' ' + KW[k.key]), urlKr: G(c.name + ' 한국 ' + KW[k.key]),
+        badge: 'display: inline-flex; align-items: center; justify-content: center; min-width: 34px; height: 30px; padding: 0 8px; border-radius: 8px; font-size: 12px; font-weight: 700; background: rgba(255,255,255,.06); color: ' + k.col,
+        cardStyle: 'padding: 18px; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52; border-top: 3px solid ' + k.col + '; display: flex; flex-direction: column; gap: 10px' }; }),
+      newsGov: 'https://www.google.com/search?q=' + encodeURIComponent('주' + c.name + ' 대한민국 대사관 공지'),
+      gd: (function () { var g = c.gdp, kr = (DB.KR && DB.KR.gdp) || null, o = { cols: [], path: '', area: '', src: '-', lastTxt: '자료 없음', vsKr: '-', aria: '1인당 GDP 차트' }; if (!g) { for (var z = 0; z < 7; z++) { o['x' + z] = 0; o['y' + z] = 0; o['r' + z] = 0; o['ty' + z] = 0; o['v' + z] = ''; } return o; }
+        var vs = g.p.filter(function (v) { return v != null; }), mx = Math.max.apply(null, vs), mn = Math.min.apply(null, vs), lo = mn * 0.85, hi = mx * 1.05, pts = [];
+        g.p.forEach(function (v, i) { var x = 50 + i * 83.3; o['x' + i] = x.toFixed(1); if (v == null) { o['y' + i] = 0; o['r' + i] = 0; o['ty' + i] = -20; o['v' + i] = ''; return; } var y = 160 - (v - lo) / (hi - lo) * 115; o['y' + i] = y.toFixed(1); o['r' + i] = 5; o['ty' + i] = (y - 14).toFixed(1); o['v' + i] = v >= 10000 ? (v / 1000).toFixed(v >= 100000 ? 0 : 1) + 'k' : '$' + v.toLocaleString('en-US'); pts.push([x, y]); });
+        o.path = pts.map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ');
+        o.area = pts.length ? o.path + ' L' + pts[pts.length - 1][0].toFixed(1) + ' 160 L' + pts[0][0].toFixed(1) + ' 160 Z' : '';
+        o.cols = g.years.map(function (y, i) { var v = g.g[i]; return { y: y, g: v == null ? '—' : (v > 0 ? '+' : '') + v + '%', gs: 'font-size: 14px; font-weight: 700; margin-top: 2px; color: ' + (v == null ? '#5B6478' : v < 0 ? '#FF9B8A' : '#7FF0B0') }; });
+        o.src = g.src === 'IMF WEO' ? 'IMF 세계경제전망 (2026.10 조회)' : 'World Bank 세계개발지표 (2026.10 조회)';
+        o.lastTxt = '$' + g.last.toLocaleString('en-US') + ' (' + g.lastY + '년)';
+        o.vsKr = c.code === 'KR' ? '기준 국가' : kr ? (g.last / kr.last * 100).toFixed(0) + '%' : '-';
+        o.aria = c.name + ' 1인당 GDP ' + g.years[0] + '–' + g.lastY + '년 추이, 최근 ' + o.lastTxt; return o; })(),
       newsAll: st.newsCat === 'all', newsOne: st.newsCat !== 'all',
       newsChips: [{ key: 'all', name: '전체', col: '#E8EEFF' }].concat(NC).map(function (k) { var on = st.newsCat === k.key; return { name: k.name, on: on ? 'true' : 'false', pick: function () { self.setState({ newsCat: k.key }); },
         dot: 'display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; background: ' + k.col,

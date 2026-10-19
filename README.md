@@ -15,7 +15,10 @@
 | `credits.html` | 사진·데이터 출처 페이지 (모든 페이지 하단에서 연결) |
 | `js/data.js` | 98개국 데이터 전체 (`window.ATLAS_DB`) — 내용 수정은 여기서 |
 | `js/runtime.js` | 화면을 그리고 클릭·입력을 처리하는 작은 런타임 (외부 라이브러리 없음) |
-| `assets/` | 국기 SVG, 국가 사진, 지도·지구본 이미지, 공유용 이미지(`og-image.jpg`) |
+| `photos/` | 국가 대표 사진 98장 (WebP) |
+| `flags/` | 국기 98개 (SVG) |
+| `etc/` | 지도 이미지, 공유용 이미지(`og-image.jpg`) |
+| `data/live.json` | 자동 업데이트 결과가 저장되는 파일 (처음엔 빈 값) |
 | `CREDITS.md` | 사진·폰트 출처와 라이선스 |
 | `DATA_CHECK_2026-10.md` | 2026년 10월 데이터 검증 보고서 (바뀐 항목과 근거 링크) |
 | `scripts/`, `.github/workflows/` | 외교부 데이터 자동 업데이트 (매일 06시) — `AUTO_UPDATE_GUIDE.md` 참고 |
@@ -49,11 +52,20 @@ python3 -m http.server 8000
 2. 저장소 Settings → Pages → Branch를 `main` / `(root)`로 지정 → Save
 3. `https://아이디.github.io/저장소이름/` 으로 열려요
 
+
+## GitHub 웹사이트에서 올릴 때 (파일 수 제한)
+GitHub 웹 업로드는 **한 번에 100개 파일**까지만 돼요. 폴더별로 나눠 올리면 돼요.
+1. **Add file → Upload files** → `photos`, `flags`, `etc`, `.github`를 뺀 나머지 전부(html·md 파일, `js`, `data`, `scripts` 폴더 등)를 끌어다 놓고 Commit
+2. 다시 **Upload files** → `photos` 폴더 → Commit (98개)
+3. 같은 방법으로 `flags` 폴더(98개), `etc` 폴더(3개)
+4. 숨김 폴더 `.github`는 **Add file → Create new file** → 이름 칸에 `.github/workflows/update-live.yml` → 내용 붙여넣기 → Commit
+- `photos`, `flags`, `etc`는 저장소 **맨 위(루트)**에 있어야 해요.
+
 배포 후 `robots.txt`, `sitemap.xml`의 `YOUR-DOMAIN`을 실제 주소로 바꿔 다시 올려 주세요.
 
 ## 데이터 고치는 법
 - 나라 정보는 전부 `js/data.js` 한 파일에 있어요. 예: `"VN":{ ... "visa":"..." }` 부분을 찾아 고치면 모든 페이지에 반영돼요.
-- 사진을 바꾸려면 `assets/`에 새 이미지를 넣고 `data.js`에서 해당 나라의 `"photo"` 경로를 바꾸세요.
+- 사진을 바꾸려면 `photos/`에 새 이미지를 넣고 `data.js`에서 해당 나라의 `"photo"` 경로를 바꾸세요.
 - 파일은 UTF-8로 저장해야 한글이 깨지지 않아요.
 
 ## 알아둘 제한 사항

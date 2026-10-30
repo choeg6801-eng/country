@@ -18,7 +18,7 @@ Environment overrides (optional):
   DATA_GO_KR_KEY          인증키 (Decoding key preferred; an Encoding key containing '%' is also accepted)
   MOFA_ALARM_URL          default https://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2
   MOFA_VISA_URL           default https://apis.data.go.kr/1262000/EntranceVisaService2/getEntranceVisaList2
-  MOFA_SPECIAL_URL        default https://apis.data.go.kr/1262000/SptravelWarningService2/getSptravelWarningList2
+  MOFA_SPECIAL_URL        default off (2026-10 확인 결과 기존 주소 폐기)
                           (set to "off" to skip the special-advisory API)
 """
 import argparse
@@ -47,8 +47,9 @@ APIS = {
     or "https://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2",
     "visa": os.environ.get("MOFA_VISA_URL")
     or "https://apis.data.go.kr/1262000/EntranceVisaService2/getEntranceVisaList2",
-    "special": os.environ.get("MOFA_SPECIAL_URL")
-    or "https://apis.data.go.kr/1262000/SptravelWarningService2/getSptravelWarningList2",
+    # 2026-10-20 확인: SptravelWarningService2 주소는 "서비스 없음(폐기)" 응답 → 기본값은 사용 안 함("off").
+    # 새 주소를 찾으면 저장소 Variables 에 MOFA_SPECIAL_URL 로 넣으면 다시 켜져요.
+    "special": os.environ.get("MOFA_SPECIAL_URL") or "off",
 }
 
 # Fields each API "owns" inside a country record (used for merge-on-failure).

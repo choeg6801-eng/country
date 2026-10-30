@@ -8,7 +8,9 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="국가 상세 · ATLAS HUB">
 <meta property="og:description" content="지구본에서 나라를 고르면 비자·항공권·예산·명소·축제·에티켓·경제·뉴스까지 한 번에. 98개국 여행·문화·무역 정보 허브.">
-<meta property="og:image" content="etc/og-image.jpg">
+<meta property="og:image" content="https://country-three-zeta.vercel.app/etc/og-image.jpg">
+<meta property="og:url" content="https://country-three-zeta.vercel.app/country.html">
+<link rel="canonical" href="https://country-three-zeta.vercel.app/country.html">
 <meta name="theme-color" content="#070B1A">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +36,7 @@ textarea::placeholder{color:#7F8DBB}
 .rise{animation:rise .35s ease both}
 .app{container-type:inline-size}
 .mbtn,.tabbar{display:none}
-.tabbar a{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:56px;padding:6px 4px;border-radius:10px;text-decoration:none;color:#9AA8D4;font-size:12px}
+.tabbar a{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1 1 0;min-width:0;max-width:72px;padding:6px 4px;border-radius:10px;text-decoration:none;color:#9AA8D4;font-size:12px}
 .tabbar a:hover{color:#FFFFFF}
 .mlink{display:block;padding:14px 12px;border-radius:10px;color:#E8EEFF;text-decoration:none;font-size:17px}
 .mlink:hover{background:#13224A}
@@ -56,6 +58,7 @@ textarea::placeholder{color:#7F8DBB}
 .ctable th,.ctable td{padding:10px 14px!important}
 }
 </style>
+<style>@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }</style>
 </head>
 <body>
 <div id="app"></div>
@@ -85,10 +88,10 @@ textarea::placeholder{color:#7F8DBB}
 
     <div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center">
       <nav aria-label="현재 위치" style="font-size: 14px; color: #8C9BC7"><a href="index.html" style="color: #B4C0E4; text-decoration: none">홈</a> &#160;/&#160; <a href="continent.html" style="color: #B4C0E4; text-decoration: none">{{c.cont}}</a> &#160;/&#160; <span style="color: #E8EEFF">{{c.name}}</span></nav>
-      <div style="display: flex; gap: 8px; align-items: center">
+      <div style="display: flex; gap: 8px; align-items: center; max-width: 100%; min-width: 0">
         <button class="ghost" onClick="{{prev}}" aria-label="이전 나라" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid #2A3A6E; background: transparent; color: #B4C0E4; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></button>
         <label for="pick" style="position: absolute; left: -9999px">나라 선택</label>
-        <select id="pick" value="{{code}}" onChange="{{onPick}}" style="height: 44px; min-width: 210px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0E1530; color: #E8EEFF; font: inherit; font-size: 15px">
+        <select id="pick" value="{{code}}" onChange="{{onPick}}" style="height: 44px; width: 210px; min-width: 0; flex: 0 1 auto; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0E1530; color: #E8EEFF; font: inherit; font-size: 15px">
           <template data-for="{{opts}}" data-as="o"><option value="{{o.code}}">{{o.label}}</option></template>
         </select>
         <button class="ghost" onClick="{{next}}" aria-label="다음 나라" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid #2A3A6E; background: transparent; color: #B4C0E4; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg></button>
@@ -108,8 +111,8 @@ textarea::placeholder{color:#7F8DBB}
         <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-end">
           <div style="display: flex; flex-wrap: wrap; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 14px; justify-content: flex-end">
             <span style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(14,21,48,.88); border: 1px solid #2A3A6E"><span class="live" style="width: 7px; height: 7px; border-radius: 50%; background: #FFC857"></span>현지 {{clock}}</span>
-            <span style="padding: 10px 14px; border-radius: 10px; background: rgba(14,21,48,.88); border: 1px solid #2A3A6E">{{c.capital}} {{temp}}°C</span>
-            <span style="padding: 10px 14px; border-radius: 10px; background: rgba(14,21,48,.88); border: 1px solid #2A3A6E">1 {{c.curCode}} ≈ {{fx}} <span style="font-size: 11px; color: #8C9BC7">10/19</span></span>
+            <span style="padding: 10px 14px; border-radius: 10px; background: rgba(14,21,48,.88); border: 1px solid #2A3A6E">{{c.capital}} {{tempLabel}} {{temp}}°C</span>
+            <span style="padding: 10px 14px; border-radius: 10px; background: rgba(14,21,48,.88); border: 1px solid #2A3A6E">1 {{c.curCode}} ≈ {{fx}} <span style="font-size: 11px; color: #8C9BC7">{{fxDate}}</span></span>
             <span style="{{alertChipStyle}}">{{alertChip}}</span>
           </div>
           <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end">
@@ -121,7 +124,7 @@ textarea::placeholder{color:#7F8DBB}
     </section>
 
     <!-- KEY FACTS -->
-    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px">
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 12px">
       <div style="padding: 18px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; gap: 14px; align-items: center">
         <span style="width: 44px; height: 44px; flex: none; border-radius: 12px; background: #13224A; display: inline-flex; align-items: center; justify-content: center; color: #7FE3FF"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
         <span><span style="font-size: 13px; color: #8C9BC7">시차</span><br><b style="font-size: 17px">{{diff}}</b></span>
@@ -152,14 +155,14 @@ textarea::placeholder{color:#7F8DBB}
         <template data-if="{{is.overview}}">
           <div class="rise" style="display: flex; flex-direction: column; gap: 18px">
             <p style="margin: 0; font-size: 18px; line-height: 1.85; color: #C9D3F2">{{c.intro}}</p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); gap: 10px">
               <template data-for="{{facts}}" data-as="f">
                 <div style="padding: 16px 18px; border-radius: 14px; background: #0E1530; border: 1px solid #1E2A52"><div style="font-size: 13px; color: #8C9BC7">{{f.k}}</div><div style="font-size: 16px; font-weight: 600; margin-top: 6px; line-height: 1.5">{{f.v}}</div></div>
               </template>
             </div>
             <section style="display: flex; flex-direction: column; gap: 12px">
               <h2 style="margin: 0; font-size: 19px">주요 도시</h2>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 10px">
                 <template data-for="{{c.cities}}" data-as="ct">
                   <div style="padding: 18px; border-radius: 14px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 6px"><b style="font-size: 17px">{{ct.n}}</b><span style="font-size: 14px; line-height: 1.6; color: #B4C0E4">{{ct.d}}</span></div>
                 </template>
@@ -194,7 +197,7 @@ textarea::placeholder{color:#7F8DBB}
               <span style="display: flex; flex-direction: column; gap: 2px"><b style="font-size: 16px">{{c.name}} 여행 가이드</b><span style="font-size: 13px; color: #9AA8D4">비자 · 예산 · 명소 · 일정 · 교통 · 매너를 한 파일로</span></span>
               <button onClick="{{savePdf}}" aria-busy="{{pdfBusy}}" style="height: 46px; padding: 0 18px; border-radius: 12px; border: 0; background: #7FE3FF; color: #04101F; font: inherit; font-weight: 700; cursor: pointer">{{pdfLabel}}</button>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 12px">
               <div style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #8C9BC7">비자 · 입국 (한국 여권)</span><b style="font-size: 16px; line-height: 1.5">{{tr.visa}}</b><span style="{{visaBadgeStyle}}">{{visaBadge}}</span><span style="font-size: 12px; color: #8C9BC7">{{visaMeta}}</span></div>
               <div style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #8C9BC7">추천 여행 기간 · 적기</span><b style="font-size: 16px; line-height: 1.5">{{tr.stay}} · {{c.best}}</b></div>
               <div style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #8C9BC7">외교부 여행경보 · 치안</span><b style="{{alertStyle}}">{{alertText}}</b><span style="font-size: 14px; color: #B4C0E4; line-height: 1.5">{{tr.safetyNote}}</span><span style="font-size: 12px; color: #8C9BC7">{{alertMeta}}</span></div>
@@ -203,7 +206,7 @@ textarea::placeholder{color:#7F8DBB}
 
             <section style="padding: 24px; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 14px">
               <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; align-items: baseline"><h2 style="margin: 0; font-size: 19px">하루 예산 (1인 · 숙박 포함)</h2><span style="font-size: 12px; color: #8C9BC7">대략적인 기준 · 환율·시즌에 따라 달라져요</span></div>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr)); gap: 10px">
                 <template data-for="{{trBudget}}" data-as="b">
                   <div style="{{b.style}}"><span style="font-size: 13px; color: #B4C0E4">{{b.label}}</span><b style="font-size: 22px; font-family: 'Space Grotesk', 'IBM Plex Sans KR', sans-serif">{{b.v}}</b><span style="font-size: 12px; color: #8C9BC7">{{b.hint}}</span></div>
                 </template>
@@ -212,7 +215,7 @@ textarea::placeholder{color:#7F8DBB}
 
             <section style="padding: 24px; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 14px">
               <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; align-items: baseline"><h2 style="margin: 0; font-size: 19px">항공권 (인천 출발 · 왕복 이코노미)</h2><span style="font-size: 12px; color: #8C9BC7">대략적인 시세 · 실제 가격은 예약 시점·항공사에 따라 달라요</span></div>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); gap: 10px">
                 <div style="padding: 16px; border-radius: 14px; background: #0F2A24; border: 1px solid #1F5A48; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #B4C0E4">비수기</span><b style="font-size: 22px; font-family: 'Space Grotesk', 'IBM Plex Sans KR', sans-serif">{{frLow}}</b><span style="font-size: 12px; color: #8C9BC7">싼 시기 · {{fr.cheap}}</span></div>
                 <div style="padding: 16px; border-radius: 14px; background: #2A1A14; border: 1px solid #5A3A2A; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #B4C0E4">성수기</span><b style="font-size: 22px; font-family: 'Space Grotesk', 'IBM Plex Sans KR', sans-serif">{{frHigh}}</b><span style="font-size: 12px; color: #8C9BC7">비싼 시기 · {{fr.peak}}</span></div>
                 <div style="padding: 16px; border-radius: 14px; background: #13224A; border: 1px solid #2A3A6E; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #B4C0E4">노선 · 소요 시간</span><b style="font-size: 16px; line-height: 1.5">{{fr.route}}</b></div>
@@ -235,7 +238,7 @@ textarea::placeholder{color:#7F8DBB}
 
             <section style="display: flex; flex-direction: column; gap: 12px">
               <h2 style="margin: 0; font-size: 19px">꼭 가볼 곳 TOP 5</h2>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 10px">
                 <template data-for="{{trSpots}}" data-as="x">
                   <div style="padding: 16px 18px; border-radius: 14px; background: #0E1530; border: 1px solid #1E2A52; display: flex; gap: 12px; align-items: flex-start">
                     <span style="flex: none; width: 30px; height: 30px; border-radius: 9px; background: #13224A; color: #7FE3FF; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif">{{x.i}}</span>
@@ -257,7 +260,7 @@ textarea::placeholder{color:#7F8DBB}
               </ol>
             </section>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 12px">
               <section style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 10px">
                 <h2 style="margin: 0 0 4px; font-size: 18px">교통</h2>
                 <template data-for="{{trMove}}" data-as="m">
@@ -274,14 +277,14 @@ textarea::placeholder{color:#7F8DBB}
 
             <section style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 12px">
               <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; align-items: baseline"><h2 style="margin: 0; font-size: 18px">계절별 여행 포인트</h2><span style="font-size: 12px; color: #8C9BC7">{{c.climate}}</span></div>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 10px">
                 <template data-for="{{trSeasons}}" data-as="z">
                   <div style="{{z.style}}"><span style="font-size: 13px; font-weight: 700; color: #FFC857">{{z.k}}{{z.now}}</span><span style="font-size: 14px; line-height: 1.6; color: #E8EEFF">{{z.v}}</span></div>
                 </template>
               </div>
             </section>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 12px">
               <section style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 10px">
                 <h2 style="margin: 0 0 4px; font-size: 18px">짐 싸기 팁</h2>
                 <template data-for="{{tr.pack}}" data-as="k"><div style="display: flex; gap: 10px; font-size: 15px; line-height: 1.6"><span style="color: #7FF0B0">✓</span><span>{{k}}</span></div></template>
@@ -300,7 +303,7 @@ textarea::placeholder{color:#7F8DBB}
           <div class="rise" style="display: flex; flex-direction: column; gap: 16px">
             <section style="padding: 24px; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52">
               <h2 style="margin: 0 0 16px; font-size: 19px">명절 · 축제</h2>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 12px">
                 <template data-for="{{c.fest}}" data-as="x">
                   <div style="padding: 16px; border-radius: 14px; background: #0A1024; border-left: 3px solid #FFC857; display: flex; flex-direction: column; gap: 6px">
                     <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #FFC857">{{x.w}}</span>
@@ -324,7 +327,7 @@ textarea::placeholder{color:#7F8DBB}
                 </template>
               </section>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px">
               <div style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52"><div style="font-size: 13px; color: #7FE3FF">인사 방식</div><div style="font-size: 16px; font-weight: 600; margin-top: 8px; line-height: 1.6">{{c.greet}}</div><div style="font-size: 14px; color: #B4C0E4; margin-top: 6px">"{{c.hello}}" [{{c.helloRead}}]</div></div>
               <div style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52"><div style="font-size: 13px; color: #FFC857">선물 예절</div><div style="font-size: 15px; margin-top: 8px; line-height: 1.6">{{c.gift}}</div></div>
               <div style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52"><div style="font-size: 13px; color: #C9B8FF">옷차림</div><div style="font-size: 15px; margin-top: 8px; line-height: 1.6">{{c.dress}}</div></div>
@@ -336,7 +339,7 @@ textarea::placeholder{color:#7F8DBB}
         <!-- FOOD -->
         <template data-if="{{is.food}}">
           <div class="rise" style="display: flex; flex-direction: column; gap: 16px">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px">
               <template data-for="{{dishes}}" data-as="d">
                 <article class="lift" style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 10px">
                   <span style="display: flex; justify-content: space-between; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 700; color: #2A3A6E">0{{d.rank}}</span><span style="{{d.tagStyle}}">{{d.tag}}</span></span>
@@ -345,7 +348,7 @@ textarea::placeholder{color:#7F8DBB}
                 </article>
               </template>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px">
               <div style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 10px">
                 <span style="font-size: 13px; color: #8C9BC7">식사 예절</span>
                 <template data-for="{{c.dining}}" data-as="x"><span style="font-size: 15px; line-height: 1.6">· {{x}}</span></template>
@@ -362,7 +365,7 @@ textarea::placeholder{color:#7F8DBB}
         <!-- ECONOMY -->
         <template data-if="{{is.economy}}">
           <div class="rise" style="display: flex; flex-direction: column; gap: 16px">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 12px">
               <div style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 12px">
                 <span style="font-size: 13px; color: #8C9BC7">주요 수출 품목</span>
                 <div style="display: flex; flex-wrap: wrap; gap: 6px"><template data-for="{{c.exp}}" data-as="x"><span style="padding: 7px 12px; border-radius: 999px; background: #1A2752; font-size: 14px">{{x}}</span></template></div>
@@ -372,7 +375,7 @@ textarea::placeholder{color:#7F8DBB}
                 <div style="display: flex; flex-wrap: wrap; gap: 6px"><template data-for="{{c.companies}}" data-as="x"><span style="padding: 7px 12px; border-radius: 8px; border: 1px solid #2A3A6E; font-size: 14px">{{x}}</span></template></div>
               </div>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 12px">
               <div style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52"><div style="font-size: 13px; color: #8C9BC7">핵심 산업</div><div style="font-size: 16px; font-weight: 600; margin-top: 8px; line-height: 1.6">{{c.ind}}</div></div>
               <div style="padding: 20px; border-radius: 16px; background: #0C1E33; border: 1px solid #1E4A6A"><div style="font-size: 13px; color: #7FE3FF">한국과의 FTA</div><div style="font-size: 16px; font-weight: 600; margin-top: 8px; line-height: 1.6">{{fta}}</div></div>
               <div style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52"><div style="font-size: 13px; color: #8C9BC7">한국과의 경제 관계</div><div style="font-size: 16px; font-weight: 600; margin-top: 8px; line-height: 1.6">{{rel}}</div></div>
@@ -396,7 +399,7 @@ textarea::placeholder{color:#7F8DBB}
               </div>
               <div style="font-size: 12px; color: #8C9BC7; margin-top: 10px">아래 칸은 연도별 실질 경제성장률(%)이에요. 최신 연도 값은 추정치가 섞여 있어 이후 수정될 수 있어요.</div>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 12px">
               <div style="padding: 18px; border-radius: 14px; border: 1px dashed #2A3A6E"><div style="font-size: 13px; color: #8C9BC7">한국과의 경제 관계</div><div style="font-size: 15px; margin-top: 6px; color: #E8EEFF; line-height: 1.6">{{c.rel}}</div></div>
               <div style="padding: 18px; border-radius: 14px; border: 1px dashed #2A3A6E"><div style="font-size: 13px; color: #8C9BC7">물가 · 빅맥 지수</div><div style="font-size: 15px; margin-top: 6px; color: #B4C0E4">도시·시즌별 차이가 커요 — 하루 예산은 여행 가이드 탭을 참고하세요</div></div>
               <div style="padding: 18px; border-radius: 14px; border: 1px dashed #2A3A6E"><div style="font-size: 13px; color: #8C9BC7">무역 협정 (FTA)</div><div style="font-size: 15px; margin-top: 6px; color: #E8EEFF; line-height: 1.6">{{c.fta}}</div></div>
@@ -405,6 +408,126 @@ textarea::placeholder{color:#7F8DBB}
         </template>
 
         <!-- TIPS (community) -->
+        <template data-if="{{is.biz}}">
+          <div class="rise" style="display: flex; flex-direction: column; gap: 16px">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px">
+              <div style="display: flex; flex-direction: column; gap: 4px"><h2 style="margin: 0; font-size: 22px">{{c.name}} 출장 브리핑</h2><span style="font-size: 14px; color: #8C9BC7">바이어 미팅 전 30분, 이 화면만 보고 출발하세요</span></div>
+              <button onClick="{{saveBizPdf}}" aria-busy="{{bizPdfBusy}}" style="height: 46px; padding: 0 18px; border-radius: 12px; border: 0; background: #FFC857; color: #1A1204; font: inherit; font-weight: 700; cursor: pointer">{{bizPdfLabel}}</button>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 10px">
+              <template data-for="{{bizFacts}}" data-as="f">
+                <div style="padding: 16px 18px; border-radius: 14px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; color: #8C9BC7; font-weight: 600">{{f.k}}</span><span style="font-size: 15px; line-height: 1.55; color: #E8EEFF">{{f.v}}</span></div>
+              </template>
+            </div>
+            <section style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 14px">
+              <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px"><h3 style="margin: 0; font-size: 18px">미팅 시간 플래너</h3><span style="font-size: 13px; color: #8C9BC7">한국 시간 기준 · 한국 업무 9:00~18:00</span></div>
+              <div style="display: flex; flex-direction: column; gap: 10px">
+                <div style="display: grid; grid-template-columns: 74px 1fr; gap: 10px; align-items: center"><span style="font-size: 13px; color: #B4C0E4">한국</span><div style="position: relative; height: 26px; border-radius: 8px; background: #0A1024; overflow: hidden"><span style="position: absolute; top: 0; bottom: 0; left: 37.5%; width: 37.5%; background: rgba(127,227,255,.55); border-radius: 6px"></span></div></div>
+                <div style="display: grid; grid-template-columns: 74px 1fr; gap: 10px; align-items: center"><span style="font-size: 13px; color: #B4C0E4">{{c.name}}</span><div style="position: relative; height: 26px; border-radius: 8px; background: #0A1024; overflow: hidden"><template data-for="{{mp.segs}}" data-as="g"><span style="{{g.style}}"></span></template></div></div>
+                <div style="display: grid; grid-template-columns: 74px 1fr; gap: 10px"><span></span><div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8C9BC7"><span>0시</span><span>6시</span><span>12시</span><span>18시</span><span>24시</span></div></div>
+              </div>
+              <div style="{{mp.boxStyle}}"><b style="font-size: 15px">{{mp.title}}</b><span style="font-size: 14px; line-height: 1.6; color: #B4C0E4">{{mp.desc}}</span></div>
+              <span style="font-size: 12px; color: #8C9BC7">{{mp.note}}</span>
+            </section>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 12px">
+              <section style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0 0 4px; font-size: 18px">미팅 에티켓</h3>
+                <template data-for="{{bizEtq}}" data-as="e"><div style="display: flex; gap: 10px; font-size: 15px; line-height: 1.55"><span style="flex: none; width: 22px; height: 22px; border-radius: 6px; background: #13224A; color: #7FE3FF; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">{{e.n}}</span><span>{{e.t}}</span></div></template>
+              </section>
+              <section style="padding: 20px; border-radius: 16px; background: #2A1414; border: 1px solid #5A2626; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0 0 4px; font-size: 18px; color: #FFD0D0">피해야 할 것</h3>
+                <template data-for="{{taboos}}" data-as="t"><div style="font-size: 15px; line-height: 1.55; color: #F5DCDC">· {{t}}</div></template>
+                <div style="font-size: 13px; color: #D9B0B0; margin-top: 6px">식사 자리: {{bizDining}}</div>
+              </section>
+            </div>
+            <section style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 12px">
+              <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; align-items: baseline"><h3 style="margin: 0; font-size: 18px">출장 준비 체크리스트</h3><span style="font-size: 14px; color: #FFD98A; font-weight: 600">{{bizDone}} / {{bizTotal}} 완료</span></div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 8px">
+                <template data-for="{{bizChecks}}" data-as="k">
+                  <button onClick="{{k.toggle}}" aria-pressed="{{k.on}}" style="{{k.style}}"><span style="{{k.box}}">{{k.mark}}</span><span style="display: flex; flex-direction: column; gap: 3px; text-align: left"><b style="font-size: 15px">{{k.t}}</b><span style="font-size: 13px; line-height: 1.5; color: #9AA8D4">{{k.h}}</span></span></button>
+                </template>
+              </div>
+              <span style="font-size: 12px; color: #8C9BC7">체크 상태는 이 브라우저에 나라별로 저장돼요.</span>
+            </section>
+            <section style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 12px">
+              <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px"><h3 style="margin: 0; font-size: 18px">시장 한눈에</h3><button onClick="{{goEconomy}}" style="border: 0; background: transparent; color: #7FE3FF; font: inherit; font-size: 14px; cursor: pointer; padding: 0">경제 · 무역 탭에서 자세히 →</button></div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 10px">
+                <template data-for="{{bizMarket}}" data-as="m"><div style="padding: 14px; border-radius: 12px; background: #0A1024"><div style="font-size: 12px; color: #8C9BC7">{{m.k}}</div><div style="font-size: 15px; margin-top: 4px; line-height: 1.55">{{m.v}}</div></div></template>
+              </div>
+            </section>
+            <section style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 12px">
+              <h3 style="margin: 0; font-size: 18px">수출 실무 체크 — 관세 · 원산지 · HS코드</h3>
+              <div style="{{ex.boxStyle}}"><b style="font-size: 15px">{{ex.title}}</b><span style="font-size: 14px; line-height: 1.65; color: #B4C0E4">{{ex.desc}}</span></div>
+              <ol style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.6; color: #D5DDF5">
+                <template data-for="{{ex.steps}}" data-as="x"><li>{{x}}</li></template>
+              </ol>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 8px">
+                <template data-for="{{ex.links}}" data-as="l">
+                  <a href="{{l.url}}" target="_blank" rel="noopener" style="padding: 12px 14px; border-radius: 12px; background: #0A1024; border: 1px solid #1E2A52; text-decoration: none; color: #E8EEFF"><b style="font-size: 14px">{{l.t}} ↗</b><div style="font-size: 12px; color: #8C9BC7; margin-top: 3px">{{l.d}}</div></a>
+                </template>
+              </div>
+              <span style="font-size: 12px; color: #7F8DBB">관세율과 원산지 기준은 품목(HS코드)마다 달라요. 실제 거래 전에는 관세사 · 무역협회 상담으로 확인하세요.</span>
+            </section>
+            <section id="leads" style="padding: 20px; border-radius: 16px; background: #0E1530; border: 1px solid #2A3A6E; display: flex; flex-direction: column; gap: 14px">
+              <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; align-items: flex-end">
+                <div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font-size: 18px">{{c.name}} 거래선 개척 카드</h3><span style="font-size: 13px; color: #8C9BC7">잠재 바이어 · 대리점과 경쟁사를 나라별로 메모하고 진행 단계를 관리해요</span></div>
+                <button onClick="{{ld.csv}}" style="height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid #2A3A6E; background: transparent; color: #7FE3FF; font: inherit; font-size: 14px; cursor: pointer">전체 카드 엑셀(CSV) 저장</button>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr)); gap: 8px">
+                <template data-for="{{ld.stats}}" data-as="x"><div style="padding: 12px 14px; border-radius: 12px; background: #0A1024"><div style="font-size: 12px; color: #8C9BC7">{{x.k}}</div><div style="{{x.style}}">{{x.v}}</div></div></template>
+              </div>
+              <div style="{{ld.otherStyle}}"><span style="font-size: 13px; color: #8C9BC7">다른 나라 카드</span><template data-for="{{ld.others}}" data-as="o"><button onClick="{{o.go}}" style="height: 34px; padding: 0 12px; border-radius: 999px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 13px; cursor: pointer">{{o.label}}</button></template></div>
+
+              <h4 style="margin: 4px 0 0; font-size: 16px">잠재 바이어 · 대리점</h4>
+              <form onSubmit="{{ld.addBuyer}}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); gap: 10px; padding: 14px; border-radius: 12px; background: #0A1024; border: 1px dashed #2A3A6E">
+                <label style="display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: #8C9BC7">회사명 *<input value="{{ld.f.name}}" onInput="{{ld.on.name}}" maxlength="60" placeholder="예: ABC Trading" style="height: 42px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px; box-sizing: border-box; width: 100%"></label>
+                <label style="display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: #8C9BC7">유형<select value="{{ld.f.type}}" onChange="{{ld.on.type}}" style="height: 42px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px; box-sizing: border-box; width: 100%"><option>바이어</option><option>대리점</option><option>수입상</option><option>유통 · 도매</option><option>기타</option></select></label>
+                <label style="display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: #8C9BC7">도시<input value="{{ld.f.city}}" onInput="{{ld.on.city}}" maxlength="40" placeholder="{{c.capital}}" style="height: 42px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px; box-sizing: border-box; width: 100%"></label>
+                <label style="display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: #8C9BC7">진행 단계<select value="{{ld.f.stage}}" onChange="{{ld.on.stage}}" style="height: 42px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px; box-sizing: border-box; width: 100%"><option>발굴</option><option>첫 연락</option><option>회신</option><option>미팅</option><option>견적 · 샘플</option><option>계약</option></select></label>
+                <label style="display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: #8C9BC7">다음 할 일<input value="{{ld.f.next}}" onInput="{{ld.on.next}}" maxlength="80" placeholder="예: 카탈로그 메일 발송" style="height: 42px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px; box-sizing: border-box; width: 100%"></label>
+                <label style="display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: #8C9BC7">기한<input type="date" value="{{ld.f.due}}" onInput="{{ld.on.due}}" style="height: 42px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px; box-sizing: border-box; width: 100%"></label>
+                <label style="display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: #8C9BC7; grid-column: 1 / -1">메모<input value="{{ld.f.memo}}" onInput="{{ld.on.memo}}" maxlength="200" placeholder="관심 품목, 담당자 직함, 미팅에서 들은 내용 등" style="height: 42px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px; box-sizing: border-box; width: 100%"></label>
+                <div style="grid-column: 1 / -1; display: flex; gap: 10px; align-items: center; flex-wrap: wrap"><button type="submit" style="{{ld.addStyle}}">바이어 추가</button><span role="status" style="{{ld.msgStyle}}">{{ld.msg}}</span></div>
+              </form>
+              <div style="{{ld.emptyStyle}}">아직 등록한 바이어가 없어요. 아래 바로가기에서 후보를 찾아 추가해 보세요.</div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 10px">
+                <template data-for="{{ld.buyers}}" data-as="b">
+                  <article style="padding: 14px 16px; border-radius: 12px; background: #0A1024; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 8px">
+                    <div style="display: flex; justify-content: space-between; gap: 8px; align-items: baseline"><b style="font-size: 16px">{{b.name}}</b><span style="{{b.stageStyle}}">{{b.stage}}</span></div>
+                    <span style="font-size: 13px; color: #8C9BC7">{{b.sub}}</span>
+                    <div style="display: flex; gap: 4px"><template data-for="{{b.dots}}" data-as="d"><span style="{{d}}"></span></template></div>
+                    <div style="{{b.nextStyle}}">{{b.nextText}}</div>
+                    <p style="{{b.memoStyle}}">{{b.memo}}</p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap"><button onClick="{{b.advance}}" style="{{b.advStyle}}">{{b.advLabel}}</button><button onClick="{{b.del}}" style="{{b.delStyle}}">{{b.delLabel}}</button></div>
+                  </article>
+                </template>
+              </div>
+
+              <h4 style="margin: 8px 0 0; font-size: 16px">경쟁사 정보</h4>
+              <form onSubmit="{{ld.addComp}}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); gap: 10px; padding: 14px; border-radius: 12px; background: #0A1024; border: 1px dashed #2A3A6E">
+                <label style="display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: #8C9BC7">경쟁사 *<input value="{{ld.f.cname}}" onInput="{{ld.on.cname}}" maxlength="60" placeholder="회사 또는 브랜드" style="height: 42px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px; box-sizing: border-box; width: 100%"></label>
+                <label style="display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: #8C9BC7">국적<input value="{{ld.f.cfrom}}" onInput="{{ld.on.cfrom}}" maxlength="30" placeholder="예: 중국, 독일, 현지" style="height: 42px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px; box-sizing: border-box; width: 100%"></label>
+                <label style="display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: #8C9BC7; grid-column: span 2">강점 · 가격 · 유통 메모<input value="{{ld.f.cnote}}" onInput="{{ld.on.cnote}}" maxlength="200" placeholder="예: 단가 10% 낮음, 현지 대리점 3곳, FTA로 관세 0%" style="height: 42px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px; box-sizing: border-box; width: 100%"></label>
+                <div style="grid-column: 1 / -1"><button type="submit" style="{{ld.addCStyle}}">경쟁사 추가</button></div>
+              </form>
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <template data-for="{{ld.comps}}" data-as="k">
+                  <div style="display: flex; gap: 12px; align-items: flex-start; justify-content: space-between; padding: 12px 14px; border-radius: 12px; background: #0A1024; border: 1px solid #1E2A52"><div style="display: flex; flex-direction: column; gap: 3px"><b style="font-size: 15px">{{k.name}} <span style="font-weight: 400; font-size: 13px; color: #8C9BC7">{{k.from}}</span></b><span style="font-size: 14px; line-height: 1.55; color: #B4C0E4">{{k.note}}</span></div><button onClick="{{k.del}}" style="{{k.delStyle}}">{{k.delLabel}}</button></div>
+                </template>
+              </div>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 8px">
+                <template data-for="{{ld.links}}" data-as="l">
+                  <a href="{{l.url}}" target="_blank" rel="noopener" style="padding: 12px 14px; border-radius: 12px; background: #0C1E33; border: 1px solid #1E4A6A; text-decoration: none; color: #E8EEFF"><b style="font-size: 14px">{{l.t}} ↗</b><div style="font-size: 12px; color: #8C9BC7; margin-top: 3px">{{l.d}}</div></a>
+                </template>
+              </div>
+              <span style="font-size: 12px; color: #7F8DBB">카드는 이 브라우저에만 저장되고 다른 사람에게 공개되지 않아요. 브라우저 기록을 지우면 사라지니 "엑셀(CSV) 저장"으로 백업하세요. 출장 준비는 위 체크리스트와 연결돼요.</span>
+            </section>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 10px">
+              <template data-for="{{bizLinks}}" data-as="l">
+                <a href="{{l.url}}" target="_blank" rel="noopener" style="padding: 16px 18px; border-radius: 14px; background: #0C1E33; border: 1px solid #1E4A6A; text-decoration: none; color: #E8EEFF"><b style="font-size: 15px">{{l.t}} ↗</b><div style="font-size: 13px; color: #8C9BC7; margin-top: 4px">{{l.d}}</div></a>
+              </template>
+            </div>
+          </div>
+        </template>
         <template data-if="{{is.tips}}">
           <div class="rise" style="display: flex; flex-direction: column; gap: 14px">
             <form onSubmit="{{submit}}" style="padding: 20px; border-radius: 18px; background: #0E1530; border: 1px solid #2A3A6E; display: flex; flex-direction: column; gap: 12px">
@@ -415,9 +538,12 @@ textarea::placeholder{color:#7F8DBB}
               <label for="tipText" style="position: absolute; left: -9999px">꿀팁 내용</label>
               <textarea id="tipText" value="{{draft}}" onChange="{{onDraft}}" rows="3" placeholder="직접 겪은 현지 정보를 알려 주세요. 예: 공항에서 시내까지 가는 가장 쉬운 방법" style="width: 100%; box-sizing: border-box; padding: 14px; border-radius: 12px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px; resize: vertical"></textarea>
               <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap">
-                <span style="font-size: 13px; color: #8C9BC7">{{draftCount}}/200자 · 개인정보는 적지 말아 주세요</span>
-                <button type="submit" style="{{submitStyle}}">등록하기</button>
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #8C9BC7">별명<input value="{{nick}}" onInput="{{onNick}}" maxlength="20" placeholder="여행자" aria-label="별명" style="width: 120px; height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px"></label>
+                <span style="font-size: 13px; color: #8C9BC7">{{draftCount}}/200자 · 링크·연락처·개인정보는 올릴 수 없어요</span>
+                <button type="submit" aria-busy="{{postBusy}}" style="{{submitStyle}}">{{submitLabel}}</button>
               </div>
+              <span role="status" style="{{postMsgStyle}}">{{postMsg}}</span>
+              <span style="font-size: 12px; color: #7F8DBB">{{boardNote}}</span>
             </form>
             <template data-for="{{tips}}" data-as="t">
               <article class="rise" style="padding: 18px 20px; border-radius: 16px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 10px">
@@ -426,7 +552,7 @@ textarea::placeholder{color:#7F8DBB}
                   <span style="color: #8C9BC7">{{t.who}}</span>
                 </div>
                 <p style="margin: 0; font-size: 15px; line-height: 1.7">{{t.text}}</p>
-                <div><button onClick="{{t.like}}" aria-pressed="{{t.likedAria}}" style="{{t.likeStyle}}">도움돼요 {{t.count}}</button></div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap"><button onClick="{{t.like}}" aria-pressed="{{t.likedAria}}" style="{{t.likeStyle}}">도움돼요 {{t.count}}</button><button onClick="{{t.report}}" style="{{t.reportStyle}}">{{t.reportLabel}}</button></div>
               </article>
             </template>
             <a href="community.html" style="align-self: flex-start; font-weight: 600">전체 로컬 꿀팁 게시판 →</a>
@@ -436,13 +562,13 @@ textarea::placeholder{color:#7F8DBB}
         <!-- NEWS -->
         <template data-if="{{is.news}}">
           <div class="rise" style="display: flex; flex-direction: column; gap: 16px">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 10px">
               <div style="padding: 16px 18px; border-radius: 14px; background: #2B2410; border: 1px solid #5A4A1A"><div style="font-size: 12px; color: #FFD98A; font-weight: 600">외교부 여행경보</div><div style="font-size: 15px; margin-top: 6px; color: #F2E6C6">{{alertText}}</div><div style="font-size: 12px; margin-top: 4px; color: #D9C9A0">{{alertMeta}} · 지역별 단계는 0404.go.kr에서 확인하세요</div></div>
               <div style="padding: 16px 18px; border-radius: 14px; background: #2A1414; border: 1px solid #5A2626"><div style="font-size: 12px; color: #FFB4B4; font-weight: 600">현지 긴급 전화</div><div style="font-size: 15px; margin-top: 6px; color: #F5DCDC">{{c.emergency}}</div></div>
-              <div style="padding: 16px 18px; border-radius: 14px; background: #0C1E33; border: 1px solid #1E4A6A"><div style="font-size: 12px; color: #7FE3FF; font-weight: 600">현지 시각 · 날씨</div><div style="font-size: 15px; margin-top: 6px">{{clock}} · {{c.capital}} {{temp}}°C</div></div>
+              <div style="padding: 16px 18px; border-radius: 14px; background: #0C1E33; border: 1px solid #1E4A6A"><div style="font-size: 12px; color: #7FE3FF; font-weight: 600">현지 시각 · 날씨</div><div style="font-size: 15px; margin-top: 6px">{{clock}} · {{c.capital}} {{tempLabel}} {{temp}}°C</div><div style="font-size: 12px; margin-top: 4px; color: #9AA8D4">{{tempRange}} · 최근 10년 평년값</div></div>
             </div>
             <div style="display: flex; flex-direction: column; gap: 4px"><h2 style="margin: 0; font-size: 19px">{{c.name}} 최신 뉴스 바로가기</h2><span style="font-size: 14px; color: #8C9BC7">분야를 누르면 구글 뉴스에서 지금 올라온 실제 기사를 한국어로 검색해 보여줘요. (새 창)</span></div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px">
               <template data-for="{{newsLinks}}" data-as="n">
                 <section style="{{n.cardStyle}}">
                   <div style="display: flex; align-items: center; gap: 10px"><span style="{{n.badge}}">{{n.short}}</span><b style="font-size: 16px">{{n.name}}</b></div>
@@ -454,7 +580,7 @@ textarea::placeholder{color:#7F8DBB}
                 </section>
               </template>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 10px">
               <a href="https://www.0404.go.kr" target="_blank" rel="noopener" style="padding: 16px 18px; border-radius: 14px; background: #0E1530; border: 1px solid #1E2A52; text-decoration: none; color: #E8EEFF"><b style="font-size: 15px">외교부 해외안전여행 ↗</b><div style="font-size: 13px; color: #8C9BC7; margin-top: 4px">국가별 안전공지 · 여행경보 지역 지도</div></a>
               <a href="https://dream.kotra.or.kr" target="_blank" rel="noopener" style="padding: 16px 18px; border-radius: 14px; background: #0E1530; border: 1px solid #1E2A52; text-decoration: none; color: #E8EEFF"><b style="font-size: 15px">KOTRA 해외시장뉴스 ↗</b><div style="font-size: 13px; color: #8C9BC7; margin-top: 4px">무역관이 쓰는 시장 동향 · 수출 정보</div></a>
               <a href="{{newsGov}}" target="_blank" rel="noopener" style="padding: 16px 18px; border-radius: 14px; background: #0E1530; border: 1px solid #1E2A52; text-decoration: none; color: #E8EEFF"><b style="font-size: 15px">주재국 대사관 소식 ↗</b><div style="font-size: 13px; color: #8C9BC7; margin-top: 4px">현지 공관 공지를 구글에서 검색</div></a>
@@ -486,7 +612,7 @@ textarea::placeholder{color:#7F8DBB}
         <h2 class="h2x" style="margin: 0; font-size: 28px; font-weight: 700">{{c.cont}}의 다른 나라</h2>
         <a href="continent.html" style="font-weight: 600; font-size: 15px">대륙 허브 →</a>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px">
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap: 14px">
         <template data-for="{{similar}}" data-as="s">
           <button class="lift" onClick="{{s.go}}" style="padding: 0; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52; overflow: hidden; color: #E8EEFF; font: inherit; text-align: left; cursor: pointer; display: flex; flex-direction: column">
             <img loading="lazy" decoding="async" src="{{s.photo}}" alt="{{s.name}} 대표 풍경" style="width: 100%; height: 120px; object-fit: cover; display: block">
@@ -496,14 +622,15 @@ textarea::placeholder{color:#7F8DBB}
       </div>
     </section>
   </main>
-  <footer id="site-footer" style="border-top: 1px solid #141E3E; margin-top: 40px"><div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; gap: 14px; font-size: 13px; line-height: 1.7; color: #8C9BC7"><div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #E8EEFF; letter-spacing: .06em">ATLAS HUB · 글로벌 아틀라스</span><span style="display: flex; flex-wrap: wrap; gap: 16px"><a href="credits.html" style="color: #B4C0E4">사진 · 데이터 출처</a><a href="https://www.0404.go.kr" target="_blank" rel="noopener" style="color: #B4C0E4">외교부 해외안전여행</a><span>영사콜센터 +82-2-3210-0404</span></span></div><p style="margin: 0">정보 기준일 2026년 10월 · 비자·입국 조건과 여행경보는 수시로 바뀌어요. 이 사이트의 정보는 참고용이며, 출국 전 외교부 해외안전여행과 해당국 대사관에서 반드시 최신 정보를 확인하세요. 환율은 2026년 10월 19일 기준, 1인당 GDP는 World Bank·IMF 자료이고, 항공권 가격·날씨는 근사치예요.</p><p style="margin: 0">국가 사진: Wikimedia Commons(CC 라이선스, 사진마다 작가 표기) · 일부 AI 생성 이미지(표기됨) · 국기: 단순화한 SVG · 폰트: Google Fonts</p></div></footer>
+  <footer id="site-footer" style="border-top: 1px solid #141E3E; margin-top: 40px"><div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; gap: 14px; font-size: 13px; line-height: 1.7; color: #8C9BC7"><div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #E8EEFF; letter-spacing: .06em">ATLAS HUB · 글로벌 아틀라스</span><span style="display: flex; flex-wrap: wrap; gap: 16px"><a href="credits.html" style="color: #B4C0E4">사진 · 데이터 출처</a><a href="https://www.0404.go.kr" target="_blank" rel="noopener" style="color: #B4C0E4">외교부 해외안전여행</a><span>영사콜센터 +82-2-3210-0404</span></span></div><p style="margin: 0">정보 기준일 2026년 10월 · 비자·입국 조건과 여행경보는 수시로 바뀌어요. 이 사이트의 정보는 참고용이며, 출국 전 외교부 해외안전여행과 해당국 대사관에서 반드시 최신 정보를 확인하세요. 환율은 매일 갱신(<a href="https://www.exchangerate-api.com" style="color: inherit">Rates By Exchange Rate API</a>), 1인당 GDP는 World Bank·IMF, 기온은 Open-Meteo 월 평년값이고, 항공권 가격은 근사치예요.</p><p style="margin: 0">국가 사진: Wikimedia Commons(CC 라이선스, 사진마다 작가 표기) · 국기: 단순화한 SVG · 폰트: Google Fonts</p></div></footer>
   <nav class="tabbar" aria-label="하단 메뉴" style="position: sticky; bottom: 0; z-index: 30; justify-content: space-around; padding: 8px 6px 14px; background: rgba(10,16,36,.97); border-top: 1px solid #1E2A52"><a href="index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"></path></svg>홈</a><a href="continent.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"></path></svg>대륙</a><a href="countries.html" aria-current="page" style="color: #7FE3FF; background: #13224A"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="4" width="7" height="7"></rect><rect x="13" y="4" width="7" height="7"></rect><rect x="4" y="13" width="7" height="7"></rect><rect x="13" y="13" width="7" height="7"></rect></svg>국가</a><a href="compare.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg>비교</a><a href="community.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path><path d="M8 9h8M8 12h5"></path></svg>꿀팁</a></nav>
 </div>
 </script>
 <script src="js/data.js"></script>
 <script src="js/runtime.js"></script>
+<script src="js/community.js"></script>
 <script>
-(function () { var q = new URLSearchParams(location.search); function put(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } var c = q.get('code'), t = q.get('tab'), n = q.get('cont'), a = q.get('a'), b = q.get('b'); if (c && window.ATLAS_DB[c.toUpperCase()]) put('atlas.code', c.toUpperCase()); if (t) put('atlas.tab', t.toLowerCase()); if (n) put('atlas.cont', n.toUpperCase()); if (a && b && window.ATLAS_DB[a.toUpperCase()] && window.ATLAS_DB[b.toUpperCase()]) put('atlas.cmp', [a.toUpperCase(), b.toUpperCase()]); })();
+(function () { var q = new URLSearchParams(location.search); function put(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } var c = q.get('code') || window.__PRESET_CODE, t = q.get('tab'), n = q.get('cont'), a = q.get('a'), b = q.get('b'); if (c && window.ATLAS_DB[c.toUpperCase()]) put('atlas.code', c.toUpperCase()); if (t) put('atlas.tab', t.toLowerCase()); if (n) put('atlas.cont', n.toUpperCase()); if (a && b && window.ATLAS_DB[a.toUpperCase()] && window.ATLAS_DB[b.toUpperCase()]) put('atlas.cmp', [a.toUpperCase(), b.toUpperCase()]); })();
 class Component extends DCLogic {
   _pdf(spec) {
   // spec: { filename, title, subtitle, flags: [url...], sections: [{ h, rows: [[k, v] | [k, vA, vB]], cols? }], note }
@@ -634,20 +761,20 @@ class Component extends DCLogic {
   renderVals() {
     var DB = this.__DB || (this.__DB = window.ATLAS_DB);
     var FL = {}; Object.keys(DB).forEach(function (k) { FL[k] = DB[k].flag; });
-    function __nav(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} try { sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+    function __nav(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} try { sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } function __hrs(h) { h = Math.abs(h); var H = Math.floor(h + 1e-9), M = Math.round((h - H) * 60); return M ? (H ? H + '시간 ' + M + '분' : M + '분') : H + '시간'; }
     var self = this, st = this.state;
     var order = Object.keys(DB);
     var code = DB[st.code] ? st.code : 'VN';
     var c = DB[code];
     var d = new Date(st.now + c.off * 3600000), hh = d.getUTCHours(), mm = d.getUTCMinutes();
     var df = c.off - 9;
-    var tabDefs = [['overview', '개요'], ['travel', '여행 가이드'], ['culture', '문화 · 생활'], ['food', '음식 · 미식'], ['economy', '경제 · 무역'], ['tips', '로컬 꿀팁'], ['news', '뉴스 · 안전']];
+    var tabDefs = [['overview', '개요'], ['travel', '여행 가이드'], ['culture', '문화 · 생활'], ['food', '음식 · 미식'], ['economy', '경제 · 무역'], ['biz', '출장 · 비즈니스'], ['tips', '로컬 꿀팁'], ['news', '뉴스 · 안전']];
     var is = {}; tabDefs.forEach(function (t) { is[t[0]] = st.tab === t[0]; });
     var x = (c.lon + 180) / 360 * 100, y = (84 - c.lat) / 142 * 100;
     function go(k) { __nav('atlas.code', k); self._last = JSON.stringify(k); self.setState({ code: k, draft: '' }); }
     var idx = order.indexOf(code);
     var mh = (((10 + df) % 24) + 24) % 24; var meetLocal = (mh < 12 ? '오전 ' : '오후 ') + (Math.floor(mh) % 12 === 0 ? 12 : Math.floor(mh) % 12) + '시' + (mh % 1 ? ' 30분' : '') + (10 + df < 0 ? ' (전날)' : (10 + df >= 24 ? ' (다음 날)' : ''));
-    var utc = 'UTC' + (c.off >= 0 ? '+' : '−') + Math.abs(c.off);
+    var utc = 'UTC' + (c.off >= 0 ? '+' : '−') + (function (h) { var H = Math.floor(h + 1e-9), M = Math.round((h - H) * 60); return M ? H + ':' + (M < 10 ? '0' : '') + M : String(H); })(Math.abs(c.off));
     // example tips derived from the dataset, plus anything the viewer posts
     var base = [
       { id: 'p', cat: '전기', text: c.plugOk ? '한국 플러그를 그대로 쓸 수 있었어요 (' + c.volt + ', ' + c.plug + '형). 멀티탭 하나면 충분해요.' : '콘센트가 ' + c.plug + '형이라 어댑터가 꼭 필요해요 (' + c.volt + '). 공항보다 출국 전에 미리 사 두는 게 저렴해요.' },
@@ -657,12 +784,17 @@ class Component extends DCLogic {
       { id: 't', cat: '여행 시기', text: '추천 시기는 ' + c.best + '예요. ' + c.climate + '라 옷차림을 미리 확인하세요.' }
     ];
     base = base.concat(c.tips.map(function (t, i) { return { id: 'x' + i, cat: t[0], text: t[1] }; }));
+    var SH = typeof ATLAS_SHARED !== 'undefined' ? ATLAS_SHARED : null, shared = SH ? SH.get(code) : null;
+    var sharedTips = shared ? shared.items.map(function (p) { return { id: 'p' + p.id, pid: p.id, cat: p.cat, text: p.body, who: p.nick + ' · ' + SH.ago(p.created_at) + ' · 모두에게 공개', shared: true }; }) : [];
     var mine = (st.added[code] || []).slice().reverse();
-    var all = mine.map(function (t) { return { id: t.id, cat: t.cat, text: t.text, who: '내가 쓴 글 · 이 브라우저에만 저장', mine: true }; })
-      .concat(base.map(function (t) { return { id: t.id, cat: t.cat, text: t.text, who: '예시 제보 · 데이터 기반 샘플' }; }));
+    var all = sharedTips.concat(mine.map(function (t) { return { id: t.id, cat: t.cat, text: t.text, who: '내가 쓴 글 · 이 브라우저에만 저장', mine: true }; })
+      ).concat(base.map(function (t) { return { id: t.id, cat: t.cat, text: t.text, who: '예시 제보 · 데이터 기반 샘플' }; }));
     var tips = all.map(function (t) {
       var key = code + ':' + t.id, on = !!st.liked[key];
-      return { cat: t.cat, text: t.text, who: t.who, count: on ? 1 : 0, likedAria: on ? 'true' : 'false',
+      var rep = !!(st.reported || {})[t.pid];
+      return { cat: t.cat, text: t.text, who: t.who, count: on ? 1 : 0,
+        reportLabel: rep ? '신고됨' : '신고', reportStyle: t.shared ? 'height: 38px; padding: 0 12px; border-radius: 999px; font: inherit; font-size: 13px; cursor: pointer; border: 1px solid #3A2A3A; background: transparent; color: ' + (rep ? '#5B6478' : '#B48A9A') : 'display: none',
+        report: function () { if (!SH || rep || !t.pid) return; if (!window.confirm('이 글을 신고할까요? 신고가 3번 쌓이면 자동으로 숨겨져요.')) return; var r = Object.assign({}, st.reported || {}); r[t.pid] = true; self.setState({ reported: r }); SH.report(t.pid).then(function (hid) { if (hid) SH.refresh(code); }); }, likedAria: on ? 'true' : 'false',
         likeStyle: 'height: 38px; padding: 0 14px; border-radius: 999px; font: inherit; font-size: 13px; cursor: pointer; ' + (on ? 'border: 1px solid #7FE3FF; background: #13324A; color: #7FE3FF; font-weight: 600' : 'border: 1px solid #2A3A6E; background: transparent; color: #B4C0E4'),
         like: function () { var l = Object.assign({}, st.liked); l[key] = !on; self.setState({ liked: l }); } };
     });
@@ -700,6 +832,7 @@ class Component extends DCLogic {
     var tagCols = ['#FFC857', '#7FE3FF', '#7FF0B0', '#FF9B8A', '#C9B8FF'];
     var __s = this;
     var __menu = { menuOpen: !!(this.state && this.state.menu), menuAria: (this.state && this.state.menu) ? 'true' : 'false', toggleMenu: function () { __s.setState({ menu: !(__s.state && __s.state.menu) }); } };
+    if (!__s._escOn && typeof document !== 'undefined') { __s._escOn = true; document.addEventListener('keydown', function (e) { if ((e.key === 'Escape' || e.key === 'Esc') && __s.state && __s.state.menu) __s.setState({ menu: false }); }); }
     return Object.assign(__menu, {
       c: c, code: code, is: is, meetLocal: meetLocal,
       toCompare: function () { __nav('atlas.cmp', code === 'KR' ? ['KR', 'JP'] : ['KR', code]); },
@@ -708,10 +841,13 @@ class Component extends DCLogic {
       onPick: function (e) { go(e.target.value); },
       prev: function () { go(order[(idx - 1 + order.length) % order.length]); },
       next: function () { go(order[(idx + 1) % order.length]); },
-      temp: (function () { var L = Math.abs(c.lat), m = new Date().getMonth() + 1, sea = Math.cos((m - 7) / 12 * 2 * Math.PI) * (c.lat < 0 ? -1 : 1); return Math.round(27 - 0.5 * Math.max(0, L - 12) + sea * Math.min(14, 0.32 * L)); })(),
-      fx: (function () { var FXR = {USD: '1,334', JPY: '8.4', VND: '0.052', GBP: '1,777', EUR: '1,497', CNY: '199', THB: '39.9', SGD: '1,042', AUD: '929', CAD: '944', CHF: '1,618', TWD: '41.1', HKD: '170', INR: '14.0', MYR: '327', PHP: '21.1', IDR: '0.074', AED: '363', SAR: '356', SEK: '134', NZD: '754', MXN: '72.3', BRL: '263', TRY: '26.9', PEN: '388', EGP: '24.9', KES: '10.3', ZAR: '81.0', MAD: '137', MNT: '0.370', PLN: '343', CZK: '61.5', ARS: '0.881', CLP: '1.4', COP: '0.420', UYU: '33.2', PYG: '0.233', BOB: '114', VES: '1.5', GYD: '6.4', SRD: '35.2', CUP: '55.6', CRC: '2.9', DKK: '201', NOK: '141', ISK: '11.0', HUF: '4.1', RON: '281', RSD: '12.8', UAH: '29.7', ALL: '16.4', GTQ: '175', DOP: '21.8', JMD: '8.4', KHR: '0.329', LAK: '0.060', MMK: '0.636', NPR: '8.8', LKR: '4.0', BDT: '10.8', PKR: '4.8', KZT: '2.9', UZS: '0.109', QAR: '366', ILS: '429', JOD: '1,881', NGN: '1.0', ETB: '8.3', TZS: '0.507', GHS: '114', XOF: '2.3', TND: '446', RWF: '0.904', FJD: '588', PGK: '294', BGN: '765', KRW: '1'}; return FXR[c.curCode] ? FXR[c.curCode] + '원' : '—'; })(),
+      temp: (function () { var m = new Date().getMonth(); if (c.clim) return c.clim[m][0]; var L = Math.abs(c.lat), sea = Math.cos((m - 6) / 12 * 2 * Math.PI) * (c.lat < 0 ? -1 : 1); return Math.round(27 - 0.5 * Math.max(0, L - 12) + sea * Math.min(14, 0.32 * L)); })(),
+      tempLabel: (new Date().getMonth() + 1) + '월 평균',
+      tempRange: (function () { var m = new Date().getMonth(); return c.clim ? '낮 ' + c.clim[m][1] + '° · 밤 ' + c.clim[m][2] + '°' : ''; })(),
+      fx: (function () { var LF = typeof window !== 'undefined' && window.ATLAS_FX; if (LF && LF.rates && LF.rates[c.curCode]) return LF.rates[c.curCode] + '원'; var FXR = {USD: '1,334', JPY: '8.4', VND: '0.052', GBP: '1,777', EUR: '1,497', CNY: '199', THB: '39.9', SGD: '1,042', AUD: '929', CAD: '944', CHF: '1,618', TWD: '41.1', HKD: '170', INR: '14.0', MYR: '327', PHP: '21.1', IDR: '0.074', AED: '363', SAR: '356', SEK: '134', NZD: '754', MXN: '72.3', BRL: '263', TRY: '26.9', PEN: '388', EGP: '24.9', KES: '10.3', ZAR: '81.0', MAD: '137', MNT: '0.370', PLN: '343', CZK: '61.5', ARS: '0.881', CLP: '1.4', COP: '0.420', UYU: '33.2', PYG: '0.233', BOB: '114', VES: '1.5', GYD: '6.4', SRD: '35.2', CUP: '55.6', CRC: '2.9', DKK: '201', NOK: '141', ISK: '11.0', HUF: '4.1', RON: '281', RSD: '12.8', UAH: '29.7', ALL: '16.4', GTQ: '175', DOP: '21.8', JMD: '8.4', KHR: '0.329', LAK: '0.060', MMK: '0.636', NPR: '8.8', LKR: '4.0', BDT: '10.8', PKR: '4.8', KZT: '2.9', UZS: '0.109', QAR: '366', ILS: '429', JOD: '1,881', NGN: '1.0', ETB: '8.3', TZS: '0.507', GHS: '114', XOF: '2.3', TND: '446', RWF: '0.904', FJD: '588', PGK: '294', BGN: '765', KRW: '1'}; return FXR[c.curCode] ? FXR[c.curCode] + '원' : '—'; })(),
+      fxDate: (function () { var LF = typeof window !== 'undefined' && window.ATLAS_FX; var u = LF && LF.updated ? LF.updated : '2026-10-19'; return +u.slice(5, 7) + '/' + +u.slice(8, 10); })(),
       clock: (hh < 10 ? '0' : '') + hh + ':' + (mm < 10 ? '0' : '') + mm,
-      diff: df === 0 ? '한국과 같음' : (df < 0 ? '한국보다 ' + (-df) + '시간 늦음' : '한국보다 ' + df + '시간 빠름'),
+      diff: df === 0 ? '한국과 같음' : (df < 0 ? '한국보다 ' + __hrs(-df) + ' 늦음' : '한국보다 ' + __hrs(df) + ' 빠름'),
       plugText: c.plugOk ? '그대로 사용 가능' : '어댑터 필요',
       plugStyle: 'font-size: 17px; color: ' + (c.plugOk ? '#7FF0B0' : '#FF9B8A'),
       fta: c.fta === '—' ? '해당 없음 (한국)' : c.fta,
@@ -723,7 +859,7 @@ class Component extends DCLogic {
           style: 'flex: 1 1 auto; height: 46px; padding: 0 16px; border: 0; border-radius: 10px; font: inherit; font-size: 15px; cursor: pointer; ' + (on ? 'background: #1A2752; color: #FFFFFF; font-weight: 700; box-shadow: inset 0 -2px 0 #7FE3FF' : 'background: transparent; color: #B4C0E4') };
       }),
       facts: [{ k: '수도', v: c.capital }, { k: '공용어', v: c.lang }, { k: '인구', v: c.pop >= 100 ? '약 ' + (c.pop / 100).toFixed(1).replace('.0', '') + '억 명' : '약 ' + Math.round(c.pop * 100).toLocaleString('ko-KR') + '만 명' }, { k: '통화', v: c.cur },
-        { k: '표준시', v: utc + ' · ' + (df === 0 ? '한국과 같음' : (df < 0 ? (-df) + '시간 늦음' : df + '시간 빠름')) }, { k: '전압 · 플러그', v: c.volt + ' · ' + c.plug + '형' }, { k: '통행 방향', v: c.drive },
+        { k: '시간대', v: utc + (c.dst ? ' (서머타임)' : '') + ' · ' + (df === 0 ? '한국과 같음' : (df < 0 ? __hrs(-df) + ' 늦음' : __hrs(df) + ' 빠름')) }, { k: '전압 · 플러그', v: c.volt + ' · ' + c.plug + '형' }, { k: '통행 방향', v: c.drive },
         { k: '면적', v: c.area }, { k: '업무 시간', v: c.work }, { k: '기후', v: c.climate }, { k: '여행 적기', v: c.best }, { k: '긴급 전화', v: c.emergency }, { k: '비자 (한국 여권)', v: '출국 전 외교부 해외안전여행에서 확인' }],
       etq: c.etq.concat(c.etq2).map(function (t, i) { return { n: i + 1, t: t }; }),
       fr: fr, frLow: fr.fare[0], frHigh: fr.fare[1],
@@ -736,7 +872,7 @@ class Component extends DCLogic {
       tr: tr,
       pdfLabel: st.pdf === 'busy' ? 'PDF 만드는 중…' : (st.pdf === 'saved' ? '✓ PDF 저장 완료' : (st.pdf === 'declined' ? '저장 취소됨 · 다시 시도' : (st.pdf === 'error' ? 'PDF 생성 실패 · 다시 시도' : '여행 가이드 PDF로 저장'))), pdfBusy: st.pdf === 'busy' ? 'true' : 'false',
       savePdf: function () {
-        if (st.pdf === 'busy') return;
+        if (st.pdf === 'busy' || self._lkT) return; self._lkT = true;
         self.setState({ pdf: 'busy' });
         var cut = function (t) { return String(t || '').replace(/^(공항 → 시내|시내|도시 간|봄|여름|가을|겨울)\s*:\s*/, ''); };
         var lv = ['', '매우 안전', '안전 · 소매치기 주의', '주의 필요', '여행 자제 · 위험 지역 있음'][tr.safety] || '';
@@ -753,7 +889,108 @@ class Component extends DCLogic {
             { h: '매너 · 금기 · 음식', rows: [['에티켓', c.etq.concat(c.etq2).join(' / ')], ['금기', c.taboo.concat([c.taboo2]).join(' / ')], ['인사', c.hello + ' (' + c.helloRead + ') · ' + c.greet], ['대표 음식', c.dishes.map(function (x) { return x.n; }).join(', ')], ['길거리 음식', c.street]] },
             { h: '긴급 연락처', rows: [['현지 긴급 전화', c.emergency], ['영사콜센터 (24시간)', '+82-2-3210-0404'], ['대표 공항', c.airport + ' · 인천 출발 ' + c.flight]] }
           ] };
-        Promise.resolve().then(function () { return self._pdf(spec); }).then(function (r) { self.setState({ pdf: r === 'declined' ? 'declined' : 'saved' }); setTimeout(function () { self.setState({ pdf: null }); }, 4000); }, function () { self.setState({ pdf: 'error' }); });
+        Promise.resolve().then(function () { return self._pdf(spec); }).then(function (r) { self.setState({ pdf: r === 'declined' ? 'declined' : 'saved' }); setTimeout(function () { self.setState({ pdf: null }); }, 4000); }, function () { self.setState({ pdf: 'error' }); }).then(function () { self._lkT = false; }, function () { self._lkT = false; });
+      },
+      bizFacts: [['비자 (출장 목적)', (tr.visa || '외교부 해외안전여행에서 확인') + ' — 계약·전시 참가 등은 상용비자가 필요한 경우가 있어요'], ['업무 시간', c.work], ['인사', c.greet + ' · ' + c.hello + ' (' + c.helloRead + ')'], ['복장', c.dress], ['선물', c.gift], ['지금 현지 시각', (hh < 10 ? '0' : '') + hh + ':' + (mm < 10 ? '0' : '') + mm + ' · ' + (df === 0 ? '한국과 같음' : (df < 0 ? '한국보다 ' + __hrs(-df) + ' 늦음' : '한국보다 ' + __hrs(df) + ' 빠름'))]].map(function (x) { return { k: x[0], v: x[1] }; }),
+      mp: (function () {
+        var m = /(\d{1,2}):(\d{2})\s*~\s*(\d{1,2}):(\d{2})/.exec(c.work || ''), s = m ? +m[1] + m[2] / 60 : 9, e = m ? +m[3] + m[4] / 60 : 18;
+        var segs = [], best = [0, 0, 0];
+        [-1, 0, 1].forEach(function (k) { var a = s - df + 24 * k, b = e - df + 24 * k; var x0 = Math.max(a, 0), x1 = Math.min(b, 24); if (x1 > x0) segs.push({ style: 'position: absolute; top: 0; bottom: 0; left: ' + (x0 / 24 * 100).toFixed(2) + '%; width: ' + ((x1 - x0) / 24 * 100).toFixed(2) + '%; background: rgba(255,200,87,.6); border-radius: 6px' });
+          var o0 = Math.max(a, 9), o1 = Math.min(b, 18); if (o1 - o0 > best[0]) best = [o1 - o0, o0, o1]; });
+        function f(h) { h = ((h % 24) + 24) % 24; var H = Math.floor(h), M = Math.round((h - H) * 60); return (H < 10 ? '0' : '') + H + ':' + (M < 10 ? '0' : '') + M; }
+        var o = { segs: segs, note: '현지 업무 시간: ' + c.work + ' · 서머타임은 오늘 날짜 기준으로 반영 · 공휴일은 미반영' }, ok = 'padding: 14px 16px; border-radius: 12px; display: flex; flex-direction: column; gap: 4px; ';
+        var h = Math.round(best[0] * 10) / 10;
+        if (code === 'KR') { o.title = '한국 기준 화면이에요'; o.desc = '다른 나라를 고르면 한국과 겹치는 업무 시간을 계산해 드려요.'; o.boxStyle = ok + 'background: #0A1024'; }
+        else if (h >= 3) { o.title = '하루 ' + __hrs(h) + ' 겹쳐요 — 화상 미팅 잡기 좋아요'; o.desc = '한국 ' + f(best[1]) + '~' + f(best[2]) + ' = 현지 ' + f(best[1] + df) + '~' + f(best[2] + df) + ' 사이에 회의를 잡으면 양쪽 모두 업무 시간이에요.'; o.boxStyle = ok + 'background: #0E2A22; border: 1px solid #1F5A45'; }
+        else if (h > 0) { o.title = '하루 ' + __hrs(h) + '만 겹쳐요 — 시간을 미리 정해 두세요'; o.desc = '한국 ' + f(best[1]) + '~' + f(best[2]) + ' = 현지 ' + f(best[1] + df) + '~' + f(best[2] + df) + '. 짧은 통화는 이 시간에, 자세한 내용은 이메일로 보내 두면 좋아요.'; o.boxStyle = ok + 'background: #2B2410; border: 1px solid #5A4A1A'; }
+        else { var early = f(s - df); o.title = '업무 시간이 겹치지 않아요 — 이메일 중심으로 진행하세요'; o.desc = '현지 업무 시작(현지 ' + f(s) + ')은 한국 시간 ' + early + '이에요. 통화가 꼭 필요하면 한국 쪽이 이른 아침이나 밤에 맞추는 경우가 많아요.'; o.boxStyle = ok + 'background: #2A1414; border: 1px solid #5A2626'; }
+        if (/^일~/.test(c.work || '')) o.note = '현지는 일요일부터 근무해요. 한국 금요일 오후는 현지 주말이 시작될 수 있어요 · ' + o.note;
+        return o; })(),
+      bizEtq: c.etq.concat(c.etq2).map(function (t, i) { return { n: i + 1, t: t }; }),
+      bizDining: (c.dining || []).join(' · ') || '현지 관습을 따르세요',
+      bizChecks: (function () { var all = self._read('atlas.biz'), done = all && Array.isArray(all[code]) ? all[code] : [];
+        var L = [['visa', '상용(출장) 목적 입국 요건 확인', '관광 무비자라도 계약·전시·현지 작업은 상용비자가 필요한 나라가 있어요. 현지 대사관 공지를 확인하세요.'], ['card', '명함 넉넉히 (영문 · 현지어 병기)', c.etq.concat(c.etq2).filter(function (t) { return /명함/.test(t); })[0] || '직함과 영문 이름을 꼭 넣어요.'], ['deck', '회사 소개서 · 카탈로그 (영문)', 'PDF와 인쇄본을 함께 준비하고, 가격표는 미팅 분위기를 보고 꺼내요.'], ['sample', '샘플 반출 · 통관 확인', '샘플·전시품은 ATA 까르네(일시 수입 통관 증서) 사용 가능 여부를 대한상공회의소에서 확인해요.'], ['gift', '선물 준비', c.gift], ['dress', '복장 확인', c.dress + ' · 비즈니스 정장이 기본이에요'], ['pay', '결제 · 현지 통화', c.cur + ' · ' + (tr.pay || '해외 결제 카드를 준비해요')], ['sim', '로밍 · eSIM', tr.sim || '도착 즉시 쓸 데이터를 준비해요'], ['safe', '외교부 「동행」 출국 등록', '해외안전여행 사이트에 일정을 등록하면 현지 위기 상황 때 안전 정보를 받을 수 있어요.'], ['ins', '출장자 보험 확인', '회사 단체보험이 해외 출장을 보장하는지 확인해요.'], ['hol', '현지 공휴일 · 명절 피하기', c.fest.slice(0, 2).map(function (x) { return x.n + ' (' + x.w + ')'; }).join(' · ')], ['sos', '긴급 연락처 저장', c.emergency + ' · 영사콜센터 +82-2-3210-0404']];
+        return L.map(function (x) { var on = done.indexOf(x[0]) >= 0; return { t: x[1], h: x[2], on: on ? 'true' : 'false', mark: on ? '✓' : '',
+          box: 'flex: none; width: 24px; height: 24px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; ' + (on ? 'background: #7FF0B0; color: #04101F' : 'border: 2px solid #3D5AA8; color: transparent'),
+          style: 'display: flex; gap: 12px; align-items: flex-start; padding: 14px; border-radius: 12px; font: inherit; color: #E8EEFF; cursor: pointer; ' + (on ? 'background: #0E2A22; border: 1px solid #1F5A45' : 'background: #0A1024; border: 1px solid #1E2A52'),
+          toggle: function () { var a = self._read('atlas.biz'); if (!a || typeof a !== 'object' || Array.isArray(a)) a = {}; var cur = (Array.isArray(a[code]) ? a[code] : []).slice(), i = cur.indexOf(x[0]); if (i >= 0) cur.splice(i, 1); else cur.push(x[0]); a[code] = cur; try { localStorage.setItem('atlas.biz', JSON.stringify(a)); } catch (er) { try { sessionStorage.setItem('atlas.biz', JSON.stringify(a)); } catch (e2) {} } self.setState({ bizTick: Date.now() }); } }; }); })(),
+      ex: (function () { var f = String(c.fta || ''), inForce = /발효|적용|RCEP|아세안/.test(f) && !/^없음/.test(f), pending = !inForce && /타결|서명|협상/.test(f);
+        var o = { links: [['TradeNAVI 해외 관세율', '한국무역협회 · 나라·품목별 관세 · 인증 · 규제', 'https://www.tradenavi.or.kr'], ['FTA 강국 KOREA', '산업통상자원부 · 협정 원문 · 원산지 기준', 'https://www.fta.go.kr'], ['관세청 UNI-PASS', 'HS코드(품목분류) 찾기 · 수출 신고', 'https://unipass.customs.go.kr'], ['K-stat 무역통계', '한국무역협회 · 이 나라와의 품목별 수출입', 'https://stat.kita.net']].map(function (x) { return { t: x[0], d: x[1], url: x[2] }; }) };
+        var box = 'padding: 14px 16px; border-radius: 12px; display: flex; flex-direction: column; gap: 4px; ';
+        if (code === 'KR') { o.title = '한국 기준 화면이에요'; o.desc = '수출 상대국을 고르면 FTA 혜택 가능 여부와 확인 순서를 보여 드려요.'; o.boxStyle = box + 'background: #0A1024'; o.steps = []; }
+        else if (inForce) { o.title = 'FTA 특혜관세를 받을 수 있는 나라예요'; o.desc = f + ' — 원산지 기준을 맞추고 원산지증명서를 갖추면 일반 관세보다 낮은 협정 관세가 적용돼요. 협정이 여러 개면 품목별로 더 유리한 협정을 고를 수 있어요.'; o.boxStyle = box + 'background: #0E2A22; border: 1px solid #1F5A45';
+          o.steps = ['수출 품목의 HS코드(6자리)를 먼저 확인해요.', '그 HS코드의 협정 관세율과 일반 관세율을 비교해요.', '품목별 원산지 기준(세번변경 · 부가가치 등)을 충족하는지 확인해요.', '원산지증명서 발급 방식(기관 발급 · 자율 발급)을 확인하고 서류를 준비해요.']; }
+        else { o.title = pending ? '협정은 진행 중이지만 아직 발효 전이에요' : '한국과 발효된 FTA가 없는 나라예요'; o.desc = (f || '없음') + ' — 지금은 일반(WTO 최혜국) 관세가 적용돼요. 발효 전 협정은 관세 혜택이 없어요.'; o.boxStyle = box + 'background: #2B2410; border: 1px solid #5A4A1A';
+          o.steps = ['수출 품목의 HS코드(6자리)를 먼저 확인해요.', '이 나라의 일반 관세율과 부가세 · 수입 인증(규격 · 라벨)을 확인해요.', '경쟁국이 이 나라와 FTA를 맺었는지 확인해 가격 경쟁력을 비교해요.', '결제 · 환율 위험(신용장 · 송금 방식)을 거래 조건에 반영해요.']; }
+        return o; })(),
+      ld: (function () {
+        var AR = function (v) { return Array.isArray(v) ? v.filter(function (y) { return y && typeof y === 'object' && y.id && y.name; }) : []; }, ALL = (function () { var a = self._ldMem || self._read('atlas.leads'); return a && typeof a === 'object' && !Array.isArray(a) ? a : {}; })(), mine = { buyers: AR((ALL[code] || {}).buyers), comps: AR((ALL[code] || {}).comps) }, f = Object.assign({ name: '', type: '바이어', city: '', stage: '발굴', next: '', due: '', memo: '', cname: '', cfrom: '', cnote: '' }, st.ldf || {});
+        var STG = ['발굴', '첫 연락', '회신', '미팅', '견적 · 샘플', '계약'], SC = ['#9AA8D4', '#9DE8FF', '#7FE3FF', '#FFC857', '#FFB36B', '#7FF0B0'];
+        var today = (function () { var d = new Date(st.now || Date.now()); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); })();
+        var LD = function () { if (self._ldMem) return self._ldMem; var a = self._read('atlas.leads'); return a && typeof a === 'object' && !Array.isArray(a) ? a : {}; }, CUR = function () { var x = LD()[code] || {}; return { buyers: AR(x.buyers), comps: AR(x.comps) }; };
+        var save = function (m) { var a = LD(); if (m.buyers.length || m.comps.length) a[code] = m; else delete a[code]; try { localStorage.setItem('atlas.leads', JSON.stringify(a)); self._ldMem = null; return true; } catch (er) { self._ldMem = a; return false; } };
+        var upd = function (k) { return function (e) { var o = Object.assign({}, st.ldf || {}); o[k] = e.target.value; self.setState({ ldf: o, ldMsg: st.ldErr ? st.ldMsg : '' }); }; };
+        var on = {}; ['name', 'type', 'city', 'stage', 'next', 'due', 'memo', 'cname', 'cfrom', 'cnote'].forEach(function (k) { on[k] = upd(k); });
+        var arm = st.ldArm || '';
+        var delBtn = function (on2) { return 'height: 36px; padding: 0 12px; border-radius: 10px; font: inherit; font-size: 13px; cursor: pointer; ' + (on2 ? 'border: 1px solid #B42318; background: #3A1414; color: #FFB4B4' : 'border: 1px solid #2A3A6E; background: transparent; color: #9AA8D4'); };
+        var mkDel = function (kind, id) { return function () { if (arm !== kind + id) { self.setState({ ldArm: kind + id }); return; } var x = CUR(); x[kind] = x[kind].filter(function (y) { return y.id !== id; }); save(x); self.setState({ ldArm: '', ldTick: Date.now() }); }; };
+        var buyers = (mine.buyers || []).slice().sort(function (a, b) { return (a.due || '9999') < (b.due || '9999') ? -1 : 1; }).map(function (b) {
+          var si = Math.max(0, STG.indexOf(b.stage)), late = b.due && b.due < today && si < 5;
+          return { name: b.name, stage: STG[si], sub: [b.type, b.city].filter(Boolean).join(' · ') + ' · 등록 ' + (b.added || ''),
+            stageStyle: 'flex: none; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; background: rgba(255,255,255,.06); color: ' + SC[si],
+            dots: STG.map(function (x, i) { return 'flex: 1; height: 5px; border-radius: 3px; background: ' + (i <= si ? SC[si] : '#1E2A52'); }),
+            nextText: b.next ? '다음 할 일: ' + b.next + (b.due ? ' · ' + b.due + (late ? ' (기한 지남)' : '') : '') : (b.due ? '기한 ' + b.due : '다음 할 일을 정해 두세요'),
+            nextStyle: 'font-size: 14px; line-height: 1.5; color: ' + (late ? '#FF9B8A' : (b.next ? '#E8EEFF' : '#7F8DBB')),
+            memo: b.memo || '', memoStyle: b.memo ? 'margin: 0; font-size: 13px; line-height: 1.6; color: #B4C0E4' : 'display: none',
+            advLabel: si < 5 ? '다음 단계 → ' + STG[si + 1] : '계약 완료', advStyle: 'height: 36px; padding: 0 12px; border-radius: 10px; border: 0; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; ' + (si < 5 ? 'background: #13324A; color: #7FE3FF' : 'background: #0E2A22; color: #7FF0B0'),
+            advance: function () { if (si >= 5) return; var x = CUR(); x.buyers = x.buyers.map(function (y) { return y.id === b.id ? Object.assign({}, y, { stage: STG[si + 1] }) : y; }); save(x); self.setState({ ldTick: Date.now() }); },
+            del: mkDel('buyers', b.id), delLabel: arm === 'buyers' + b.id ? '한 번 더 누르면 삭제' : '삭제', delStyle: delBtn(arm === 'buyers' + b.id) };
+        });
+        var comps = (mine.comps || []).map(function (k) { return { name: k.name, from: k.from ? '· ' + k.from : '', note: k.note || '메모 없음', del: mkDel('comps', k.id), delLabel: arm === 'comps' + k.id ? '한 번 더 누르면 삭제' : '삭제', delStyle: delBtn(arm === 'comps' + k.id) }; });
+        var bs = mine.buyers || [], late = bs.filter(function (b) { return b.due && b.due < today && STG.indexOf(b.stage) < 5; }).length, hot = bs.filter(function (b) { return STG.indexOf(b.stage) >= 3; }).length;
+        var chk = (function () { var a = self._read('atlas.biz'); return a && Array.isArray(a[code]) ? a[code].length : 0; })();
+        var otherCodes = Object.keys(ALL).filter(function (k) { return k !== code && DB[k] && ALL[k] && (AR(ALL[k].buyers).length || AR(ALL[k].comps).length); });
+        var okN = f.name.trim().length > 0, okC = f.cname.trim().length > 0;
+        var btn = function (ok) { return 'height: 42px; padding: 0 18px; border-radius: 10px; border: 0; font: inherit; font-weight: 700; cursor: pointer; ' + (ok ? 'background: #FFC857; color: #1A1204' : 'background: #1A2752; color: #7F8DBB'); };
+        var esc = function (v) { v = String(v == null ? '' : v); if (/^[=+\-@\t\r]/.test(v)) v = "'" + v; return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
+        return { f: f, on: on, buyers: buyers, comps: comps,
+          stats: [['바이어 · 대리점', bs.length + '곳', '#E8EEFF'], ['미팅 단계 이상', hot + '곳', '#FFC857'], ['기한 지난 할 일', late + '개', late ? '#FF9B8A' : '#7FF0B0'], ['출장 체크리스트', chk + ' / 12', '#7FE3FF']].map(function (x) { return { k: x[0], v: x[1], style: 'font-size: 18px; font-weight: 700; margin-top: 2px; color: ' + x[2] }; }),
+          others: otherCodes.map(function (k) { return { label: DB[k].name + ' ' + AR(ALL[k].buyers).length + '곳', go: function () { go(k); } }; }),
+          otherStyle: otherCodes.length ? 'display: flex; gap: 6px; flex-wrap: wrap; align-items: center' : 'display: none',
+          emptyStyle: bs.length ? 'display: none' : 'padding: 14px; border-radius: 12px; border: 1px dashed #2A3A6E; font-size: 14px; color: #8C9BC7; text-align: center',
+          addStyle: btn(okN), addCStyle: btn(okC),
+          msg: st.ldMsg || '', msgStyle: st.ldMsg ? 'font-size: 13px; font-weight: 600; color: ' + (st.ldErr ? '#FF9B8A' : '#7FF0B0') : 'display: none',
+          addBuyer: function (e) { if (e && e.preventDefault) e.preventDefault(); if (!okN) { self.setState({ ldMsg: '' }); return; } var __sig = 'b:' + code + f.name.trim(); if (self._sig === __sig && Date.now() - (self._sigT || 0) < 2000) return; self._sig = __sig; self._sigT = Date.now(); var x = CUR(); x.buyers = x.buyers.concat([{ id: 'b' + Date.now(), name: f.name.trim(), type: f.type, city: f.city.trim(), stage: f.stage, next: f.next.trim(), due: f.due, memo: f.memo.trim(), added: today }]); x.comps = x.comps || []; var __ok = save(x); self.setState({ ldf: Object.assign({}, f, { name: '', city: '', next: '', due: '', memo: '', stage: '발굴' }), ldMsg: __ok ? f.name.trim() + ' 추가했어요' : "⚠ " + "브라우저 저장 공간이 가득 차서 저장되지 않았어요. 이 탭을 닫기 전에 'CSV 저장'으로 백업하세요.", ldErr: !__ok, ldTick: Date.now() }); },
+          addComp: function (e) { if (e && e.preventDefault) e.preventDefault(); if (!okC) return; var __sig = 'c:' + code + f.cname.trim(); if (self._sig === __sig && Date.now() - (self._sigT || 0) < 2000) return; self._sig = __sig; self._sigT = Date.now(); var x = CUR(); x.comps = x.comps.concat([{ id: 'c' + Date.now(), name: f.cname.trim(), from: f.cfrom.trim(), note: f.cnote.trim() }]); x.buyers = x.buyers || []; var __ok = save(x); self.setState({ ldf: Object.assign({}, f, { cname: '', cfrom: '', cnote: '' }), ldMsg: __ok ? '' : "⚠ " + "브라우저 저장 공간이 가득 차서 저장되지 않았어요. 이 탭을 닫기 전에 'CSV 저장'으로 백업하세요.", ldErr: !__ok, ldTick: Date.now() }); },
+          csv: function () { var a = LD(), rows = [['국가', '구분', '회사명', '유형 · 국적', '도시', '진행 단계', '다음 할 일', '기한', '메모', '등록일']];
+            Object.keys(a).forEach(function (k) { var nm = DB[k] ? DB[k].name : k; if (!a[k] || typeof a[k] !== 'object') return; AR(a[k].buyers).forEach(function (b) { rows.push([nm, '바이어 · 대리점', b.name, b.type, b.city, b.stage, b.next, b.due, b.memo, b.added]); }); AR(a[k].comps).forEach(function (c2) { rows.push([nm, '경쟁사', c2.name, c2.from, '', '', '', '', c2.note, '']); }); });
+            var txt = '﻿' + rows.map(function (r) { return r.map(esc).join(','); }).join('\r\n'), fn = 'ATLAS_leads_' + today + '.csv';
+            var dl = function () { var url = URL.createObjectURL(new Blob([txt], { type: 'text/csv;charset=utf-8' })); var el = document.createElement('a'); el.href = url; el.download = fn; document.body.appendChild(el); el.click(); el.remove(); setTimeout(function () { URL.revokeObjectURL(url); }, 30000); };
+            var cl = window.claude; if (cl && cl.use) { cl.use('downloads').then(function (d) { if (!d) return dl(); return d.save({ filename: fn, data: new TextEncoder().encode(txt) }).catch(function (er) { if (!(er && er.code === 'declined')) dl(); }); }, dl); } else dl(); },
+          links: [['buyKOREA', 'KOTRA 온라인 B2B · 해외 바이어 구매 문의', 'https://www.buykorea.org'], ['tradeKorea', '한국무역협회 B2B · 바이어 · 오퍼 검색', 'https://www.tradekorea.com'], ['KOTRA 해외무역관', c.capital + ' 무역관 · 바이어 발굴 · 지사화 사업', 'https://www.google.com/search?q=' + encodeURIComponent('KOTRA ' + c.capital + ' 무역관')], ['ITC Trade Map', c.name + '의 품목별 수입 상대국 = 경쟁국 파악', 'https://www.trademap.org']].map(function (x) { return { t: x[0], d: x[1], url: x[2] }; }) };
+      })(),
+      bizMarket: [['주요 수출품', c.exp.join(' · ')], ['대표 기업', c.companies.join(' · ')], ['한국과의 FTA', c.fta === '—' ? '해당 없음 (한국)' : c.fta], ['1인당 GDP', c.gdpTxt || '자료 없음']].map(function (x) { return { k: x[0], v: x[1] }; }),
+      goEconomy: function () { __nav('atlas.tab', 'economy'); self._lastTab = JSON.stringify('economy'); self.setState({ tab: 'economy' }); },
+      bizLinks: [['KOTRA 해외무역관', c.capital + ' 무역관 찾기 · 바이어 발굴 지원', 'https://www.google.com/search?q=' + encodeURIComponent('KOTRA ' + c.capital + ' 무역관')], ['주' + c.name + ' 대한민국 대사관', '상용비자 · 영사 공지', 'https://www.google.com/search?q=' + encodeURIComponent('주' + c.name + ' 대한민국 대사관')], ['외교부 해외안전여행', '「동행」 출국 등록 · 안전 공지', 'https://www.0404.go.kr'], ['KOTRA 해외시장뉴스', c.name + ' 시장 동향 · 수출 정보', 'https://dream.kotra.or.kr'], ['K-stat 무역통계', '한국무역협회 · 국가별 수출입 실적', 'https://stat.kita.net']].map(function (x) { return { t: x[0], d: x[1], url: x[2] }; }),
+      bizDone: (function () { var a = self._read('atlas.biz'); return a && Array.isArray(a[code]) ? a[code].length : 0; })(), bizTotal: 12,
+      bizPdfLabel: st.bpdf === 'busy' ? 'PDF 만드는 중…' : (st.bpdf === 'saved' ? '✓ PDF 저장 완료' : (st.bpdf === 'declined' ? '저장 취소됨 · 다시 시도' : (st.bpdf === 'error' ? 'PDF 생성 실패 · 다시 시도' : '출장 브리핑 PDF로 저장'))), bizPdfBusy: st.bpdf === 'busy' ? 'true' : 'false',
+      saveBizPdf: function () {
+        if (st.bpdf === 'busy' || self._lkB) return; self._lkB = true;
+        self.setState({ bpdf: 'busy' });
+        var v = self.renderVals(), mp = v.mp;
+        var spec = { filename: 'ATLAS_business-brief_' + c.code + '.pdf', title: c.name + ' 출장 브리핑', subtitle: c.local + ' · 수도 ' + c.capital + ' · ' + new Date().toLocaleDateString('ko-KR') + ' 기준', flags: [c.flag],
+          note: 'ATLAS HUB · 비자·입국 요건은 출국 전 대사관과 외교부 해외안전여행(0404.go.kr)에서 확인하세요.',
+          sections: [
+            { h: '출장 한눈에', rows: v.bizFacts.map(function (f) { return [f.k, f.v]; }) },
+            { h: '미팅 시간', rows: [['결과', mp.title], ['추천 시간', mp.desc], ['참고', mp.note]] },
+            { h: '미팅 에티켓', rows: v.bizEtq.map(function (e) { return [String(e.n), e.t]; }).concat([['피해야 할 것', c.taboo.concat([c.taboo2]).join(' / ')], ['식사 자리', v.bizDining]]) },
+            { h: '출장 준비 체크리스트', rows: v.bizChecks.map(function (k) { return [(k.on === 'true' ? '[완료] ' : '[  ] ') + k.t, k.h]; }) },
+            { h: '시장 한눈에', rows: v.bizMarket.map(function (m) { return [m.k, m.v]; }) },
+            { h: '수출 실무 체크', rows: [['FTA', v.ex.title + ' — ' + v.ex.desc]].concat(v.ex.steps.map(function (x, i) { return [(i + 1) + '단계', x]; })) },
+            { h: '거래선 개척 카드', rows: (function () { var L0 = self._read('atlas.leads'), m = (L0 && typeof L0 === 'object' && L0[code]) || {}, r = []; (Array.isArray(m.buyers) ? m.buyers : []).forEach(function (b) { r.push([b.name + ' (' + [b.type, b.city].filter(Boolean).join(' · ') + ')', b.stage + (b.next ? ' · 다음: ' + b.next : '') + (b.due ? ' · ' + b.due : '') + (b.memo ? ' · ' + b.memo : '')]); }); (Array.isArray(m.comps) ? m.comps : []).forEach(function (k) { r.push(['경쟁사 · ' + k.name + (k.from ? ' (' + k.from + ')' : ''), k.note || '']); }); return r.length ? r : [['등록된 카드 없음', '출장 · 비즈니스 탭의 거래선 개척 카드에서 바이어와 경쟁사를 추가하세요']]; })() },
+            { h: '연락처', rows: [['현지 긴급 전화', c.emergency], ['영사콜센터 (24시간)', '+82-2-3210-0404'], ['대표 공항', c.airport + ' · 인천 출발 ' + c.flight]] }
+          ] };
+        Promise.resolve().then(function () { return self._pdf(spec); }).then(function (r) { self.setState({ bpdf: r === 'declined' ? 'declined' : 'saved' }); setTimeout(function () { self.setState({ bpdf: null }); }, 4000); }, function () { self.setState({ bpdf: 'error' }); }).then(function () { self._lkB = false; }, function () { self._lkB = false; });
       },
       trSafetyLabel: ['', '매우 안전', '안전 · 소매치기 주의', '주의 필요', '여행 자제 · 위험 지역 있음'][tr.safety] || '',
       trSafetyStyle: 'font-size: 16px; color: ' + sCol,
@@ -799,24 +1036,38 @@ class Component extends DCLogic {
       tips: tips,
       cats: catNames.map(function (n) { var on = st.cat === n; return { label: n, on: on ? 'true' : 'false', pick: function () { self.setState({ cat: n }); }, style: 'height: 38px; padding: 0 14px; border-radius: 999px; font: inherit; font-size: 14px; cursor: pointer; ' + (on ? 'border: 1px solid #7FE3FF; background: #13324A; color: #7FE3FF; font-weight: 600' : 'border: 1px solid #2A3A6E; background: transparent; color: #B4C0E4') }; }),
       draft: draft, draftCount: draft.length,
-      onDraft: function (e) { self.setState({ draft: e.target.value.slice(0, 200) }); },
+      onDraft: function (e) { self.setState({ draft: e.target.value.slice(0, 200), postMsg: '' }); },
+      nick: st.nick || '', onNick: function (e) { self.setState({ nick: e.target.value.slice(0, 20) }); },
+      postBusy: st.postBusy ? 'true' : 'false', submitLabel: st.postBusy ? '등록 중…' : '등록하기',
+      postMsg: st.postMsg || '', postMsgStyle: st.postMsg ? 'font-size: 14px; font-weight: 600; color: ' + (st.postOk ? '#7FF0B0' : '#FF9B8A') : 'display: none',
+      boardNote: SH ? (shared && shared.status === 'error' ? '공유 게시판에 연결하지 못했어요. 잠시 후 다시 열어 주세요.' : '새 글은 모두에게 공개돼요 · 신고 3회 시 자동 숨김 · 10분에 5개까지') : '새 글은 이 브라우저에만 저장돼요',
       submitStyle: 'height: 44px; padding: 0 22px; border-radius: 12px; border: 0; font: inherit; font-weight: 700; cursor: pointer; ' + (canPost ? 'background: #7FE3FF; color: #04101F' : 'background: #1A2752; color: #7F8DBB'),
       submit: function (e) {
         if (e && e.preventDefault) e.preventDefault();
         if (!canPost) return;
+        if (SH) {
+          if (st.postBusy || self._postLock) return;
+          self._postLock = true;
+          self.setState({ postBusy: true, postMsg: '' });
+          SH.post({ code: code, cat: st.cat, body: draft.trim(), nick: (st.nick || '').trim() }).then(function () { self._postLock = false; self.setState({ draft: '', postBusy: false, postMsg: '등록됐어요. 모두에게 공개돼요.', postOk: true }); SH.refresh(code); },
+            function (er) { self._postLock = false; self.setState({ postBusy: false, postMsg: er.message, postOk: false }); });
+          return;
+        }
+        var __sig = 'post:' + draft.trim(); if (self._sig === __sig && Date.now() - (self._sigT || 0) < 2000) return; self._sig = __sig; self._sigT = Date.now();
         var np = { id: 'u' + Date.now(), code: code, cat: st.cat, text: draft.trim(), t: Date.now() };
         var o = Object.assign({}, st.added); o[code] = (o[code] || []).concat([np]);
-        try { var all = JSON.parse(localStorage.getItem('atlas.posts') || '[]'); all.push(np); localStorage.setItem('atlas.posts', JSON.stringify(all.slice(-200))); } catch (er) {}
-        self.setState({ added: o, draft: '' });
+        var __ok = true; try { var all = JSON.parse(localStorage.getItem('atlas.posts') || '[]'); all.push(np); localStorage.setItem('atlas.posts', JSON.stringify(all.slice(-200))); } catch (er) { __ok = false; }
+        self.setState({ added: o, draft: '', postMsg: __ok ? '' : '브라우저 저장 공간이 가득 차서 이 글은 새로고침하면 사라져요.', postOk: false });
       },
       checks: checks, checkDone: doneN === checks.length ? '준비 완료! 즐거운 여행 되세요.' : doneN + ' / ' + checks.length + ' 완료',
       similar: similar.map(function (k) { return { name: DB[k].name, capital: DB[k].capital, photo: DB[k].photo, flag: DB[k].flag, go: function () { go(k); self.setState({ tab: 'overview' }); } }; })
     });
   }
 }
-window.__afterRender = function (c) { var s = c.state, u = '?code=' + s.code + (s.tab && s.tab !== 'overview' ? '&tab=' + s.tab : ''); if (location.search !== u) history.replaceState(null, '', u); };
+window.__afterRender = function (c) { var s = c.state, tq = s.tab && s.tab !== 'overview' ? 'tab=' + s.tab : ''; if (window.__PRESET_CODE) { var p = s.code.toLowerCase() + '.html' + (tq ? '?' + tq : ''); if (location.pathname.split('/').pop() + location.search !== p) history.replaceState(null, '', 'country/' + p); if (s.code !== window.__PRESET_CODE) { window.__PRESET_CODE = s.code; document.title = (window.ATLAS_DB[s.code] || {}).name + ' 여행·출장 정보 · ATLAS HUB'; } return; } var u = '?code=' + s.code + (tq ? '&' + tq : ''); if (location.search !== u) history.replaceState(null, '', u); };
 mountAtlas(Component);
 (function () { if (!window.fetch) return; fetch('data/live.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { if (!j || !j.countries) return; var D = window.ATLAS_DB, up = String(j.updated || '').slice(0, 10); Object.keys(j.countries).forEach(function (k) { var L = j.countries[k], d = D[k]; if (!d || k === 'KR') return; d.tr = d.tr || {}; if (L.alert) d.tr.alert = L.alert; if (typeof L.alertLevel === 'number') d.tr.alertLevel = L.alertLevel; if (L.visa) { d.tr.visaLive = L.visa; d.liveVisa = true; } d.liveUpdated = up; }); if (window.__atlas && window.__atlas.__render) window.__atlas.__render(); }).catch(function () {}); })();
+(function () { if (!window.fetch) return; fetch('data/fx.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { if (!j || !j.rates) return; window.ATLAS_FX = j; if (window.__atlas && window.__atlas.__render) window.__atlas.__render(); }).catch(function () {}); })();
 </script>
 </body>
 </html>

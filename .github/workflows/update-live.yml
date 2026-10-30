@@ -1,0 +1,50 @@
+name: Update live travel data
+
+on:
+  schedule:
+    - cron: '0 21 * * *'   # 매일 06:00 KST (= 21:00 UTC 전날)
+  workflow_dispatch: {}      # Actions 탭에서 "Run workflow" 버튼으로 수동 실행
+
+permissions:
+  contents: write            # data/live.json, data/fx.json 커밋·푸시용
+
+concurrency:
+  group: update-live
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Exchange rates → data/fx.json (키 필요 없음)
+        run: python3 scripts/update_fx.py
+
+      - name: Fetch MOFA open APIs → data/live.json
+        continue-on-error: true    # 인증키를 아직 안 넣었어도 환율 갱신은 계속 진행
+        env:
+          DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
+          # 특별여행주의보 API 주소가 다르면 저장소 Variables에 MOFA_SPECIAL_URL 을 추가하세요 ("off" = 사용 안 함)
+          MOFA_SPECIAL_URL: ${{ vars.MOFA_SPECIAL_URL }}
+        run: python3 scripts/update_live.py
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/live.json data/fx.json
+          if git diff --cached --quiet; then
+            echo "No changes in data files"
+            exit 0
+          fi
+          git commit -m "chore: update live data ($(TZ=Asia/Seoul date +'%Y-%m-%d %H:%M KST'))"
+          git pull --rebase --autostash || true
+          git push

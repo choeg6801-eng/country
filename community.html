@@ -8,7 +8,9 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="로컬 꿀팁 커뮤니티 · ATLAS HUB">
 <meta property="og:description" content="지구본에서 나라를 고르면 비자·항공권·예산·명소·축제·에티켓·경제·뉴스까지 한 번에. 98개국 여행·문화·무역 정보 허브.">
-<meta property="og:image" content="etc/og-image.jpg">
+<meta property="og:image" content="https://country-three-zeta.vercel.app/etc/og-image.jpg">
+<meta property="og:url" content="https://country-three-zeta.vercel.app/community.html">
+<link rel="canonical" href="https://country-three-zeta.vercel.app/community.html">
 <meta name="theme-color" content="#070B1A">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +29,7 @@ textarea::placeholder{color:#7F8DBB}
 .rise{animation:rise .35s ease both}
 .app{container-type:inline-size}
 .mbtn,.tabbar{display:none}
-.tabbar a{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:56px;padding:6px 4px;border-radius:10px;text-decoration:none;color:#9AA8D4;font-size:12px}
+.tabbar a{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1 1 0;min-width:0;max-width:72px;padding:6px 4px;border-radius:10px;text-decoration:none;color:#9AA8D4;font-size:12px}
 .tabbar a:hover{color:#FFFFFF}
 .mlink{display:block;padding:14px 12px;border-radius:10px;color:#E8EEFF;text-decoration:none;font-size:17px}
 .mlink:hover{background:#13224A}
@@ -49,6 +51,7 @@ textarea::placeholder{color:#7F8DBB}
 .ctable th,.ctable td{padding:10px 14px!important}
 }
 </style>
+<style>@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }</style>
 </head>
 <body>
 <div id="app"></div>
@@ -123,7 +126,7 @@ textarea::placeholder{color:#7F8DBB}
               </div>
               <p style="margin: 0; font-size: 15px; line-height: 1.75">{{p.text}}</p>
               <div style="display: flex; gap: 8px; align-items: center">
-                <button onClick="{{p.like}}" aria-pressed="{{p.likedAria}}" style="{{p.likeStyle}}">도움돼요 {{p.count}}</button>
+                <button onClick="{{p.like}}" aria-pressed="{{p.likedAria}}" style="{{p.likeStyle}}">도움돼요 {{p.count}}</button><button onClick="{{p.report}}" style="{{p.reportStyle}}">{{p.reportLabel}}</button>
                 <button style="height: 38px; padding: 0 12px; border-radius: 999px; border: 0; background: transparent; color: #8C9BC7; font: inherit; font-size: 13px">신고</button>
               </div>
             </div>
@@ -152,14 +155,17 @@ textarea::placeholder{color:#7F8DBB}
           <div style="display: flex; flex-wrap: wrap; gap: 6px">
             <template data-for="{{dCats}}" data-as="k"><button type="button" onClick="{{k.pick}}" aria-pressed="{{k.on}}" style="{{k.style}}">{{k.label}}</button></template>
           </div>
+          <label for="wn" style="font-size: 13px; color: #9AA8D4">별명 (선택)</label>
+          <input id="wn" value="{{nick}}" onInput="{{onNick}}" maxlength="20" placeholder="여행자" style="height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px">
           <label for="wt" style="font-size: 13px; color: #9AA8D4">내용</label>
           <textarea id="wt" value="{{draft}}" onChange="{{onDraft}}" rows="4" placeholder="예: 공항에서 시내까지는 공항철도가 가장 빠르고 저렴해요" style="width: 100%; box-sizing: border-box; padding: 14px; border-radius: 12px; border: 1px solid #2A3A6E; background: #0A1024; color: #E8EEFF; font: inherit; font-size: 15px; resize: vertical"></textarea>
           <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
-            <span style="font-size: 13px; color: #8C9BC7">{{draftCount}}/200</span>
-            <button type="submit" style="{{submitStyle}}">등록하기</button>
+            <span style="font-size: 13px; color: #8C9BC7">{{draftCount}}/200 · 링크·연락처 불가</span>
+            <button type="submit" aria-busy="{{postBusy}}" style="{{submitStyle}}">{{submitLabel}}</button>
           </div>
+          <span role="status" style="{{postMsgStyle}}">{{postMsg}}</span>
           <template data-if="{{posted}}">
-            <span role="status" style="font-size: 14px; color: #7FF0B0">등록됐어요! 피드 맨 위에서 확인할 수 있어요.</span>
+            <span role="status" style="font-size: 14px; color: #7FF0B0">등록됐어요! 모두에게 공개돼요. 피드 맨 위에서 확인할 수 있어요.</span>
           </template>
         </form>
 
@@ -180,25 +186,26 @@ textarea::placeholder{color:#7F8DBB}
           <span>· 직접 겪은 사실 위주로 적어 주세요</span>
           <span>· 전화번호·주소 등 개인정보는 적지 않아요</span>
           <span>· 광고·홍보 글은 숨김 처리돼요</span>
-          <span style="color: #8C9BC7; font-size: 13px; margin-top: 4px">'예시 제보'는 국가별 대표 꿀팁을 정리한 샘플 글이에요. 새 글은 지금 쓰는 브라우저에만 저장되고, 모두가 보는 공유 게시판은 준비 중이에요.</span>
+          <span style="color: #8C9BC7; font-size: 13px; margin-top: 4px">'예시 제보'는 국가별 대표 꿀팁을 정리한 샘플 글이에요. 새 글은 모두가 보는 공유 게시판에 올라가고, 신고가 3번 쌓이면 자동으로 숨겨져요.</span><span style="color: #FFD98A; font-size: 13px; margin-top: 4px">{{boardNote}}</span>
         </section>
       </aside>
     </div>
   </main>
-  <footer id="site-footer" style="border-top: 1px solid #141E3E; margin-top: 40px"><div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; gap: 14px; font-size: 13px; line-height: 1.7; color: #8C9BC7"><div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #E8EEFF; letter-spacing: .06em">ATLAS HUB · 글로벌 아틀라스</span><span style="display: flex; flex-wrap: wrap; gap: 16px"><a href="credits.html" style="color: #B4C0E4">사진 · 데이터 출처</a><a href="https://www.0404.go.kr" target="_blank" rel="noopener" style="color: #B4C0E4">외교부 해외안전여행</a><span>영사콜센터 +82-2-3210-0404</span></span></div><p style="margin: 0">정보 기준일 2026년 10월 · 비자·입국 조건과 여행경보는 수시로 바뀌어요. 이 사이트의 정보는 참고용이며, 출국 전 외교부 해외안전여행과 해당국 대사관에서 반드시 최신 정보를 확인하세요. 환율은 2026년 10월 19일 기준, 1인당 GDP는 World Bank·IMF 자료이고, 항공권 가격·날씨는 근사치예요.</p><p style="margin: 0">국가 사진: Wikimedia Commons(CC 라이선스, 사진마다 작가 표기) · 일부 AI 생성 이미지(표기됨) · 국기: 단순화한 SVG · 폰트: Google Fonts</p></div></footer>
+  <footer id="site-footer" style="border-top: 1px solid #141E3E; margin-top: 40px"><div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; gap: 14px; font-size: 13px; line-height: 1.7; color: #8C9BC7"><div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #E8EEFF; letter-spacing: .06em">ATLAS HUB · 글로벌 아틀라스</span><span style="display: flex; flex-wrap: wrap; gap: 16px"><a href="credits.html" style="color: #B4C0E4">사진 · 데이터 출처</a><a href="https://www.0404.go.kr" target="_blank" rel="noopener" style="color: #B4C0E4">외교부 해외안전여행</a><span>영사콜센터 +82-2-3210-0404</span></span></div><p style="margin: 0">정보 기준일 2026년 10월 · 비자·입국 조건과 여행경보는 수시로 바뀌어요. 이 사이트의 정보는 참고용이며, 출국 전 외교부 해외안전여행과 해당국 대사관에서 반드시 최신 정보를 확인하세요. 환율은 매일 갱신(<a href="https://www.exchangerate-api.com" style="color: inherit">Rates By Exchange Rate API</a>), 1인당 GDP는 World Bank·IMF, 기온은 Open-Meteo 월 평년값이고, 항공권 가격은 근사치예요.</p><p style="margin: 0">국가 사진: Wikimedia Commons(CC 라이선스, 사진마다 작가 표기) · 국기: 단순화한 SVG · 폰트: Google Fonts</p></div></footer>
   <nav class="tabbar" aria-label="하단 메뉴" style="position: sticky; bottom: 0; z-index: 30; justify-content: space-around; padding: 8px 6px 14px; background: rgba(10,16,36,.97); border-top: 1px solid #1E2A52"><a href="index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"></path></svg>홈</a><a href="continent.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"></path></svg>대륙</a><a href="countries.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="4" width="7" height="7"></rect><rect x="13" y="4" width="7" height="7"></rect><rect x="4" y="13" width="7" height="7"></rect><rect x="13" y="13" width="7" height="7"></rect></svg>국가</a><a href="compare.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg>비교</a><a href="community.html" aria-current="page" style="color: #7FE3FF; background: #13224A"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path><path d="M8 9h8M8 12h5"></path></svg>꿀팁</a></nav>
 </div>
 </script>
 <script src="js/data.js"></script>
 <script src="js/runtime.js"></script>
+<script src="js/community.js"></script>
 <script>
-(function () { var q = new URLSearchParams(location.search); function put(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } var c = q.get('code'), t = q.get('tab'), n = q.get('cont'), a = q.get('a'), b = q.get('b'); if (c && window.ATLAS_DB[c.toUpperCase()]) put('atlas.code', c.toUpperCase()); if (t) put('atlas.tab', t.toLowerCase()); if (n) put('atlas.cont', n.toUpperCase()); if (a && b && window.ATLAS_DB[a.toUpperCase()] && window.ATLAS_DB[b.toUpperCase()]) put('atlas.cmp', [a.toUpperCase(), b.toUpperCase()]); })();
+(function () { var q = new URLSearchParams(location.search); function put(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } var c = q.get('code') || window.__PRESET_CODE, t = q.get('tab'), n = q.get('cont'), a = q.get('a'), b = q.get('b'); if (c && window.ATLAS_DB[c.toUpperCase()]) put('atlas.code', c.toUpperCase()); if (t) put('atlas.tab', t.toLowerCase()); if (n) put('atlas.cont', n.toUpperCase()); if (a && b && window.ATLAS_DB[a.toUpperCase()] && window.ATLAS_DB[b.toUpperCase()]) put('atlas.cmp', [a.toUpperCase(), b.toUpperCase()]); })();
 class Component extends DCLogic {
   constructor(p) { super(p); this.state = { country: 'ALL', cat: 'ALL', sort: 'new', mine: (function () { try { var v = JSON.parse(localStorage.getItem('atlas.posts') || '[]'); return Array.isArray(v) ? v.slice(-200) : []; } catch (e) { return []; } })(), liked: {}, draft: '', dCountry: 'VN', dCat: '교통', posted: false }; }
   renderVals() {
     var DB = this.__DB || (this.__DB = window.ATLAS_DB);
     var FL = {}; Object.keys(DB).forEach(function (k) { FL[k] = DB[k].flag; });
-    function __nav(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} try { sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+    function __nav(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} try { sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } function __hrs(h) { h = Math.abs(h); var H = Math.floor(h + 1e-9), M = Math.round((h - H) * 60); return M ? (H ? H + '시간 ' + M + '분' : M + '분') : H + '시간'; }
     var self = this, st = this.state;
     var SEED = [
       ['VN', '교통', '하노이·호찌민은 오토바이가 정말 많아요. 길을 건널 때는 뛰지 말고 일정한 속도로 천천히 걸으면 알아서 피해 가요.'],
@@ -221,7 +228,9 @@ class Component extends DCLogic {
       ['BR', '안전', '사람이 많은 해변이나 거리에서는 휴대폰을 손에 들고 다니지 않는 게 좋아요.']
     ];
     [0, 1, 2].forEach(function (j) { Object.keys(DB).forEach(function (k) { var t = DB[k].tips[j]; if (t) SEED.push([k, t[0], t[1]]); }); });
-    var posts = st.mine.map(function (p) { return { id: p.id, code: p.code, cat: p.cat, text: p.text, mine: true, t: p.t }; })
+    var SH = typeof ATLAS_SHARED !== 'undefined' ? ATLAS_SHARED : null, shared = SH ? SH.get('ALL') : null;
+    var posts = (shared ? shared.items.filter(function (p) { return DB[p.code]; }).map(function (p) { return { id: 'p' + p.id, pid: p.id, code: p.code, cat: p.cat, text: p.body, shared: true, nick: p.nick, ago: SH.ago(p.created_at), t: Date.parse(p.created_at) }; }) : [])
+      .concat(st.mine.map(function (p) { return { id: p.id, code: p.code, cat: p.cat, text: p.text, mine: true, t: p.t }; }))
       .concat(SEED.map(function (r, i) { return { id: 's' + i, code: r[0], cat: r[1], text: r[2], mine: false, t: -i }; }));
     var counts = {}; posts.forEach(function (p) { counts[p.code] = (counts[p.code] || 0) + 1; });
     var list = posts.filter(function (p) { return (st.country === 'ALL' || p.code === st.country) && (st.cat === 'ALL' || p.cat === st.cat); });
@@ -234,6 +243,7 @@ class Component extends DCLogic {
     var codes = Object.keys(DB);
     var __s = this;
     var __menu = { menuOpen: !!(this.state && this.state.menu), menuAria: (this.state && this.state.menu) ? 'true' : 'false', toggleMenu: function () { __s.setState({ menu: !(__s.state && __s.state.menu) }); } };
+    if (!__s._escOn && typeof document !== 'undefined') { __s._escOn = true; document.addEventListener('keydown', function (e) { if ((e.key === 'Escape' || e.key === 'Esc') && __s.state && __s.state.menu) __s.setState({ menu: false }); }); }
     return Object.assign(__menu, {
       total: posts.length, countryCount: Object.keys(counts).length, shown: list.length, empty: list.length === 0,
       country: st.country,
@@ -246,8 +256,10 @@ class Component extends DCLogic {
       posts: list.slice(0, st.limit || 12).map(function (p) {
         var d = DB[p.code], on = !!st.liked[p.id];
         return { open: function () { __nav('atlas.code', p.code); }, name: d.name, flag: d.flag, photo: d.photo, cat: p.cat, text: p.text,
-          who: p.mine ? '내가 쓴 글 · 이 브라우저에만 저장' : '예시 제보',
-          whoStyle: 'font-size: 13px; ' + (p.mine ? 'color: #7FF0B0; font-weight: 600' : 'color: #8C9BC7'),
+          who: p.shared ? p.nick + ' · ' + p.ago + ' · 모두에게 공개' : (p.mine ? '내가 쓴 글 · 이 브라우저에만 저장' : '예시 제보'),
+          whoStyle: 'font-size: 13px; ' + (p.shared ? 'color: #FFD98A; font-weight: 600' : (p.mine ? 'color: #7FF0B0; font-weight: 600' : 'color: #8C9BC7')),
+          reportLabel: (st.reported || {})[p.pid] ? '신고됨' : '신고', reportStyle: p.shared ? 'height: 38px; padding: 0 12px; border-radius: 999px; font: inherit; font-size: 13px; cursor: pointer; border: 1px solid #3A2A3A; background: transparent; color: #B48A9A' : 'display: none',
+          report: function () { if (!SH || !p.pid || (st.reported || {})[p.pid]) return; if (!window.confirm('이 글을 신고할까요? 신고가 3번 쌓이면 자동으로 숨겨져요.')) return; var r = Object.assign({}, st.reported || {}); r[p.pid] = true; self.setState({ reported: r }); SH.report(p.pid).then(function (hid) { if (hid) SH.refresh('ALL'); }); },
           count: on ? 1 : 0, likedAria: on ? 'true' : 'false',
           likeStyle: 'height: 38px; padding: 0 14px; border-radius: 999px; font: inherit; font-size: 13px; cursor: pointer; ' + (on ? 'border: 1px solid #7FE3FF; background: #13324A; color: #7FE3FF; font-weight: 600' : 'border: 1px solid #2A3A6E; background: transparent; color: #B4C0E4'),
           like: function () { var l = Object.assign({}, st.liked); l[p.id] = !on; self.setState({ liked: l }); } };
@@ -257,15 +269,28 @@ class Component extends DCLogic {
       onDCountry: function (e) { self.setState({ dCountry: e.target.value }); },
       dCats: catNames.map(function (n) { var on = st.dCat === n; return { label: n, on: on ? 'true' : 'false', pick: function () { self.setState({ dCat: n }); }, style: chip(on).replace('height: 40px', 'height: 36px') }; }),
       draft: draft, draftCount: draft.length,
-      onDraft: function (e) { self.setState({ draft: e.target.value.slice(0, 200), posted: false }); },
+      onDraft: function (e) { self.setState({ draft: e.target.value.slice(0, 200), posted: false, postMsg: '' }); },
       submitStyle: 'height: 44px; padding: 0 22px; border-radius: 12px; border: 0; font: inherit; font-weight: 700; cursor: pointer; ' + (canPost ? 'background: #FFC857; color: #1A1300' : 'background: #1A2752; color: #7F8DBB'),
       submit: function (e) {
         if (e && e.preventDefault) e.preventDefault();
         if (!canPost) return;
-        var nm = st.mine.concat([{ id: 'u' + Date.now(), code: st.dCountry, cat: st.dCat, text: draft.trim(), t: Date.now() }]); try { localStorage.setItem('atlas.posts', JSON.stringify(nm.slice(-200))); } catch (er) {}
-        self.setState({ mine: nm, draft: '', posted: true, sort: 'new' });
+        if (SH) {
+          if (st.postBusy || self._postLock) return;
+          self._postLock = true;
+          self.setState({ postBusy: true, postMsg: '' });
+          SH.post({ code: st.dCountry, cat: st.dCat, body: draft.trim(), nick: (st.nick || '').trim() }).then(function () { self._postLock = false; self.setState({ draft: '', postBusy: false, posted: true, postMsg: '', sort: 'new', country: 'ALL', cat: 'ALL' }); SH.refresh('ALL'); },
+            function (er) { self._postLock = false; self.setState({ postBusy: false, postMsg: er.message }); });
+          return;
+        }
+        var __sig = 'post:' + draft.trim(); if (self._sig === __sig && Date.now() - (self._sigT || 0) < 2000) return; self._sig = __sig; self._sigT = Date.now();
+        var nm = st.mine.concat([{ id: 'u' + Date.now(), code: st.dCountry, cat: st.dCat, text: draft.trim(), t: Date.now() }]); var __ok = true; try { localStorage.setItem('atlas.posts', JSON.stringify(nm.slice(-200))); } catch (er) { __ok = false; }
+        self.setState({ mine: nm, draft: '', posted: true, sort: 'new', postMsg: __ok ? '' : '브라우저 저장 공간이 가득 차서 이 글은 새로고침하면 사라져요.' });
       },
       posted: st.posted,
+      nick: st.nick || '', onNick: function (e) { self.setState({ nick: e.target.value.slice(0, 20) }); },
+      postBusy: st.postBusy ? 'true' : 'false', submitLabel: st.postBusy ? '등록 중…' : '등록하기',
+      postMsg: st.postMsg || '', postMsgStyle: st.postMsg ? 'font-size: 14px; font-weight: 600; color: #FF9B8A' : 'display: none',
+      boardNote: SH ? (shared && shared.status === 'error' ? '공유 게시판에 연결하지 못했어요. 예시 제보만 보여요.' : (shared && shared.status === 'loading' ? '공유 게시판 불러오는 중…' : '노란 이름 = 모두에게 공개된 실제 제보 · 신고 3회 시 자동 숨김')) : '',
       ranking: ranking.map(function (k, i) { return { n: i + 1, name: DB[k].name, flag: DB[k].flag, count: counts[k], pick: function () { self.setState({ country: k }); } }; })
     });
   }
@@ -273,6 +298,7 @@ class Component extends DCLogic {
 
 mountAtlas(Component);
 (function () { if (!window.fetch) return; fetch('data/live.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { if (!j || !j.countries) return; var D = window.ATLAS_DB, up = String(j.updated || '').slice(0, 10); Object.keys(j.countries).forEach(function (k) { var L = j.countries[k], d = D[k]; if (!d || k === 'KR') return; d.tr = d.tr || {}; if (L.alert) d.tr.alert = L.alert; if (typeof L.alertLevel === 'number') d.tr.alertLevel = L.alertLevel; if (L.visa) { d.tr.visaLive = L.visa; d.liveVisa = true; } d.liveUpdated = up; }); if (window.__atlas && window.__atlas.__render) window.__atlas.__render(); }).catch(function () {}); })();
+(function () { if (!window.fetch) return; fetch('data/fx.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { if (!j || !j.rates) return; window.ATLAS_FX = j; if (window.__atlas && window.__atlas.__render) window.__atlas.__render(); }).catch(function () {}); })();
 </script>
 </body>
 </html>

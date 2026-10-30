@@ -8,7 +8,9 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="국가 비교 · ATLAS HUB">
 <meta property="og:description" content="지구본에서 나라를 고르면 비자·항공권·예산·명소·축제·에티켓·경제·뉴스까지 한 번에. 98개국 여행·문화·무역 정보 허브.">
-<meta property="og:image" content="etc/og-image.jpg">
+<meta property="og:image" content="https://country-three-zeta.vercel.app/etc/og-image.jpg">
+<meta property="og:url" content="https://country-three-zeta.vercel.app/compare.html">
+<link rel="canonical" href="https://country-three-zeta.vercel.app/compare.html">
 <meta name="theme-color" content="#070B1A">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +27,7 @@ select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #FFC
 tbody tr:hover{background:#0B1228}
 .app{container-type:inline-size}
 .mbtn,.tabbar{display:none}
-.tabbar a{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:56px;padding:6px 4px;border-radius:10px;text-decoration:none;color:#9AA8D4;font-size:12px}
+.tabbar a{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1 1 0;min-width:0;max-width:72px;padding:6px 4px;border-radius:10px;text-decoration:none;color:#9AA8D4;font-size:12px}
 .tabbar a:hover{color:#FFFFFF}
 .mlink{display:block;padding:14px 12px;border-radius:10px;color:#E8EEFF;text-decoration:none;font-size:17px}
 .mlink:hover{background:#13224A}
@@ -47,6 +49,7 @@ tbody tr:hover{background:#0B1228}
 .ctable th,.ctable td{padding:10px 14px!important}
 }
 </style>
+<style>@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }</style>
 </head>
 <body>
 <div id="app"></div>
@@ -113,7 +116,7 @@ tbody tr:hover{background:#0B1228}
     </template>
 
     <!-- INSIGHTS -->
-    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px">
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 14px">
       <div style="padding: 22px; border-radius: 18px; background: #0E1530; border: 1px solid #1E2A52; display: flex; flex-direction: column; gap: 10px">
         <span style="font-size: 13px; color: #8C9BC7">시차</span>
         <span style="font-size: 26px; font-weight: 700">{{gapText}}</span>
@@ -202,14 +205,37 @@ tbody tr:hover{background:#0B1228}
   
   
   
-  <footer id="site-footer" style="border-top: 1px solid #141E3E; margin-top: 40px"><div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; gap: 14px; font-size: 13px; line-height: 1.7; color: #8C9BC7"><div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #E8EEFF; letter-spacing: .06em">ATLAS HUB · 글로벌 아틀라스</span><span style="display: flex; flex-wrap: wrap; gap: 16px"><a href="credits.html" style="color: #B4C0E4">사진 · 데이터 출처</a><a href="https://www.0404.go.kr" target="_blank" rel="noopener" style="color: #B4C0E4">외교부 해외안전여행</a><span>영사콜센터 +82-2-3210-0404</span></span></div><p style="margin: 0">정보 기준일 2026년 10월 · 비자·입국 조건과 여행경보는 수시로 바뀌어요. 이 사이트의 정보는 참고용이며, 출국 전 외교부 해외안전여행과 해당국 대사관에서 반드시 최신 정보를 확인하세요. 환율은 2026년 10월 19일 기준, 1인당 GDP는 World Bank·IMF 자료이고, 항공권 가격·날씨는 근사치예요.</p><p style="margin: 0">국가 사진: Wikimedia Commons(CC 라이선스, 사진마다 작가 표기) · 일부 AI 생성 이미지(표기됨) · 국기: 단순화한 SVG · 폰트: Google Fonts</p></div></footer>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <footer id="site-footer" style="border-top: 1px solid #141E3E; margin-top: 40px"><div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; gap: 14px; font-size: 13px; line-height: 1.7; color: #8C9BC7"><div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #E8EEFF; letter-spacing: .06em">ATLAS HUB · 글로벌 아틀라스</span><span style="display: flex; flex-wrap: wrap; gap: 16px"><a href="credits.html" style="color: #B4C0E4">사진 · 데이터 출처</a><a href="https://www.0404.go.kr" target="_blank" rel="noopener" style="color: #B4C0E4">외교부 해외안전여행</a><span>영사콜센터 +82-2-3210-0404</span></span></div><p style="margin: 0">정보 기준일 2026년 10월 · 비자·입국 조건과 여행경보는 수시로 바뀌어요. 이 사이트의 정보는 참고용이며, 출국 전 외교부 해외안전여행과 해당국 대사관에서 반드시 최신 정보를 확인하세요. 환율은 매일 갱신(<a href="https://www.exchangerate-api.com" style="color: inherit">Rates By Exchange Rate API</a>), 1인당 GDP는 World Bank·IMF, 기온은 Open-Meteo 월 평년값이고, 항공권 가격은 근사치예요.</p><p style="margin: 0">국가 사진: Wikimedia Commons(CC 라이선스, 사진마다 작가 표기) · 국기: 단순화한 SVG · 폰트: Google Fonts</p></div></footer>
   <nav class="tabbar" aria-label="하단 메뉴" style="position: sticky; bottom: 0; z-index: 30; justify-content: space-around; padding: 8px 6px 14px; background: rgba(10,16,36,.97); border-top: 1px solid #1E2A52"><a href="index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"></path></svg>홈</a><a href="continent.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"></path></svg>대륙</a><a href="countries.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="4" width="7" height="7"></rect><rect x="13" y="4" width="7" height="7"></rect><rect x="4" y="13" width="7" height="7"></rect><rect x="13" y="13" width="7" height="7"></rect></svg>국가</a><a href="compare.html" aria-current="page" style="color: #7FE3FF; background: #13224A"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg>비교</a><a href="community.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path><path d="M8 9h8M8 12h5"></path></svg>꿀팁</a></nav>
 </div>
 </script>
 <script src="js/data.js"></script>
 <script src="js/runtime.js"></script>
+<script src="js/community.js"></script>
 <script>
-(function () { var q = new URLSearchParams(location.search); function put(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } var c = q.get('code'), t = q.get('tab'), n = q.get('cont'), a = q.get('a'), b = q.get('b'); if (c && window.ATLAS_DB[c.toUpperCase()]) put('atlas.code', c.toUpperCase()); if (t) put('atlas.tab', t.toLowerCase()); if (n) put('atlas.cont', n.toUpperCase()); if (a && b && window.ATLAS_DB[a.toUpperCase()] && window.ATLAS_DB[b.toUpperCase()]) put('atlas.cmp', [a.toUpperCase(), b.toUpperCase()]); })();
+(function () { var q = new URLSearchParams(location.search); function put(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } var c = q.get('code') || window.__PRESET_CODE, t = q.get('tab'), n = q.get('cont'), a = q.get('a'), b = q.get('b'); if (c && window.ATLAS_DB[c.toUpperCase()]) put('atlas.code', c.toUpperCase()); if (t) put('atlas.tab', t.toLowerCase()); if (n) put('atlas.cont', n.toUpperCase()); if (a && b && window.ATLAS_DB[a.toUpperCase()] && window.ATLAS_DB[b.toUpperCase()]) put('atlas.cmp', [a.toUpperCase(), b.toUpperCase()]); })();
 class Component extends DCLogic {
   _pdf(spec) {
   // spec: { filename, title, subtitle, flags: [url...], sections: [{ h, rows: [[k, v] | [k, vA, vB]], cols? }], note }
@@ -330,17 +356,18 @@ class Component extends DCLogic {
 }
 
   _read(k) { var v = null; try { v = localStorage.getItem(k); } catch (e) {} if (!v) { try { v = sessionStorage.getItem(k); } catch (e) {} } try { return v ? JSON.parse(v) : null; } catch (e) { return null; } }
-  constructor(p) { super(p); var ab = this._read('atlas.cmp') || ['KR', 'VN']; this.state = { a: ab[0], b: ab[1], onlyDiff: false, now: Date.now() }; }
+  _okPair(v) { var D0 = (typeof window !== 'undefined' && window.ATLAS_DB) || {}; return Array.isArray(v) && v.length === 2 && !!D0[v[0]] && !!D0[v[1]]; }
+  constructor(p) { super(p); var ab = this._read('atlas.cmp'); if (!this._okPair(ab)) ab = ['KR', 'VN']; this.state = { a: ab[0], b: ab[1], onlyDiff: false, now: Date.now() }; }
   componentDidMount() {
     var s = this; this.t = setInterval(function () { s.setState({ now: Date.now() }); }, 30000);
     this._last = JSON.stringify(this._read('atlas.cmp'));
-    this.sync = setInterval(function () { var v = s._read('atlas.cmp'), j = JSON.stringify(v); if (j !== s._last) { s._last = j; if (v && v.length === 2) s.setState({ a: v[0], b: v[1] }); } }, 700);
+    this.sync = setInterval(function () { var v = s._read('atlas.cmp'), j = JSON.stringify(v); if (j !== s._last) { s._last = j; if (s._okPair(v)) s.setState({ a: v[0], b: v[1] }); } }, 700);
   }
   componentWillUnmount() { clearInterval(this.t); clearInterval(this.sync); }
   renderVals() {
     var DB = this.__DB || (this.__DB = window.ATLAS_DB);
     var FL = {}; Object.keys(DB).forEach(function (k) { FL[k] = DB[k].flag; });
-    function __nav(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} try { sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+    function __nav(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} try { sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } function __hrs(h) { h = Math.abs(h); var H = Math.floor(h + 1e-9), M = Math.round((h - H) * 60); return M ? (H ? H + '시간 ' + M + '분' : M + '분') : H + '시간'; }
     var self = this, st = this.state;
     var D = {}; Object.keys(DB).forEach(function (k) { var d = DB[k]; D[k] = { name: d.name, capital: d.capital, cont: d.cont, lang: d.lang, cur: d.cur, pop: d.pop, off: d.off, volt: d.volt + ' · ' + d.plug + '형', plug: d.plug, drive: d.drive, tip: d.tip, dishes: d.dishes.slice(0, 3).map(function (x) { return x.n; }), exp: d.exp.join(' · '), etq: d.etq.slice(0, 2).concat(d.etq2.slice(0, 2)), emergency: d.emergency, hello: d.hello + ' (' + d.helloRead + ')', climate: d.climate, best: d.best, fta: d.fta, companies: d.companies.slice(0, 3).join(' · '), drink: d.drink, photo: d.photo, landmark: d.landmark, area: d.area, work: d.work, greet: d.greet, gift: d.gift, dress: d.dress, taboo: d.taboo[0], airport: d.airport, flight: d.flight, popc: d.popc, street: d.street, rel: d.rel }; });
     Object.keys(DB).forEach(function (k) { var t = DB[k].tr || {}; D[k].visa = t.visa || '—'; D[k].budget = t.budget ? t.budget[1] + ' (보통)' : '—'; D[k].safety = ['—', '매우 안전', '안전 · 소매치기 주의', '주의 필요', '여행 자제 지역 있음'][t.safety || 0]; D[k].alert = t.alert || '—'; D[k].water = t.water || '—'; D[k].stay = t.stay || '—'; var fa = DB[k].fare; D[k].fare = fa ? fa.fare[0] + ' ~ ' + fa.fare[1] : '—'; D[k].events = fa ? fa.events.slice(0, 3).map(function (e) { return e[0] + ' (' + e[1] + ')'; }).join(', ') : '—'; })
@@ -365,20 +392,21 @@ class Component extends DCLogic {
     var gA = DB[st.a].gdpTxt || '자료 없음', gB = DB[st.b].gdpTxt || '자료 없음'; if (!st.onlyDiff || gA !== gB) rows.push({ label: '1인당 GDP', a: gA, b: gB, differ: gA !== gB, dot: 'display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #FFC857; margin-left: 6px; vertical-align: middle' }); allRows.push(['1인당 GDP (World Bank)', gA, gB]);
     var __s = this;
     var __menu = { menuOpen: !!(this.state && this.state.menu), menuAria: (this.state && this.state.menu) ? 'true' : 'false', toggleMenu: function () { __s.setState({ menu: !(__s.state && __s.state.menu) }); } };
+    if (!__s._escOn && typeof document !== 'undefined') { __s._escOn = true; document.addEventListener('keydown', function (e) { if ((e.key === 'Escape' || e.key === 'Esc') && __s.state && __s.state.menu) __s.setState({ menu: false }); }); }
         return Object.assign(__menu, {
       pdfLabel: st.pdf === 'busy' ? 'PDF 만드는 중…' : (st.pdf === 'saved' ? '✓ PDF 저장 완료' : (st.pdf === 'declined' ? '저장 취소됨 · 다시 시도' : (st.pdf === 'error' ? 'PDF 생성 실패 · 다시 시도' : '비교표 PDF로 저장'))), pdfBusy: st.pdf === 'busy' ? 'true' : 'false',
       savePdf: function () {
-        if (st.pdf === 'busy') return;
+        if (st.pdf === 'busy' || self._lkC) return; self._lkC = true;
         self.setState({ pdf: 'busy' });
         var da = DB[st.a], db = DB[st.b];
         var spec = { filename: 'ATLAS_compare_' + st.a + '-' + st.b + '.pdf', title: A.name + '  vs  ' + B.name, subtitle: '국가 비교 리포트 · ' + new Date().toLocaleDateString('ko-KR') + ' 기준', flags: [FL[st.a], FL[st.b]],
           note: 'ATLAS HUB · 정보 기준일 2026년 10월 · 비자·치안 정보는 출국 전 외교부 해외안전여행(0404.go.kr)에서 확인하세요.',
           sections: [
-            { h: '핵심 비교', cols: [A.name, B.name], rows: [['시차', A.name + ' 기준 ' + (gap === 0 ? '시차 없음' : Math.abs(gap) + '시간 ' + (gap > 0 ? B.name + '이(가) 빠름' : B.name + '이(가) 느림')), A.name + ' 오전 9시 = ' + B.name + ' ' + meet], ['플러그 호환', plugOk ? '변환 어댑터 없이 사용 가능' : '어댑터 필요', A.volt + ' → ' + B.volt]] },
+            { h: '핵심 비교', cols: [A.name, B.name], rows: [['시차', A.name + ' 기준 ' + (gap === 0 ? '시차 없음' : __hrs(gap) + ' ' + (gap > 0 ? B.name + '이(가) 빠름' : B.name + '이(가) 느림')), A.name + ' 오전 9시 = ' + B.name + ' ' + meet], ['플러그 호환', plugOk ? '변환 어댑터 없이 사용 가능' : '어댑터 필요', A.volt + ' → ' + B.volt]] },
             { h: '항목별 비교', cols: [A.name, B.name], rows: allRows },
             { h: '여행 핵심', cols: [A.name, B.name], rows: [['꼭 가볼 곳', (da.tr ? da.tr.spots.map(function (x) { return x[0]; }).join(', ') : '—'), (db.tr ? db.tr.spots.map(function (x) { return x[0]; }).join(', ') : '—')], ['대표 음식', da.dishes.map(function (x) { return x.n; }).slice(0, 4).join(', '), db.dishes.map(function (x) { return x.n; }).slice(0, 4).join(', ')], ['에티켓', da.etq.slice(0, 2).join(' / '), db.etq.slice(0, 2).join(' / ')], ['FTA', da.fta, db.fta]] }
           ] };
-        Promise.resolve().then(function () { return self._pdf(spec); }).then(function (r) { self.setState({ pdf: r === 'declined' ? 'declined' : 'saved' }); setTimeout(function () { self.setState({ pdf: null }); }, 4000); }, function () { self.setState({ pdf: 'error' }); });
+        Promise.resolve().then(function () { return self._pdf(spec); }).then(function (r) { self.setState({ pdf: r === 'declined' ? 'declined' : 'saved' }); setTimeout(function () { self.setState({ pdf: null }); }, 4000); }, function () { self.setState({ pdf: 'error' }); }).then(function () { self._lkC = false; }, function () { self._lkC = false; });
       },
       a: st.a, b: st.b, A: A, B: B, openB: function () { __nav('atlas.code', st.b); }, photoA: A.photo, photoB: B.photo, flagA: FL[st.a], flagB: FL[st.b], same: st.a === st.b,
       opts: order.map(function (k) { return { code: k, name: D[k].name }; }),
@@ -386,7 +414,7 @@ class Component extends DCLogic {
       onB: function (e) { self.setState({ b: e.target.value }); },
       swap: function () { self.setState({ a: st.b, b: st.a }); },
       clockA: clock(A.off), clockB: clock(B.off),
-      gapText: gap === 0 ? '시차 없음' : (B.name + ' 쪽이 ' + (gap < 0 ? (-gap) + '시간 늦음' : gap + '시간 빠름')),
+      gapText: gap === 0 ? '시차 없음' : (B.name + ' 쪽이 ' + (gap < 0 ? __hrs(-gap) + ' 늦음' : __hrs(gap) + ' 빠름')),
       meet: meet,
       plugHead: plugOk ? '그대로 사용 가능' : '어댑터 필요',
       plugStyle: 'font-size: 26px; font-weight: 700; color: ' + (plugOk ? '#7FF0B0' : '#FF9B8A'),
@@ -405,6 +433,7 @@ class Component extends DCLogic {
 window.__afterRender = function (c) { var u = '?a=' + c.state.a + '&b=' + c.state.b; if (location.search !== u) history.replaceState(null, '', u); };
 mountAtlas(Component);
 (function () { if (!window.fetch) return; fetch('data/live.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { if (!j || !j.countries) return; var D = window.ATLAS_DB, up = String(j.updated || '').slice(0, 10); Object.keys(j.countries).forEach(function (k) { var L = j.countries[k], d = D[k]; if (!d || k === 'KR') return; d.tr = d.tr || {}; if (L.alert) d.tr.alert = L.alert; if (typeof L.alertLevel === 'number') d.tr.alertLevel = L.alertLevel; if (L.visa) { d.tr.visaLive = L.visa; d.liveVisa = true; } d.liveUpdated = up; }); if (window.__atlas && window.__atlas.__render) window.__atlas.__render(); }).catch(function () {}); })();
+(function () { if (!window.fetch) return; fetch('data/fx.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { if (!j || !j.rates) return; window.ATLAS_FX = j; if (window.__atlas && window.__atlas.__render) window.__atlas.__render(); }).catch(function () {}); })();
 </script>
 </body>
 </html>
